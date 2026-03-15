@@ -103,7 +103,7 @@ export default function WhyFlowGuard() {
       </motion.section>
 
       {/* Section 4 — Insurance Angle */}
-      <motion.section {...fadeUp} className="bg-white py-24">
+      <motion.section {...fadeUp} id="incident-report" className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             {/* Left — copy */}
@@ -117,7 +117,7 @@ export default function WhyFlowGuard() {
               <p className="text-slate-600 leading-relaxed text-lg mb-8">
                 Every incident produces a complete audit trail — detection timestamp, alert sent, who acknowledged, response timeline, containment confirmation, and resolution. That&apos;s not just good operations. That&apos;s your claim defense.
               </p>
-              <Link href="/how-it-works" className="text-sm font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">
+              <Link href="/why-flowguard#incident-report" className="text-sm font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">
                 See how incident reports work →
               </Link>
             </div>

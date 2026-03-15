@@ -21,14 +21,14 @@ export default function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/">
-          {scrolled ? (
-            <Image src="/flowguard-logo.svg" alt="FlowGuard Asset Protection" width={140} height={35} priority />
-          ) : (
-            <div className="flex items-center gap-2">
-              <Image src="/flowguard-icon.svg" alt="FlowGuard" width={40} height={40} priority />
-              <span className="font-bold text-xl text-white">FlowGuard</span>
-            </div>
-          )}
+          <Image
+            src="/flowguard-logo.png"
+            alt="FlowGuard Asset Protection"
+            width={160}
+            height={40}
+            priority
+            className="object-contain"
+          />
         </Link>
         <nav className="hidden md:flex items-center gap-8">
           <Link href="/how-it-works" className={navLinkClass}>How It Works</Link>

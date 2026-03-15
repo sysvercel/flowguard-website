@@ -14,9 +14,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/flowguard-icon.svg" type="image/svg+xml" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/flowguard-icon.png" />
-        <link rel="icon" type="image/png" sizes="64x64" href="/flowguard-icon.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/flowguard-icon.png" />
+        <link rel="icon" type="image/png" sizes="128x128" href="/flowguard-icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/flowguard-icon.png" />
       </head>
       <body className={inter.className}>
