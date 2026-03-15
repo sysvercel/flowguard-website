@@ -1,119 +1,167 @@
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+'use client'
+import { motion } from 'framer-motion'
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+}
 
 export default function Contact() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
-      
-      <main className="flex-1 max-w-4xl mx-auto px-6 py-12">
-        <div className="bg-white rounded-lg shadow-sm p-8">
-          <h1 className="text-4xl font-bold text-[#0D2E4E] mb-4">Contact Us</h1>
-          <p className="text-gray-600 mb-8">
-            Get in touch with our team for questions, support, or information about our water leak detection services.
+    <main>
+      {/* Hero */}
+      <section className="bg-[#1B2F4E] py-32 text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Let&apos;s Talk
+          </h1>
+          <p className="text-lg text-slate-400 leading-relaxed">
+            Tell us about your property and we&apos;ll put together a custom recommendation.
           </p>
+        </div>
+      </section>
 
-          <div className="space-y-8">
-            <section>
-              <h2 className="text-2xl font-bold text-[#0D2E4E] mb-4">Company Information</h2>
-              <div className="space-y-3">
+      {/* Form + Info */}
+      <motion.section {...fadeUp} className="bg-white py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-5 gap-16">
+            {/* Form — wider */}
+            <form
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+              className="md:col-span-3 space-y-6"
+            >
+              {/* First + Last Name */}
+              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-semibold text-lg text-gray-900">Company Name</h3>
-                  <p className="text-gray-700">FlowGuard Asset Protection LLC</p>
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">First Name</label>
+                  <input
+                    type="text"
+                    name="first_name"
+                    required
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">Last Name</label>
+                  <input
+                    type="text"
+                    name="last_name"
+                    required
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                  />
                 </div>
               </div>
-            </section>
 
-            <section>
-              <h2 className="text-2xl font-bold text-[#0D2E4E] mb-4">Email Contacts</h2>
-              <div className="space-y-4">
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h3 className="font-semibold text-gray-900 mb-1">General Inquiries</h3>
-                  <a href="mailto:mazen@flowguardprotection.com" className="text-[#3BB4E5] hover:underline">
-                    mazen@flowguardprotection.com
-                  </a>
-                  <p className="text-sm text-gray-600 mt-1">For general questions about our services</p>
+              {/* Company */}
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1.5">Company / Property Name</label>
+                <input
+                  type="text"
+                  name="company"
+                  required
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                />
+              </div>
+
+              {/* Property Size */}
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1.5">Property Size</label>
+                <select
+                  name="property_size"
+                  required
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent bg-white"
+                >
+                  <option value="">Select unit count</option>
+                  <option value="under-50">Under 50 units</option>
+                  <option value="50-100">50–100 units</option>
+                  <option value="100-200">100–200 units</option>
+                  <option value="200-500">200–500 units</option>
+                  <option value="500+">500+ units</option>
+                </select>
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1.5">Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1.5">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
+                <textarea
+                  name="message"
+                  rows={5}
+                  placeholder="Tell us about your property and what you're looking to solve"
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-[#29ABE2] text-white py-4 rounded-xl font-semibold hover:bg-[#1A6FA8] transition text-sm"
+              >
+                Send Message
+              </button>
+            </form>
+
+            {/* Info right */}
+            <div className="md:col-span-2 space-y-8 pt-2">
+              <div>
+                <div className="w-10 h-10 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
+                <h3 className="font-semibold text-[#1B2F4E] mb-1">Response Time</h3>
+                <p className="text-sm text-slate-500">We typically respond within 24 hours on business days.</p>
+              </div>
 
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h3 className="font-semibold text-gray-900 mb-1">Technical Support</h3>
-                  <a href="mailto:mazen@flowguardprotection.com" className="text-[#3BB4E5] hover:underline">
-                    mazen@flowguardprotection.com
-                  </a>
-                  <p className="text-sm text-gray-600 mt-1">For technical assistance and system issues</p>
+              <div>
+                <div className="w-10 h-10 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
                 </div>
+                <h3 className="font-semibold text-[#1B2F4E] mb-1">Email</h3>
+                <a href="mailto:mazen@flowguardprotection.com" className="text-sm text-[#29ABE2] hover:text-[#1A6FA8] transition">
+                  mazen@flowguardprotection.com
+                </a>
+              </div>
 
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h3 className="font-semibold text-gray-900 mb-1">Privacy Inquiries</h3>
-                  <a href="mailto:mazen@flowguardprotection.com" className="text-[#3BB4E5] hover:underline">
-                    mazen@flowguardprotection.com
-                  </a>
-                  <p className="text-sm text-gray-600 mt-1">For privacy-related questions and data requests</p>
+              <div>
+                <div className="w-10 h-10 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
                 </div>
+                <h3 className="font-semibold text-[#1B2F4E] mb-1">Location</h3>
+                <p className="text-sm text-slate-500">Based in Dallas, TX</p>
+                <p className="text-sm text-slate-500">Serving properties across Texas</p>
               </div>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-[#0D2E4E] mb-4">Business Address</h2>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-gray-700">
-                  5900 Balcones Drive
-STE 100
-Austin, TX, 78731, US
-                </p>
-                <p className="text-sm text-gray-500 mt-3">
-                </p>
-              </div>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-[#0D2E4E] mb-4">Phone</h2>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-gray-700">[972-246-8309]</p>
-                <p className="text-sm text-gray-500 mt-3">
-                </p>
-              </div>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-[#0D2E4E] mb-4">Business Hours</h2>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-gray-700">
-                  <strong>Customer Service:</strong><br />
-                  Monday - Friday: 9:00 AM - 5:00 PM CST<br />
-                  Saturday - Sunday: Closed
-                </p>
-                <p className="text-sm text-gray-600 mt-3">
-                  Emergency leak alerts are monitored 24/7 year-round. Our automated leak detection system 
-                  operates continuously to protect your property.
-                </p>
-              </div>
-            </section>
-
-            <section>
-              <div className="p-6 bg-blue-50 border-l-4 border-[#3BB4E5] rounded-lg">
-                <h3 className="font-semibold text-lg text-[#0D2E4E] mb-2">🚨 Emergency Leak Alerts</h3>
-                <p className="text-gray-700">
-                  Our automated leak detection system operates 24/7 to protect your property. If you receive a leak alert 
-                  via email or SMS, follow the instructions in the message to claim and resolve the incident immediately. 
-                  For urgent system issues outside business hours, contact your property manager directly.
-                </p>
-              </div>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-bold text-[#0D2E4E] mb-4">Request Information</h2>
-              <p className="text-gray-700 mb-4">
-                Interested in FlowGuard's water leak detection services for your property? Contact us using any of the 
-                email addresses above or visit our <a href="/" className="text-[#3BB4E5] hover:underline">homepage</a> to 
-                learn more about how we can help protect your property from costly water damage.
-              </p>
-            </section>
+            </div>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+      </motion.section>
+    </main>
   )
 }

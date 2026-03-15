@@ -1,34 +1,26 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ['latin'] })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const metadata = {
+  title: 'FlowGuard Asset Protection — Real-Time Leak Detection',
+  description: 'Real-time water leak detection and incident command for multifamily properties. Alerts in seconds, not hours.',
+}
 
-export const metadata: Metadata = {
-  title: "FlowGuard | Water Leak Detection",
-  description: "24/7 automated water leak detection and instant alerts for commercial and residential properties. Protect your property from costly water damage.",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/flowguard-icon.svg" type="image/svg+xml" />
+      </head>
+      <body className={inter.className}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
-  );
+  )
 }

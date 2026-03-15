@@ -1,32 +1,50 @@
-export default function Header() {
-  return (
-    <header className="bg-white border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-gradient-to-br from-[#3BB4E5] to-[#0D2E4E] rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-xl">FG</span>
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold">
-              <span className="text-[#3BB4E5]">Flow</span>
-              <span className="text-[#0D2E4E]">Guard</span>
-            </h1>
-            <p className="text-sm text-gray-600">Asset Protection</p>
-          </div>
-        </div>
+'use client'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-        {/* Navigation */}
-        <nav>
-          <ul className="flex gap-6 text-sm font-medium">
-            <li><a href="/" className="text-[#0D2E4E] hover:text-[#3BB4E5]">Home</a></li>
-            <li><a href="/privacy" className="text-gray-600 hover:text-[#3BB4E5]">Privacy</a></li>
-            <li><a href="/terms" className="text-gray-600 hover:text-[#3BB4E5]">Terms</a></li>
-            <li><a href="/sms" className="text-gray-600 hover:text-[#3BB4E5]">SMS Info</a></li>
-            <li><a href="/contact" className="text-gray-600 hover:text-[#3BB4E5]">Contact</a></li>
-          </ul>
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <Link href="/">
+          <Image src="/flowguard-logo.svg" alt="FlowGuard Asset Protection" width={180} height={45} priority />
+        </Link>
+        <nav className="hidden md:flex items-center gap-8">
+          <Link href="/how-it-works" className="text-sm font-medium text-slate-700 hover:text-[#29ABE2] transition">How It Works</Link>
+          <Link href="/solutions" className="text-sm font-medium text-slate-700 hover:text-[#29ABE2] transition">Solutions</Link>
+          <Link href="/contact" className="text-sm font-medium text-slate-700 hover:text-[#29ABE2] transition">Contact</Link>
         </nav>
+        <div className="hidden md:block">
+          <Link href="/contact" className="bg-[#29ABE2] text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#1A6FA8] transition">
+            Request a Demo
+          </Link>
+        </div>
+        <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+          <div className="space-y-1.5">
+            <span className={`block h-0.5 w-6 bg-slate-700 transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`block h-0.5 w-6 bg-slate-700 transition-all ${menuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block h-0.5 w-6 bg-slate-700 transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          </div>
+        </button>
       </div>
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4">
+          <Link href="/how-it-works" className="text-sm font-medium text-slate-700" onClick={() => setMenuOpen(false)}>How It Works</Link>
+          <Link href="/solutions" className="text-sm font-medium text-slate-700" onClick={() => setMenuOpen(false)}>Solutions</Link>
+          <Link href="/contact" className="text-sm font-medium text-slate-700" onClick={() => setMenuOpen(false)}>Contact</Link>
+          <Link href="/contact" className="bg-[#29ABE2] text-white px-6 py-2.5 rounded-lg text-sm font-semibold text-center" onClick={() => setMenuOpen(false)}>Request a Demo</Link>
+        </div>
+      )}
     </header>
   )
 }
