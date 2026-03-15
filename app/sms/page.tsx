@@ -1,12 +1,7 @@
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-
 export default function SMS() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
-      
-      <main className="flex-1 max-w-4xl mx-auto px-6 py-12">
+      <main className="flex-1 max-w-4xl mx-auto px-6 pt-28 pb-12">
         <div className="bg-white rounded-lg shadow-sm p-8">
           <h1 className="text-4xl font-bold text-[#0D2E4E] mb-4">SMS Alert Information</h1>
           <p className="text-sm text-gray-600 mb-8">
@@ -22,8 +17,8 @@ export default function SMS() {
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 <li>Maintenance technicians for immediate leak response</li>
-                <li>Supervisors when leaks remain unclaimed after 10 minutes</li>
-                <li>Property managers when leaks remain unclaimed after 15 minutes</li>
+                <li>Supervisors / backup contacts when leaks remain unclaimed after 5 minutes</li>
+                <li>Property managers when leaks remain unclaimed after 10 minutes</li>
               </ul>
               <p className="text-gray-700 mt-4">
                 SMS alerts work alongside email notifications to ensure your team is notified through multiple channels 
@@ -163,8 +158,6 @@ export default function SMS() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }

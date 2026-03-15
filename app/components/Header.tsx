@@ -27,7 +27,7 @@ export default function Header() {
             width={160}
             height={40}
             priority
-            className="object-contain"
+            className="object-contain w-32 md:w-40"
           />
         </Link>
         <nav className="hidden md:flex items-center gap-8">

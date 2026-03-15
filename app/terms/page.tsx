@@ -1,12 +1,7 @@
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-
 export default function Terms() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
-      
-      <main className="flex-1 max-w-4xl mx-auto px-6 py-12">
+      <main className="flex-1 max-w-4xl mx-auto px-6 pt-28 pb-12">
         <div className="bg-white rounded-lg shadow-sm p-8">
           <h1 className="text-4xl font-bold text-[#0D2E4E] mb-4">Terms of Service</h1>
           <p className="text-sm text-gray-600 mb-8">Last Updated: March 4, 2026</p>
@@ -186,8 +181,6 @@ export default function Terms() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }

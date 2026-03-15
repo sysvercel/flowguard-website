@@ -161,9 +161,9 @@ export default function HowItWorks() {
             {/* Visual left — timeline */}
             <div className="space-y-0">
               {[
-                { tier: 'Tier 1', who: 'Maintenance Tech', timing: '0 – 10 min', color: '#29ABE2' },
-                { tier: 'Tier 2', who: 'Maintenance Supervisor', timing: '10 – 20 min', color: '#1A6FA8' },
-                { tier: 'Tier 3', who: 'Property Manager', timing: '20+ min', color: '#1B2F4E' },
+                { tier: 'Tier 1', who: 'Maintenance Tech', timing: 'Alerted immediately. 5 minutes to respond.', color: '#29ABE2' },
+                { tier: 'Tier 2', who: 'Supervisor / Backup', timing: 'Auto-escalates at 5 minutes. 5 more minutes to respond.', color: '#1A6FA8' },
+                { tier: 'Tier 3', who: 'Property Manager', timing: 'Auto-escalates at 10 minutes. Immediate notification — no further delay.', color: '#1B2F4E' },
               ].map(({ tier, who, timing, color }, i) => (
                 <div key={tier} className="flex gap-6 items-start">
                   <div className="flex flex-col items-center">
@@ -174,7 +174,7 @@ export default function HowItWorks() {
                   </div>
                   <div className="pb-8">
                     <div className="font-bold text-[#1B2F4E]">{tier} — {who}</div>
-                    <div className="text-sm text-slate-500 mt-1">{timing} window</div>
+                    <div className="text-sm text-slate-500 mt-1">{timing}</div>
                   </div>
                 </div>
               ))}
@@ -184,7 +184,7 @@ export default function HowItWorks() {
               <div className="inline-block bg-[#29ABE2]/10 text-[#29ABE2] text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Step 4</div>
               <h2 className="text-3xl font-bold text-[#1B2F4E] mb-4">3-Tier Escalation</h2>
               <p className="text-slate-600 leading-relaxed text-lg">
-                If your first responder doesn&apos;t acknowledge within the window, FlowGuard automatically escalates. Tier 1 is your maintenance tech. No response triggers Tier 2 — a supervisor. Tier 3 is the property manager.
+                If your maintenance tech doesn&apos;t acknowledge within 5 minutes, FlowGuard auto-escalates to the supervisor or backup contact. No response from Tier 2 after 5 more minutes triggers an immediate Tier 3 alert to the property manager — no further delay.
               </p>
               <p className="text-slate-600 leading-relaxed text-lg mt-4">
                 Each tier receives the same multi-channel alert package. The escalation chain is fully configurable per property and per incident type during your onboarding.
