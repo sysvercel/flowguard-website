@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const fadeUp = {
@@ -9,6 +10,20 @@ const fadeUp = {
 }
 
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const form = e.target as HTMLFormElement
+    const data = new FormData(form)
+    const res = await fetch('https://formspree.io/f/xkoqvlrw', {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' },
+    })
+    if (res.ok) setSubmitted(true)
+  }
+
   return (
     <main>
       {/* Hero */}
@@ -26,140 +41,147 @@ export default function Contact() {
       {/* Form + Info */}
       <motion.section {...fadeUp} className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-5 gap-16">
-            {/* Form — wider */}
-            <form
-              action="https://formspree.io/f/YOUR_FORM_ID"
-              method="POST"
-              className="md:col-span-3 space-y-6"
-            >
-              {/* First + Last Name */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">First Name</label>
-                  <input
-                    type="text"
-                    name="first_name"
-                    required
-                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">Last Name</label>
-                  <input
-                    type="text"
-                    name="last_name"
-                    required
-                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
-                  />
-                </div>
-              </div>
-
-              {/* Company */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">Company / Property Name</label>
-                <input
-                  type="text"
-                  name="company"
-                  required
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
-                />
-              </div>
-
-              {/* Property Size */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">Property Size</label>
-                <select
-                  name="property_size"
-                  required
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent bg-white"
-                >
-                  <option value="">Select unit count</option>
-                  <option value="under-50">Under 50 units</option>
-                  <option value="50-100">50–100 units</option>
-                  <option value="100-200">100–200 units</option>
-                  <option value="200-500">200–500 units</option>
-                  <option value="500+">500+ units</option>
-                </select>
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">Phone Number</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">Email Address</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
-                <textarea
-                  name="message"
-                  rows={5}
-                  placeholder="Tell us about your property and what you're looking to solve"
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-[#29ABE2] text-white py-4 rounded-xl font-semibold hover:bg-[#1A6FA8] transition text-sm"
+          {submitted ? (
+            <div className="text-center py-24">
+              <div className="text-5xl mb-4">✅</div>
+              <h2 className="text-2xl font-bold text-[#1B2F4E] mb-2">Message Received</h2>
+              <p className="text-slate-500">We&apos;ll be in touch within 24 hours.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-5 gap-16">
+              {/* Form — wider */}
+              <form
+                onSubmit={handleSubmit}
+                className="md:col-span-3 space-y-6"
               >
-                Send Message
-              </button>
-            </form>
-
-            {/* Info right */}
-            <div className="md:col-span-2 space-y-8 pt-2">
-              <div>
-                <div className="w-10 h-10 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-3">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                {/* First + Last Name */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-1.5">First Name</label>
+                    <input
+                      type="text"
+                      name="first_name"
+                      required
+                      className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-1.5">Last Name</label>
+                    <input
+                      type="text"
+                      name="last_name"
+                      required
+                      className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                    />
+                  </div>
                 </div>
-                <h3 className="font-semibold text-[#1B2F4E] mb-1">Response Time</h3>
-                <p className="text-sm text-slate-500">We typically respond within 24 hours on business days.</p>
-              </div>
 
-              <div>
-                <div className="w-10 h-10 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-3">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                {/* Company */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">Company / Property Name</label>
+                  <input
+                    type="text"
+                    name="company"
+                    required
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                  />
                 </div>
-                <h3 className="font-semibold text-[#1B2F4E] mb-1">Email</h3>
-                <a href="mailto:mazen@flowguardprotection.com" className="text-sm text-[#29ABE2] hover:text-[#1A6FA8] transition">
-                  mazen@flowguardprotection.com
-                </a>
-              </div>
 
-              <div>
-                <div className="w-10 h-10 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-3">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
+                {/* Property Size */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">Property Size</label>
+                  <select
+                    name="property_size"
+                    required
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent bg-white"
+                  >
+                    <option value="">Select unit count</option>
+                    <option value="under-50">Under 50 units</option>
+                    <option value="50-100">50–100 units</option>
+                    <option value="100-200">100–200 units</option>
+                    <option value="200-500">200–500 units</option>
+                    <option value="500+">500+ units</option>
+                  </select>
                 </div>
-                <h3 className="font-semibold text-[#1B2F4E] mb-1">Location</h3>
-                <p className="text-sm text-slate-500">Based in Dallas, TX</p>
-                <p className="text-sm text-slate-500">Serving properties across Texas</p>
+
+                {/* Phone */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">Phone Number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent"
+                  />
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    placeholder="Tell us about your property and what you're looking to solve"
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#29ABE2] focus:border-transparent resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#29ABE2] text-white py-4 rounded-xl font-semibold hover:bg-[#1A6FA8] transition text-sm"
+                >
+                  Send Message
+                </button>
+              </form>
+
+              {/* Info right */}
+              <div className="md:col-span-2 space-y-8 pt-2">
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-3">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-[#1B2F4E] mb-1">Response Time</h3>
+                  <p className="text-sm text-slate-500">We typically respond within 24 hours on business days.</p>
+                </div>
+
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-3">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-[#1B2F4E] mb-1">Email</h3>
+                  <a href="mailto:mazen@flowguardprotection.com" className="text-sm text-[#29ABE2] hover:text-[#1A6FA8] transition">
+                    mazen@flowguardprotection.com
+                  </a>
+                </div>
+
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-3">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-[#1B2F4E] mb-1">Location</h3>
+                  <p className="text-sm text-slate-500">Based in Dallas, TX</p>
+                  <p className="text-sm text-slate-500">Serving properties across Texas</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </motion.section>
     </main>
