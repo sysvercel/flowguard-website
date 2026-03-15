@@ -170,13 +170,13 @@ export default function WhyFlowGuard() {
           <p className="text-center text-slate-500 mb-12">
             Most leak detection systems stop at the alert. FlowGuard goes further.
           </p>
-          <div className="rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-            <table className="w-full text-sm">
+          <div className="overflow-x-auto rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+            <table className="w-full min-w-[500px] text-sm">
               <thead>
                 <tr className="bg-[#1B2F4E]">
                   <th className="text-left px-6 py-4 text-slate-300 font-semibold w-1/2">Feature</th>
-                  <th className="px-6 py-4 text-slate-300 font-semibold text-center">Typical Leak Detection</th>
-                  <th className="px-6 py-4 text-white font-semibold text-center bg-[#29ABE2]">FlowGuard</th>
+                  <th className="px-4 py-4 text-slate-300 font-medium text-center whitespace-nowrap">Typical Leak Detection</th>
+                  <th className="bg-[#29ABE2] text-white px-4 py-4 text-center font-bold whitespace-nowrap">FlowGuard</th>
                 </tr>
               </thead>
               <tbody>
