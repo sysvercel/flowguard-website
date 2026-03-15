@@ -7,7 +7,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <Image src="/flowguard-logo.svg" alt="FlowGuard" width={160} height={40} className="brightness-0 invert mb-4" />
+            <div className="flex items-center gap-3 mb-4">
+              <Image src="/flowguard-icon.svg" alt="FlowGuard" width={48} height={48} />
+              <div>
+                <p className="text-xl font-bold text-white">FlowGuard</p>
+                <p className="text-sm text-slate-400">Asset Protection</p>
+              </div>
+            </div>
             <p className="text-slate-400 text-sm leading-relaxed">Stop water damage before it starts. Real-time leak detection and incident command for multifamily properties.</p>
           </div>
           <div>
@@ -15,6 +21,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <Link href="/how-it-works" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">How It Works</Link>
               <Link href="/solutions" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Solutions</Link>
+              <Link href="/why-flowguard" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Why FlowGuard</Link>
               <Link href="/contact" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Contact</Link>
             </div>
           </div>
