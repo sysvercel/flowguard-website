@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import PhoneDemo from '../components/PhoneDemo'
+import EscalationTimeline from '../components/EscalationTimeline'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -118,28 +119,7 @@ export default function HowItWorks() {
       <motion.section {...fadeUp} className="bg-[#F8FAFC] py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Visual left — timeline */}
-            <div className="space-y-0">
-              {[
-                { tier: 'Tier 1', who: 'Maintenance Tech', timing: 'Alerted immediately. 5 minutes to respond.', color: '#29ABE2' },
-                { tier: 'Tier 2', who: 'Supervisor / Backup', timing: 'Auto-escalates at 5 minutes. 5 more minutes to respond.', color: '#1A6FA8' },
-                { tier: 'Tier 3', who: 'Property Manager', timing: 'Auto-escalates at 10 minutes. Immediate notification — no further delay.', color: '#1B2F4E' },
-              ].map(({ tier, who, timing, color }, i) => (
-                <div key={tier} className="flex gap-6 items-start">
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style={{ backgroundColor: color }}>
-                      {i + 1}
-                    </div>
-                    {i < 2 && <div className="w-0.5 h-12 bg-slate-200 mt-1" />}
-                  </div>
-                  <div className="pb-8">
-                    <div className="font-bold text-[#1B2F4E]">{tier} — {who}</div>
-                    <div className="text-sm text-slate-500 mt-1">{timing}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            {/* Text right */}
+            {/* Text left */}
             <div>
               <div className="inline-block bg-[#29ABE2]/10 text-[#29ABE2] text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Step 4</div>
               <h2 className="text-3xl font-bold text-[#1B2F4E] mb-4">3-Tier Escalation</h2>
@@ -150,6 +130,8 @@ export default function HowItWorks() {
                 Each tier receives the same multi-channel alert package. The escalation chain is fully configurable per property and per incident type during your onboarding.
               </p>
             </div>
+            {/* Animated timeline right */}
+            <EscalationTimeline />
           </div>
         </div>
       </motion.section>
