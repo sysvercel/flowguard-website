@@ -20,7 +20,7 @@ export default function PhoneDemo() {
   const [visibleMessages, setVisibleMessages] = useState<number[]>([])
   const [isTyping, setIsTyping] = useState(false)
   const [replayKey, setReplayKey] = useState(0)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!isInView && replayKey === 0) return
@@ -44,7 +44,9 @@ export default function PhoneDemo() {
   }, [isInView, replayKey])
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight
+    }
   }, [visibleMessages, isTyping])
 
   return (
@@ -71,6 +73,7 @@ export default function PhoneDemo() {
 
             {/* Messages body — fixed height, internal scroll */}
             <div
+              ref={containerRef}
               className="overflow-y-auto px-3 py-4 space-y-2 bg-white"
               style={{ height: '460px' }}
             >
@@ -104,7 +107,6 @@ export default function PhoneDemo() {
                   </div>
                 </div>
               )}
-              <div ref={messagesEndRef} />
             </div>
 
             {/* Input bar */}
