@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import StatCounter from './components/StatCounter'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -38,23 +39,16 @@ export default function Home() {
       </section>
 
       {/* Section 2 — Stats Bar */}
-      <motion.section {...fadeUp} className="bg-white py-16">
+      <section className="bg-white py-16 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-            {[
-              { stat: '< 60s', label: 'Alert Response Time' },
-              { stat: '3-Tier', label: 'Escalation Chain' },
-              { stat: '24/7', label: 'Continuous Monitoring' },
-              { stat: '100%', label: 'Audit Trail Logged' },
-            ].map(({ stat, label }) => (
-              <div key={label} className="text-center py-6 px-4">
-                <div className="text-4xl font-bold text-[#29ABE2]">{stat}</div>
-                <div className="text-sm text-slate-500 mt-1">{label}</div>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+            <StatCounter target={60} prefix="< " suffix="s" label="Alert Response Time" duration={1500} />
+            <StatCounter target={3} suffix="-Tier" label="Escalation Chain" duration={1000} />
+            <StatCounter target={24} suffix="/7" label="Continuous Monitoring" duration={1200} />
+            <StatCounter target={100} suffix="%" label="Audit Trail Logged" duration={1800} />
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Section 3 — Problem */}
       <motion.section {...fadeUp} className="bg-[#F8FAFC] py-24">
@@ -69,16 +63,15 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4">
-              {[
-                { stat: '$13B+', label: 'Annual water damage insurance claims' },
-                { stat: '93%', label: 'Of water damage is preventable' },
-                { stat: '8+ Days', label: 'Average leak goes undetected' },
-              ].map(({ stat, label }) => (
-                <div key={label} className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6">
-                  <div className="text-3xl font-bold text-[#29ABE2]">{stat}</div>
-                  <div className="text-slate-600 mt-1 text-sm">{label}</div>
-                </div>
-              ))}
+              <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6">
+                <StatCounter target={13} prefix="$" suffix="B+" label="Annual water damage insurance claims" duration={2000} />
+              </div>
+              <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6">
+                <StatCounter target={93} suffix="%" label="Of water damage is preventable" duration={2000} />
+              </div>
+              <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6">
+                <StatCounter target={8} suffix="+ Days" label="Average leak goes undetected" duration={2000} />
+              </div>
             </div>
           </div>
         </div>
