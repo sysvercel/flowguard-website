@@ -181,7 +181,7 @@ export default function ROICalculator() {
             <p className="text-sm font-semibold text-[#1B2F4E] mb-4">Your FlowGuard investment</p>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between text-slate-600">
-                <span>Hardware ({units} units × ${capex})</span>
+                <span>Hardware investment (custom scoped)</span>
                 <span className="font-medium">{fmt(totalCapex)}</span>
               </div>
               <div className="flex justify-between text-green-600">
@@ -189,7 +189,7 @@ export default function ROICalculator() {
                 <span className="font-medium">− {fmt(section179Savings)}</span>
               </div>
               <div className="flex justify-between text-slate-600">
-                <span>Monthly service (year 1)</span>
+                <span>Annual monitoring fee (est.)</span>
                 <span className="font-medium">{fmt(annualMonthly)}</span>
               </div>
               <div className="border-t border-slate-100 pt-2 flex justify-between font-bold text-[#1B2F4E]">
@@ -208,11 +208,11 @@ export default function ROICalculator() {
             href="/contact"
             className="bg-[#29ABE2] text-white text-center py-4 rounded-xl font-semibold hover:bg-[#1A6FA8] transition text-sm"
           >
-            Request a Custom Quote for {units} Units →
+            Get a Custom Scope for {units} Units →
           </a>
 
           <p className="text-xs text-slate-400 text-center">
-            Estimates based on industry averages. Consult your accountant for tax advice. Actual results vary by property.
+            Estimates based on industry averages. Actual investment varies by property scope, sensor placement, and package tier. Consult your accountant for tax advice.
           </p>
         </div>
       </div>
