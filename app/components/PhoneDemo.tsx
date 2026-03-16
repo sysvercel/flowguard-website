@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
-import { useInView } from 'framer-motion'
 
 const messages = [
   { from: 'flowguard', text: '🚨 WATER LEAK DETECTED\n\nProperty: Riverside Apts\nLocation: Boiler Room\nSeverity: CRITICAL\nIncident: A3F2B1C8\n\nReply ACK to acknowledge', delay: 500 },
@@ -15,21 +14,38 @@ const messages = [
 ]
 
 export default function PhoneDemo() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [visibleMessages, setVisibleMessages] = useState<number[]>([])
   const [isTyping, setIsTyping] = useState(false)
   const [replayKey, setReplayKey] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const hasStarted = useRef(false)
 
+  // Use native IntersectionObserver instead of Framer Motion useInView
   useEffect(() => {
-    if (!isInView && replayKey === 0) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStarted.current) {
+          hasStarted.current = true
+          runAnimation()
+        }
+      },
+      { threshold: 0.3 }
+    )
+    if (wrapperRef.current) observer.observe(wrapperRef.current)
+    return () => observer.disconnect()
+  }, [])
 
+  // Replay
+  useEffect(() => {
+    if (replayKey === 0) return
+    runAnimation()
+  }, [replayKey])
+
+  function runAnimation() {
     setVisibleMessages([])
     setIsTyping(false)
-
     const timers: ReturnType<typeof setTimeout>[] = []
-
     messages.forEach((msg, index) => {
       if (msg.from === 'flowguard' && index > 0) {
         timers.push(setTimeout(() => setIsTyping(true), msg.delay - 800))
@@ -39,10 +55,9 @@ export default function PhoneDemo() {
         setVisibleMessages(prev => [...prev, index])
       }, msg.delay))
     })
+  }
 
-    return () => timers.forEach(clearTimeout)
-  }, [isInView, replayKey])
-
+  // Scroll container only — never the page
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight
@@ -50,87 +65,128 @@ export default function PhoneDemo() {
   }, [visibleMessages, isTyping])
 
   return (
-    <div className="flex flex-col items-center" style={{ minHeight: '700px' }}>
-      <div ref={ref} className="flex justify-center">
-        {/* iPhone frame */}
-        <div className="relative w-[320px] h-[620px] bg-black rounded-[50px] shadow-2xl border-4 border-gray-800 overflow-hidden">
-          {/* Notch */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl z-10" />
+    <div
+      ref={wrapperRef}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '320px',
+        height: '700px',
+        flexShrink: 0,
+        position: 'relative',
+      }}
+    >
+      {/* iPhone frame — absolutely fixed size, never grows */}
+      <div style={{
+        width: '320px',
+        height: '640px',
+        backgroundColor: 'black',
+        borderRadius: '50px',
+        border: '4px solid #374151',
+        overflow: 'hidden',
+        boxShadow: '0 25px 50px rgba(0,0,0,0.4)',
+        position: 'relative',
+        flexShrink: 0,
+      }}>
+        {/* Notch */}
+        <div style={{
+          position: 'absolute', top: 0, left: '50%',
+          transform: 'translateX(-50%)',
+          width: '120px', height: '28px',
+          backgroundColor: 'black',
+          borderBottomLeftRadius: '16px',
+          borderBottomRightRadius: '16px',
+          zIndex: 10,
+        }} />
 
-          {/* Screen */}
-          <div className="absolute inset-0 bg-white flex flex-col">
+        {/* Screen */}
+        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'white', display: 'flex', flexDirection: 'column' }}>
 
-            {/* Messages header */}
-            <div className="bg-gray-100 pt-10 pb-3 px-4 flex items-center gap-3 border-b border-gray-200">
-              <div className="w-8 h-8 rounded-full bg-[#29ABE2] flex items-center justify-center shrink-0">
-                <span className="text-white text-xs font-bold">FG</span>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-gray-900">FlowGuard</p>
-                <p className="text-xs text-gray-500">+1 (469) 754-8593</p>
-              </div>
+          {/* Header */}
+          <div style={{ backgroundColor: '#f3f4f6', paddingTop: '40px', paddingBottom: '12px', paddingLeft: '16px', paddingRight: '16px', display: 'flex', alignItems: 'center', gap: '12px', borderBottom: '1px solid #e5e7eb', flexShrink: 0 }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#29ABE2', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <span style={{ color: 'white', fontSize: '10px', fontWeight: 'bold' }}>FG</span>
             </div>
+            <div>
+              <p style={{ fontSize: '14px', fontWeight: '600', color: '#111827', margin: 0 }}>FlowGuard</p>
+              <p style={{ fontSize: '11px', color: '#6b7280', margin: 0 }}>+1 (469) 754-8593</p>
+            </div>
+          </div>
 
-            {/* Messages body — fixed height, internal scroll */}
-            <div
-              ref={containerRef}
-              className="overflow-y-auto px-3 py-4 space-y-2 bg-white"
-              style={{ height: '460px' }}
-            >
-              {messages.map((msg, index) => (
-                visibleMessages.includes(index) && (
-                  <div
-                    key={index}
-                    className={`flex ${msg.from === 'tech' ? 'justify-end' : 'justify-start'}`}
-                    style={{ animation: 'slideIn 0.3s ease-out' }}
-                  >
-                    <div
-                      className={`max-w-[75%] px-3 py-2 rounded-2xl text-xs leading-relaxed whitespace-pre-line ${
-                        msg.from === 'tech'
-                          ? 'bg-[#29ABE2] text-white rounded-br-sm'
-                          : 'bg-gray-200 text-gray-900 rounded-bl-sm'
-                      }`}
-                    >
-                      {msg.text}
-                    </div>
-                  </div>
-                )
-              ))}
-
-              {/* Typing indicator */}
-              {isTyping && (
-                <div className="flex justify-start">
-                  <div className="bg-gray-200 px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1 items-center">
-                    <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+          {/* Messages — FIXED height, internal scroll ONLY */}
+          <div
+            ref={containerRef}
+            style={{
+              height: '480px',
+              overflowY: 'auto',
+              padding: '16px 12px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
+              backgroundColor: 'white',
+              flexShrink: 0,
+            }}
+          >
+            {messages.map((msg, index) =>
+              visibleMessages.includes(index) ? (
+                <div
+                  key={index}
+                  style={{
+                    display: 'flex',
+                    justifyContent: msg.from === 'tech' ? 'flex-end' : 'flex-start',
+                    animation: 'slideIn 0.3s ease-out',
+                  }}
+                >
+                  <div style={{
+                    maxWidth: '75%',
+                    padding: '8px 12px',
+                    borderRadius: '18px',
+                    fontSize: '11px',
+                    lineHeight: '1.5',
+                    whiteSpace: 'pre-line',
+                    backgroundColor: msg.from === 'tech' ? '#29ABE2' : '#e5e7eb',
+                    color: msg.from === 'tech' ? 'white' : '#111827',
+                    borderBottomRightRadius: msg.from === 'tech' ? '4px' : '18px',
+                    borderBottomLeftRadius: msg.from === 'flowguard' ? '4px' : '18px',
+                  }}>
+                    {msg.text}
                   </div>
                 </div>
-              )}
-            </div>
+              ) : null
+            )}
 
-            {/* Input bar */}
-            <div className="px-3 py-2 bg-gray-100 border-t border-gray-200 flex items-center gap-2">
-              <div className="flex-1 bg-white rounded-full px-4 py-1.5 text-xs text-gray-400 border border-gray-300">
-                Text Message
+            {isTyping && (
+              <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                <div style={{ backgroundColor: '#e5e7eb', padding: '10px 14px', borderRadius: '18px', borderBottomLeftRadius: '4px', display: 'flex', gap: '4px', alignItems: 'center' }}>
+                  {[0, 150, 300].map((delay) => (
+                    <span key={delay} style={{ width: '6px', height: '6px', backgroundColor: '#9ca3af', borderRadius: '50%', animation: 'bounce 1s infinite', animationDelay: `${delay}ms` }} />
+                  ))}
+                </div>
               </div>
-              <div className="w-7 h-7 rounded-full bg-[#29ABE2] flex items-center justify-center shrink-0">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                  <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
-                </svg>
-              </div>
+            )}
+          </div>
+
+          {/* Input bar */}
+          <div style={{ padding: '8px 12px', backgroundColor: '#f3f4f6', borderTop: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+            <div style={{ flex: 1, backgroundColor: 'white', borderRadius: '999px', padding: '6px 16px', fontSize: '11px', color: '#9ca3af', border: '1px solid #d1d5db' }}>
+              Text Message
+            </div>
+            <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#29ABE2', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z" /></svg>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Replay button */}
       <button
         onClick={() => {
           setVisibleMessages([])
           setIsTyping(false)
-          setReplayKey(prev => prev + 1)
+          setTimeout(() => setReplayKey(prev => prev + 1), 100)
         }}
-        className="mt-4 text-sm text-[#29ABE2] hover:underline"
+        style={{ marginTop: '16px', fontSize: '13px', color: '#29ABE2', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
       >
         ↺ Replay animation
       </button>
