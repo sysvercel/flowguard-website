@@ -218,6 +218,123 @@ export default function WhyFlowGuard() {
         </div>
       </motion.section>
 
+      {/* Section — An Investment, Not Just an Expense */}
+      <section className="bg-[#1B2F4E] py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left — copy */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-block bg-[#29ABE2]/20 text-[#29ABE2] text-xs font-semibold px-4 py-2 rounded-full mb-6 tracking-wider uppercase">
+                Financial Strategy
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                An Investment, Not Just an Expense
+              </h2>
+              <p className="text-slate-300 text-lg leading-relaxed mb-6">
+                FlowGuard sensors are a capital asset on your balance sheet — not a recurring software subscription you pay forever. When you purchase FlowGuard hardware, you own it. It goes on your books as a depreciable building improvement.
+              </p>
+              <p className="text-slate-300 leading-relaxed mb-6">
+                Most property owners qualify for <strong className="text-white">Section 179 immediate expensing</strong> — meaning you can deduct the full hardware cost in year one. On a 200-unit property that&apos;s a $50,000 capital asset with potential tax savings of $10,000–$15,000 in year one alone.
+              </p>
+              <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                Compare that to HaaS competitors who charge you monthly forever — you own nothing, you can&apos;t depreciate anything, and your costs never go down. With FlowGuard, your monthly fee decreases as a percentage of total investment every year you stay protected.
+              </p>
+              <p className="text-[#29ABE2] text-sm font-medium">
+                Talk to your accountant about how FlowGuard fits your capital improvement strategy.
+              </p>
+            </motion.div>
+
+            {/* Right — comparison card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white rounded-2xl overflow-hidden shadow-2xl"
+            >
+              {/* Card header */}
+              <div className="bg-[#29ABE2] px-6 py-4">
+                <p className="text-white font-bold text-sm uppercase tracking-wider">5-Year Cost Comparison — 200 Units</p>
+              </div>
+
+              {/* FlowGuard column */}
+              <div className="p-6 border-b border-gray-100">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 rounded-full bg-[#29ABE2]" />
+                  <p className="font-bold text-[#1B2F4E]">FlowGuard (Own the hardware)</p>
+                </div>
+                <div className="space-y-2 text-sm text-slate-600">
+                  <div className="flex justify-between">
+                    <span>Hardware capex</span>
+                    <span className="font-medium text-[#1B2F4E]">$50,000</span>
+                  </div>
+                  <div className="flex justify-between text-green-600">
+                    <span>Section 179 tax savings</span>
+                    <span className="font-medium">− $12,500</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Monthly fees (5 years)</span>
+                    <span className="font-medium text-[#1B2F4E]">$72,000</span>
+                  </div>
+                  <div className="border-t border-gray-200 pt-2 flex justify-between font-bold text-[#1B2F4E]">
+                    <span>Real 5-year cost</span>
+                    <span className="text-[#29ABE2]">$109,500</span>
+                  </div>
+                  <div className="flex justify-between text-green-600 text-xs">
+                    <span>Asset value retained</span>
+                    <span>+ $50,000 on balance sheet</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* HaaS column */}
+              <div className="p-6 bg-gray-50">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 rounded-full bg-slate-400" />
+                  <p className="font-bold text-slate-600">Typical HaaS (Own nothing)</p>
+                </div>
+                <div className="space-y-2 text-sm text-slate-600">
+                  <div className="flex justify-between">
+                    <span>Hardware capex</span>
+                    <span className="font-medium">$0</span>
+                  </div>
+                  <div className="flex justify-between text-red-400">
+                    <span>Tax savings</span>
+                    <span className="font-medium">$0</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Monthly fees (5 years)</span>
+                    <span className="font-medium text-slate-700">$120,000</span>
+                  </div>
+                  <div className="border-t border-gray-200 pt-2 flex justify-between font-bold text-slate-700">
+                    <span>Real 5-year cost</span>
+                    <span className="text-red-500">$120,000</span>
+                  </div>
+                  <div className="flex justify-between text-red-400 text-xs">
+                    <span>Asset value retained</span>
+                    <span>$0 — you own nothing</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom savings callout */}
+              <div className="px-6 py-4 bg-green-50 border-t border-green-100">
+                <p className="text-green-700 font-bold text-center text-sm">
+                  FlowGuard saves you $10,500+ over 5 years — and you own $50,000 in assets
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Section 6 — CTA Band */}
       <motion.section {...fadeUp} className="bg-[#1B2F4E] py-24 text-center">
         <div className="max-w-3xl mx-auto px-6">
