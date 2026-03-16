@@ -19,48 +19,36 @@ export default function PhoneDemo() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [visibleMessages, setVisibleMessages] = useState<number[]>([])
   const [isTyping, setIsTyping] = useState(false)
-  const [replayCount, setReplayCount] = useState(0)
+  const [replayKey, setReplayKey] = useState(0)
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([])
 
-  const runAnimation = () => {
-    // Clear any existing timeouts
-    timeoutsRef.current.forEach(clearTimeout)
-    timeoutsRef.current = []
+  useEffect(() => {
+    if (!isInView && replayKey === 0) return
+
     setVisibleMessages([])
     setIsTyping(false)
 
+    const timers: ReturnType<typeof setTimeout>[] = []
+
     messages.forEach((msg, index) => {
       if (msg.from === 'flowguard' && index > 0) {
-        const t1 = setTimeout(() => setIsTyping(true), msg.delay - 800)
-        timeoutsRef.current.push(t1)
+        timers.push(setTimeout(() => setIsTyping(true), msg.delay - 800))
       }
-      const t2 = setTimeout(() => {
+      timers.push(setTimeout(() => {
         setIsTyping(false)
         setVisibleMessages(prev => [...prev, index])
-      }, msg.delay)
-      timeoutsRef.current.push(t2)
+      }, msg.delay))
     })
-  }
 
-  useEffect(() => {
-    if (!isInView) return
-    runAnimation()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInView])
-
-  useEffect(() => {
-    if (replayCount === 0) return
-    runAnimation()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [replayCount])
+    return () => timers.forEach(clearTimeout)
+  }, [isInView, replayKey])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [visibleMessages, isTyping])
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center" style={{ minHeight: '700px' }}>
       <div ref={ref} className="flex justify-center">
         {/* iPhone frame */}
         <div className="relative w-[320px] h-[620px] bg-black rounded-[50px] shadow-2xl border-4 border-gray-800 overflow-hidden">
@@ -81,8 +69,11 @@ export default function PhoneDemo() {
               </div>
             </div>
 
-            {/* Messages body */}
-            <div className="flex-1 overflow-y-auto px-3 py-4 space-y-2 bg-white">
+            {/* Messages body — fixed height, internal scroll */}
+            <div
+              className="overflow-y-auto px-3 py-4 space-y-2 bg-white"
+              style={{ height: '460px' }}
+            >
               {messages.map((msg, index) => (
                 visibleMessages.includes(index) && (
                   <div
@@ -132,7 +123,11 @@ export default function PhoneDemo() {
       </div>
 
       <button
-        onClick={() => setReplayCount(c => c + 1)}
+        onClick={() => {
+          setVisibleMessages([])
+          setIsTyping(false)
+          setReplayKey(prev => prev + 1)
+        }}
         className="mt-4 text-sm text-[#29ABE2] hover:underline"
       >
         ↺ Replay animation
