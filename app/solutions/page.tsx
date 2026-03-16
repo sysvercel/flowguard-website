@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import PackageQuiz from '../components/PackageQuiz'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -31,6 +32,8 @@ export default function Solutions() {
           </p>
         </div>
       </section>
+
+      <PackageQuiz />
 
       {/* Monitor */}
       <motion.section {...fadeUp} className="bg-white py-24">
