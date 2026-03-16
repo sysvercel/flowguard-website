@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import PhoneDemo from '../components/PhoneDemo'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -108,48 +109,7 @@ export default function HowItWorks() {
                 Every reply is timestamped and logged. If no one responds within the escalation window, FlowGuard automatically moves up the chain.
               </p>
             </div>
-            {/* Mock iPhone SMS UI */}
-            <div className="flex justify-center">
-              <div className="w-80 bg-gray-100 rounded-[2.5rem] shadow-2xl overflow-hidden border-4 border-gray-800">
-                {/* Status bar */}
-                <div className="bg-gray-800 px-6 py-3 text-white text-xs flex justify-between">
-                  <span>9:41 AM</span>
-                  <span>FlowGuard</span>
-                </div>
-                {/* Messages */}
-                <div className="bg-white px-4 py-4 space-y-3 text-sm">
-                  <div className="flex justify-start">
-                    <div className="bg-gray-200 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[85%] text-gray-800 text-xs leading-relaxed">
-                      🚨 WATER LEAK DETECTED<br />Boiler Room — CRITICAL<br />Incident: A3F2B1C8<br />Reply <strong>ACK</strong> to acknowledge
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <div className="bg-[#29ABE2] rounded-2xl rounded-tr-sm px-4 py-2.5 text-white text-xs">ACK</div>
-                  </div>
-                  <div className="flex justify-start">
-                    <div className="bg-gray-200 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[85%] text-gray-800 text-xs leading-relaxed">
-                      ✅ Acknowledged.<br />Reply <strong>ROUTE</strong> when en route.
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <div className="bg-[#29ABE2] rounded-2xl rounded-tr-sm px-4 py-2.5 text-white text-xs">ROUTE</div>
-                  </div>
-                  <div className="flex justify-start">
-                    <div className="bg-gray-200 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[85%] text-gray-800 text-xs leading-relaxed">
-                      En route confirmed.<br />Reply <strong>SITE</strong> when on site.
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <div className="bg-[#29ABE2] rounded-2xl rounded-tr-sm px-4 py-2.5 text-white text-xs">SITE</div>
-                  </div>
-                  <div className="flex justify-start">
-                    <div className="bg-gray-200 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[85%] text-gray-800 text-xs leading-relaxed">
-                      On site confirmed.<br />Reply <strong>CONTAINED</strong> when addressed.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <PhoneDemo />
           </div>
         </div>
       </motion.section>
