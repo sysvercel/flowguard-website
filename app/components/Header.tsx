@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link href="/">
           <Image
             src="/flowguard-logo.png"
@@ -30,7 +30,7 @@ export default function Header() {
             className="object-contain w-32 md:w-40"
           />
         </Link>
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           <Link href="/how-it-works" className={navLinkClass}>How It Works</Link>
           <Link href="/solutions" className={navLinkClass}>Solutions</Link>
           <Link href="/why-flowguard" className={navLinkClass}>Why FlowGuard</Link>
