@@ -39,6 +39,11 @@ export default function Header() {
               ? 'bg-[#29ABE2]/10 text-[#29ABE2] hover:bg-[#29ABE2]/20'
               : 'bg-[#29ABE2]/20 text-[#29ABE2] hover:bg-white/20'
           }`}>ROI Calculator</Link>
+          <Link href="/assessment" className={`text-sm font-semibold transition px-3 py-1.5 rounded-full ${
+            scrolled
+              ? 'bg-green-50 text-green-600 hover:bg-green-100'
+              : 'bg-green-500/20 text-green-400 hover:bg-green-500/30'
+          }`}>Free Assessment</Link>
           <Link href="/contact" className={navLinkClass}>Contact</Link>
         </nav>
         <div className="hidden md:block">
@@ -60,6 +65,7 @@ export default function Header() {
           <Link href="/solutions" className="text-sm font-medium text-[#1B2F4E]" onClick={() => setMenuOpen(false)}>Solutions</Link>
           <Link href="/why-flowguard" className="text-sm font-medium text-[#1B2F4E]" onClick={() => setMenuOpen(false)}>Why FlowGuard</Link>
           <Link href="/roi-calculator" className="text-sm font-semibold text-[#29ABE2]" onClick={() => setMenuOpen(false)}>ROI Calculator</Link>
+          <Link href="/assessment" className="text-sm font-semibold text-green-600" onClick={() => setMenuOpen(false)}>Free Assessment</Link>
           <Link href="/contact" className="text-sm font-medium text-[#1B2F4E]" onClick={() => setMenuOpen(false)}>Contact</Link>
           <Link href="/contact" className="bg-[#29ABE2] text-white px-6 py-2.5 rounded-lg text-sm font-semibold text-center" onClick={() => setMenuOpen(false)}>Request a Demo</Link>
         </div>
