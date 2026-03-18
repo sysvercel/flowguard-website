@@ -32,6 +32,7 @@ export default function Header() {
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           <Link href="/how-it-works" className={navLinkClass}>How It Works</Link>
+          <Link href="/demo" className={navLinkClass}>Watch Demo</Link>
           <Link href="/solutions" className={navLinkClass}>Solutions</Link>
           <Link href="/why-flowguard" className={navLinkClass}>Why FlowGuard</Link>
           <Link href="/roi-calculator" className={`text-sm font-semibold transition px-3 py-1.5 rounded-full ${
@@ -62,6 +63,7 @@ export default function Header() {
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4">
           <Link href="/how-it-works" className="text-sm font-medium text-[#1B2F4E]" onClick={() => setMenuOpen(false)}>How It Works</Link>
+          <Link href="/demo" className="text-sm font-medium text-[#1B2F4E]" onClick={() => setMenuOpen(false)}>Watch Demo</Link>
           <Link href="/solutions" className="text-sm font-medium text-[#1B2F4E]" onClick={() => setMenuOpen(false)}>Solutions</Link>
           <Link href="/why-flowguard" className="text-sm font-medium text-[#1B2F4E]" onClick={() => setMenuOpen(false)}>Why FlowGuard</Link>
           <Link href="/roi-calculator" className="text-sm font-semibold text-[#29ABE2]" onClick={() => setMenuOpen(false)}>ROI Calculator</Link>
