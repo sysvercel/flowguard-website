@@ -27,56 +27,41 @@ export async function POST(req: NextRequest) {
 
     // Send welcome email to the lead
     await resend.emails.send({
-      from: 'Mazen at FlowGuard <mazen@flowguardprotection.com>',
+      from: 'Mazen Deeb <mazen@flowguardprotection.com>',
       to: email,
-      subject: `Your FlowGuard demo is ready, ${first_name}`,
+      subject: `Hi ${first_name}, your FlowGuard demo is ready`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #ffffff;">
-          <div style="background: #1B2F4E; padding: 24px; border-radius: 8px; margin-bottom: 24px;">
-            <h1 style="color: #29ABE2; margin: 0; font-size: 22px; font-weight: bold;">FlowGuard</h1>
-            <p style="color: #94A3B8; margin: 4px 0 0 0; font-size: 12px;">Asset Protection LLC · Dallas, TX</p>
-          </div>
-          <h2 style="color: #1B2F4E; font-size: 20px;">Hi ${first_name}, your demo is ready</h2>
-          <p style="color: #64748B; line-height: 1.6;">
-            You're about to see exactly how FlowGuard protects ${property_name || 'your property'}
-            from water damage — 24/7, automatically, with no app required.
-          </p>
-          <div style="background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 8px; padding: 20px; margin: 20px 0;">
-            <p style="color: #0369A1; margin: 0; font-size: 14px; font-weight: bold;">What you'll see in this demo:</p>
-            <ul style="color: #0369A1; margin: 8px 0 0 0; padding-left: 20px; font-size: 14px; line-height: 1.8;">
-              <li>How sensors detect leaks instantly</li>
-              <li>How alerts reach your team in seconds</li>
-              <li>How incidents are tracked and resolved</li>
-              <li>How reports are generated automatically</li>
-            </ul>
-          </div>
-          <p style="color: #64748B; font-size: 14px; line-height: 1.6;">
-            Have questions? Reply to this email and I'll get back to you personally.
-          </p>
-          <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #E2E8F0;">
-            <p style="color: #1B2F4E; font-size: 14px; margin: 0; font-weight: bold;">Mazen Deeb</p>
-            <p style="color: #64748B; font-size: 12px; margin: 4px 0 0 0;">FlowGuard Asset Protection · Dallas, TX</p>
-            <p style="color: #64748B; font-size: 12px; margin: 2px 0 0 0;">flowguardprotection.com</p>
-          </div>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #374151;">
+          <p>Hi ${first_name},</p>
+          <p>Your personalized FlowGuard demo for ${property_name || 'your property'} is ready to walk through.</p>
+          <p>You'll see exactly how we detect leaks, alert your team, and document every incident automatically — no app required.</p>
+          <p>If you have questions at any point, just reply to this email. I check it personally.</p>
+          <br/>
+          <p>Mazen Deeb<br/>
+          FlowGuard Asset Protection<br/>
+          Dallas, TX<br/>
+          flowguardprotection.com</p>
         </div>
       `,
+      text: `Hi ${first_name},\n\nYour personalized FlowGuard demo for ${property_name || 'your property'} is ready to walk through.\n\nYou'll see exactly how we detect leaks, alert your team, and document every incident automatically — no app required.\n\nIf you have questions at any point, just reply to this email. I check it personally.\n\nMazen Deeb\nFlowGuard Asset Protection\nDallas, TX\nflowguardprotection.com`,
     })
 
     // Notify Mazen
     await resend.emails.send({
-      from: 'FlowGuard System <mazen@flowguardprotection.com>',
+      from: 'Mazen Deeb <mazen@flowguardprotection.com>',
       to: 'mazen@flowguardprotection.com',
-      subject: `🎯 New demo lead — ${first_name} from ${property_name || 'Unknown'}`,
+      subject: `New demo lead — ${first_name} from ${property_name || 'Unknown'}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
-          <h2 style="color: #1B2F4E;">New Demo Lead</h2>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #374151;">
+          <p><strong>New Demo Lead</strong></p>
           <p><strong>Name:</strong> ${first_name || 'Not provided'}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Property:</strong> ${property_name || 'Not specified'}</p>
           <p><strong>Time:</strong> ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}</p>
-          <p><a href="https://flowguard-dashboard.vercel.app/ops/demo-leads" style="color: #29ABE2;">View in dashboard →</a></p>
+          <p><a href="https://flowguard-dashboard.vercel.app/ops/demo-leads" style="color: #29ABE2;">View in dashboard</a></p>
         </div>
       `,
+      text: `New Demo Lead\n\nName: ${first_name || 'Not provided'}\nEmail: ${email}\nProperty: ${property_name || 'Not specified'}\nTime: ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}\n\nView in dashboard: https://flowguard-dashboard.vercel.app/ops/demo-leads`,
     })
 
     return NextResponse.json({ success: true })
