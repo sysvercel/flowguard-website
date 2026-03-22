@@ -1,14 +1,16 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface DemoWalkthroughProps {
   firstName: string
   propertyName: string
+  email: string
 }
 
-export default function DemoWalkthrough({ firstName, propertyName }: DemoWalkthroughProps) {
+export default function DemoWalkthrough({ firstName, propertyName, email }: DemoWalkthroughProps) {
   const [step, setStep] = useState(0)
+  const completedRef = useRef(false)
   const totalSteps = 6
   const prop = propertyName || 'Your Property'
   const incidentId = 'A3F2B1C8'
@@ -268,6 +270,22 @@ export default function DemoWalkthrough({ firstName, propertyName }: DemoWalkthr
   ]
 
   const currentStep = steps[step]
+
+  // Fire completion once when user reaches the final step
+  useEffect(() => {
+    if (step === totalSteps - 1 && !completedRef.current && email) {
+      completedRef.current = true
+      fetch('/api/demo-complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          first_name: firstName,
+          property_name: propertyName,
+        }),
+      }).catch(err => console.error('Demo complete error:', err))
+    }
+  }, [step, email, firstName, propertyName])
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">

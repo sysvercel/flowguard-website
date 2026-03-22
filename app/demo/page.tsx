@@ -7,10 +7,12 @@ export default function DemoPage() {
   const [started, setStarted] = useState(false)
   const [firstName, setFirstName] = useState('')
   const [propertyName, setPropertyName] = useState('')
+  const [email, setEmail] = useState('')
 
-  function handleStart(first: string, property: string) {
+  function handleStart(first: string, property: string, emailAddr: string) {
     setFirstName(first)
     setPropertyName(property)
+    setEmail(emailAddr)
     setStarted(true)
   }
 
@@ -18,5 +20,5 @@ export default function DemoPage() {
     return <DemoGate onStart={handleStart} />
   }
 
-  return <DemoWalkthrough firstName={firstName} propertyName={propertyName} />
+  return <DemoWalkthrough firstName={firstName} propertyName={propertyName} email={email} />
 }

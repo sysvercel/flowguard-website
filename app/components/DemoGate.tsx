@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 interface DemoGateProps {
-  onStart: (firstName: string, propertyName: string) => void
+  onStart: (firstName: string, propertyName: string, email: string) => void
 }
 
 export default function DemoGate({ onStart }: DemoGateProps) {
@@ -26,7 +26,7 @@ export default function DemoGate({ onStart }: DemoGateProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ first_name: firstName, email, property_name: propertyName }),
       })
-      onStart(firstName, propertyName || 'Your Property')
+      onStart(firstName, propertyName || 'Your Property', email)
     } catch {
       setError('Something went wrong. Please try again.')
     } finally {
