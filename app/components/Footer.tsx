@@ -23,6 +23,7 @@ export default function Footer() {
               <Link href="/demo" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Watch Demo</Link>
               <Link href="/solutions" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Solutions</Link>
               <Link href="/why-flowguard" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Why FlowGuard</Link>
+              <Link href="/dashboard" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Dashboard</Link>
               <Link href="/roi-calculator" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">ROI Calculator</Link>
               <Link href="/assessment" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Free Assessment</Link>
               <Link href="/faq" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">FAQ</Link>
