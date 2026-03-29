@@ -222,7 +222,7 @@ export default function Home() {
               },
               {
                 title: 'Zero Disruption Install',
-                desc: 'Wireless sensors drop into place with no renovation needed. Gateway installation is scoped to your property — no drilling, no downtime.',
+                desc: 'Wireless sensors drop into place with no renovation needed. Gateway installation requires minimal drilling for mounting — our team handles everything on install day with no downtime to your operations.',
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
