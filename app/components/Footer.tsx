@@ -28,6 +28,7 @@ export default function Footer() {
               <Link href="/assessment" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Free Assessment</Link>
               <Link href="/faq" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">FAQ</Link>
               <Link href="/contact" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Contact</Link>
+              <Link href="/partners" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Partners</Link>
             </div>
           </div>
           <div>
