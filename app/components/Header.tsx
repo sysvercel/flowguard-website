@@ -118,6 +118,7 @@ export default function Header() {
           <div className="mb-10">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">Get Started</p>
             <nav className="flex flex-col gap-3">
+              <Link href="/why" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Why FlowGuard</Link>
               <Link href="/assessment" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Free Assessment</Link>
               <Link href="/contact" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Request a Demo</Link>
               <Link href="/contact" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Contact</Link>
