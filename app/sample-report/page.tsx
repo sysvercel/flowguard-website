@@ -12,11 +12,11 @@ const fadeUp = {
 const timelineEvents = [
   { time: '2:14:03 AM', event: 'Incident created — water detected', actor: 'FlowGuard System', dot: 'bg-red-500' },
   { time: '2:14:05 AM', event: 'Alert sent to escalation chain', actor: 'FlowGuard System', dot: 'bg-[#29ABE2]' },
-  { time: '2:14:26 AM', event: 'Incident acknowledged', actor: 'Carlos Rodriguez', dot: 'bg-[#29ABE2]' },
-  { time: '2:16:41 AM', event: 'Responder en route to location', actor: 'Carlos Rodriguez', dot: 'bg-[#29ABE2]' },
-  { time: '2:22:18 AM', event: 'Responder on site — inspection initiated', actor: 'Carlos Rodriguez', dot: 'bg-[#29ABE2]' },
-  { time: '2:23:05 AM', event: 'Photo uploaded', actor: 'Carlos Rodriguez', dot: 'bg-purple-400' },
-  { time: '2:28:33 AM', event: 'Leak contained — water source isolated', actor: 'Carlos Rodriguez', dot: 'bg-[#29ABE2]' },
+  { time: '2:14:26 AM', event: 'Incident acknowledged', actor: 'C. ████████', dot: 'bg-[#29ABE2]' },
+  { time: '2:16:41 AM', event: 'Responder en route to location', actor: 'C. ████████', dot: 'bg-[#29ABE2]' },
+  { time: '2:22:18 AM', event: 'Responder on site — inspection initiated', actor: 'C. ████████', dot: 'bg-[#29ABE2]' },
+  { time: '2:23:05 AM', event: 'Photo uploaded', actor: 'C. ████████', dot: 'bg-purple-400' },
+  { time: '2:28:33 AM', event: 'Leak contained — water source isolated', actor: 'C. ████████', dot: 'bg-[#29ABE2]' },
   { time: '2:47:12 AM', event: 'Incident resolved — sensor confirmed dry', actor: 'FlowGuard System', dot: 'bg-green-500' },
 ]
 
@@ -55,7 +55,7 @@ export default function SampleReportPage() {
                 </div>
                 <div className="text-right">
                   <p className="text-slate-400 text-[10px] uppercase tracking-wider">Incident Report</p>
-                  <p className="text-white font-bold text-sm mt-0.5">A3F2B1C8</p>
+                  <p className="text-white font-bold text-sm mt-0.5">██F2██C8</p>
                 </div>
               </div>
             </div>
@@ -64,9 +64,9 @@ export default function SampleReportPage() {
             <div className="px-8 py-6 border-b border-slate-100">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
-                  { label: 'Property', value: 'Riverside Apartments' },
+                  { label: 'Property', value: '████████ Apartments' },
                   { label: 'Location', value: 'Boiler Room — B1' },
-                  { label: 'Severity', value: 'CRITICAL', color: 'text-red-500' },
+                  { label: 'Severity', value: 'C█ITICAL', color: 'text-red-500' },
                   { label: 'Status', value: 'RESOLVED', color: 'text-green-500' },
                 ].map(item => (
                   <div key={item.label}>
@@ -124,10 +124,10 @@ export default function SampleReportPage() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
                   <div className="w-8 h-8 rounded-full bg-[#29ABE2]/10 flex items-center justify-center">
-                    <span className="text-[#29ABE2] text-xs font-bold">CR</span>
+                    <span className="text-[#29ABE2] text-xs font-bold">C█</span>
                   </div>
                   <div>
-                    <p className="text-[#1B2F4E] text-sm font-semibold">Carlos Rodriguez</p>
+                    <p className="text-[#1B2F4E] text-sm font-semibold">C. ████████</p>
                     <p className="text-slate-400 text-xs">Maintenance Tech · Tier 1 · Acknowledged in 21 seconds</p>
                   </div>
                 </div>
@@ -139,9 +139,9 @@ export default function SampleReportPage() {
               <p className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 mb-4">Alert Chain</p>
               <div className="space-y-2">
                 {[
-                  { method: 'SMS', time: '2:14:05 AM', contact: 'Carlos Rodriguez', tier: 1 },
-                  { method: 'EMAIL', time: '2:14:05 AM', contact: 'Carlos Rodriguez', tier: 1 },
-                  { method: 'VOICE', time: '2:14:06 AM', contact: 'Carlos Rodriguez', tier: 1 },
+                  { method: 'SMS', time: '2:14:05 AM', contact: 'C. ████████', tier: 1 },
+                  { method: 'EMAIL', time: '2:14:05 AM', contact: 'C. ████████', tier: 1 },
+                  { method: 'VOICE', time: '2:14:06 AM', contact: 'C. ████████', tier: 1 },
                 ].map((alert, i) => (
                   <div key={i} className="flex items-center justify-between py-2 px-3 bg-slate-50 rounded-lg text-sm">
                     <div className="flex items-center gap-3">
