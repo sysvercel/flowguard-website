@@ -66,7 +66,7 @@ export default function SampleReportPage() {
                 {[
                   { label: 'Property', value: '████████ Apartments' },
                   { label: 'Location', value: 'Boiler Room — B1' },
-                  { label: 'Severity', value: 'C█ITICAL', color: 'text-red-500' },
+                  { label: 'Severity', value: 'CRITICAL', color: 'text-red-500' },
                   { label: 'Status', value: 'RESOLVED', color: 'text-green-500' },
                 ].map(item => (
                   <div key={item.label}>
