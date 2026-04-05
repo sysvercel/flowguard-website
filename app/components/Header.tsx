@@ -100,6 +100,7 @@ export default function Header() {
             <nav className="flex flex-col gap-3">
               <Link href="/how-it-works" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">How It Works</Link>
               <Link href="/demo" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Watch Demo</Link>
+              <Link href="/sample-report" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Sample Report</Link>
               <Link href="/dashboard" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Dashboard</Link>
             </nav>
           </div>
