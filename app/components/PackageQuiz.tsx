@@ -50,7 +50,7 @@ function getRecommendation(answers: Record<string, string>) {
   return 'protect'
 }
 
-const results: Record<string, any> = {
+const results: Record<string, { name: string; subtitle: string; color: string; description: string; features: string[] }> = {
   protect: {
     name: 'Protect',
     subtitle: 'Full Protection',
