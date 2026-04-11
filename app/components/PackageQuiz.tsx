@@ -38,15 +38,8 @@ const questions = [
 function getRecommendation(answers: Record<string, string>) {
   const { size, concern, team } = answers
   if (
-    concern === 'basic' ||
-    (size === 'small' && team === 'slow')
-  ) {
-    return 'monitor'
-  }
-  if (
     concern === 'afterhours' ||
     concern === 'response' ||
-    concern === 'insurance' ||
     team === 'reactive' ||
     team === 'command' ||
     size === 'large' ||
@@ -57,20 +50,13 @@ function getRecommendation(answers: Record<string, string>) {
   return 'protect'
 }
 
-const results = {
-  monitor: {
-    name: 'Monitor',
-    subtitle: 'Core Visibility',
-    color: '#64748B',
-    description: 'Based on your answers, Monitor gives you the leak visibility you need without unnecessary complexity. Email alerts, basic incident logging, and monthly summaries.',
-    features: ['Real-time leak detection', 'Email alerts', 'Basic incident logging', 'Monthly summary report'],
-  },
+const results: Record<string, any> = {
   protect: {
     name: 'Protect',
     subtitle: 'Full Protection',
     color: '#29ABE2',
-    description: 'Based on your answers, Protect is the right fit. You get SMS + voice alerts, 3-tier escalation, health monitoring, freeze alerts, and insurance-ready reports.',
-    features: ['Everything in Monitor', 'SMS + voice alerts', '3-tier escalation', 'Health monitoring', 'Freeze alerts', 'Insurance-ready reports'],
+    description: 'Based on your answers, Protect is the right fit. Real-time leak detection with SMS + voice alerts, 3-tier escalation, on-call scheduling, health monitoring, freeze alerts, and insurance-ready reports.',
+    features: ['Real-time leak detection', 'SMS + email + voice alerts', '3-tier escalation', 'On-call scheduling', 'Health monitoring + freeze alerts', 'Insurance-ready reports'],
   },
   respond: {
     name: 'Respond',

@@ -35,45 +35,6 @@ export default function Solutions() {
 
       <PackageQuiz />
 
-      {/* Monitor */}
-      <motion.section {...fadeUp} className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            {/* Features left */}
-            <div>
-              <div className="inline-block bg-[#29ABE2]/10 text-[#29ABE2] text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Tier 1</div>
-              <h2 className="text-3xl font-bold text-[#1B2F4E] mb-1">Monitor</h2>
-              <p className="text-slate-500 mb-8">Core Visibility</p>
-              <div className="space-y-3">
-                {[
-                  'Real-time leak detection',
-                  'Email alerts',
-                  'Claim link acknowledgment',
-                  'Basic incident logging',
-                  'Monthly summary report',
-                  'Basic device visibility',
-                ].map(f => (
-                  <div key={f} className="flex items-center gap-3 text-slate-700">
-                    <CheckIcon />
-                    <span>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* Description right */}
-            <div className="bg-[#F8FAFC] rounded-xl p-8">
-              <h3 className="text-xl font-bold text-[#1B2F4E] mb-4">Best for properties that want core leak visibility</h3>
-              <p className="text-slate-600 leading-relaxed mb-8">
-                Monitor gives you a low-friction entry point into real-time water protection. You&apos;ll know the moment a leak is detected and your team can acknowledge and resolve directly from their email — no app, no complicated setup.
-              </p>
-              <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#1A6FA8] transition text-sm">
-                Request a Quote
-              </Link>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
       {/* Protect */}
       <motion.section {...fadeUp} className="bg-[#F8FAFC] py-24">
         <div className="max-w-7xl mx-auto px-6">
@@ -81,21 +42,20 @@ export default function Solutions() {
             {/* Features left — blue accent */}
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="inline-block bg-[#29ABE2]/10 text-[#29ABE2] text-xs font-bold px-4 py-1.5 rounded-full tracking-wider uppercase">Tier 2</div>
                 <div className="bg-[#29ABE2] text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase">Most Popular</div>
               </div>
               <h2 className="text-3xl font-bold text-[#1B2F4E] mb-1">Protect</h2>
               <p className="text-slate-500 mb-8">Full Protection</p>
               <div className="border-l-4 border-[#29ABE2] pl-6 space-y-3">
                 {[
-                  'Everything in Monitor',
-                  'SMS alerts',
-                  'Voice calls for critical incidents',
+                  'Real-time leak detection',
+                  'SMS + email + voice alerts',
                   '3-tier escalation chain',
-                  'Health monitoring',
-                  'Freeze risk alerts',
+                  'On-call scheduling',
+                  'Health monitoring + freeze alerts',
                   'Insurance-ready incident reports',
                   'Executive summary reporting',
+                  'Incident ownership and transfer tracking',
                 ].map(f => (
                   <div key={f} className="flex items-center gap-3 text-slate-700">
                     <CheckIcon />

@@ -219,7 +219,7 @@ export default function HowItWorks() {
       <motion.section {...fadeUp} className="bg-[#1B2F4E] py-24 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-white mb-4">See which package is right for you</h2>
-          <p className="text-slate-400 mb-10">Monitor, Protect, or Respond — every tier runs on the same platform.</p>
+          <p className="text-slate-400 mb-10">Protect or Respond — every tier runs on the same platform.</p>
           <Link href="/solutions" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-[#1A6FA8] transition">
             View Solutions
           </Link>

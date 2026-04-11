@@ -103,9 +103,8 @@ export default function ROICalculator() {
           {/* Package tier */}
           <div className="mb-2">
             <label className="text-sm font-medium text-slate-700 block mb-3">FlowGuard package</label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 gap-2">
               {[
-                { label: 'Monitor', value: 'monitor' },
                 { label: 'Protect', value: 'protect' },
                 { label: 'Respond', value: 'respond' },
               ].map(opt => (

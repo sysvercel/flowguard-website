@@ -141,22 +141,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-[#1B2F4E] text-center mb-16">
             Protection That Fits Your Property
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Monitor */}
-            <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-8">
-              <h3 className="text-xl font-bold text-[#1B2F4E] mb-1">Monitor</h3>
-              <p className="text-sm text-slate-500 mb-6">Core Visibility</p>
-              <ul className="space-y-3 mb-8">
-                {['Real-time leak detection', 'Email alerts', 'Claim link acknowledgment', 'Basic incident logging', 'Monthly summary report', 'Basic device visibility'].map(f => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-slate-700">
-                    <svg className="w-4 h-4 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/solutions" className="text-sm font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">Learn More →</Link>
-            </div>
-
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Protect — Most Popular */}
             <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-8 border-t-4 border-[#29ABE2] relative">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#29ABE2] text-white text-xs font-bold px-4 py-1 rounded-full tracking-wider uppercase">
@@ -165,7 +150,7 @@ export default function Home() {
               <h3 className="text-xl font-bold text-[#1B2F4E] mb-1 mt-2">Protect</h3>
               <p className="text-sm text-slate-500 mb-6">Full Protection</p>
               <ul className="space-y-3 mb-8">
-                {['Everything in Monitor', 'SMS alerts', 'Voice calls for critical incidents', '3-tier escalation chain', 'Health monitoring', 'Freeze risk alerts', 'Insurance-ready incident reports', 'Executive summary reporting'].map(f => (
+                {['Real-time leak detection', 'SMS + email + voice alerts', '3-tier escalation chain', 'On-call scheduling', 'Health monitoring + freeze alerts', 'Insurance-ready incident reports', 'Executive summary reporting'].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-slate-700">
                     <svg className="w-4 h-4 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                     {f}

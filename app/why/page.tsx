@@ -214,27 +214,7 @@ export default function WhyPage() {
           <p className="text-center text-slate-500 mb-16 max-w-2xl mx-auto">
             Every property is different. Start where it makes sense and expand when you&apos;re ready.
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Monitor */}
-            <div className="rounded-xl border border-slate-200 p-8">
-              <h3 className="text-lg font-bold text-[#1B2F4E] mb-1">Monitor</h3>
-              <p className="text-slate-400 text-sm mb-6">Detection + alerts</p>
-              <ul className="space-y-3 text-sm text-slate-600">
-                {[
-                  '24/7 water and freeze detection',
-                  'SMS and email alerts',
-                  'Property dashboard',
-                  'Monthly sensor health reports',
-                  'Basic incident logging',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-[#29ABE2] font-bold mt-0.5 shrink-0">+</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Protect — highlighted */}
             <div className="rounded-xl border-2 border-[#29ABE2] p-8 relative bg-[#29ABE2]/[0.03]">
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#29ABE2] text-white text-[10px] font-bold px-4 py-1.5 rounded-full tracking-[0.1em] uppercase">
@@ -244,13 +224,13 @@ export default function WhyPage() {
               <p className="text-slate-400 text-sm mb-6">Detection + response + documentation</p>
               <ul className="space-y-3 text-sm text-slate-600">
                 {[
-                  'Everything in Monitor',
+                  '24/7 water and freeze detection',
+                  'SMS + email + voice alerts',
                   '3-tier escalation chain',
                   'SMS incident command (ACK/ROUTE/SITE)',
-                  'Voice call alerts for critical incidents',
+                  'On-call schedule management',
                   'Insurance-grade incident reports',
                   'Monthly executive summaries',
-                  'On-call schedule management',
                   'Incident ownership and transfer tracking',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
