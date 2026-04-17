@@ -8,7 +8,7 @@ interface Message {
 
 const INITIAL_MESSAGE: Message = {
   role: 'assistant',
-  content: "Hi! I'm Ryan, a water damage prevention specialist at FlowGuard. I'd love to learn about your property and help you figure out the best way to protect it. To start — what type of property are you managing and roughly how many units does it have?"
+  content: "Hi — I'm Ryan, FlowGuard's AI Assessment Assistant. I'll ask a few quick questions about your property and put together a recommendation on risk areas, sensor placement, and the best-fit FlowGuard starting point. To start — what type of property are you managing, and roughly how many units?"
 }
 
 export default function AssessmentChat() {
@@ -57,17 +57,24 @@ export default function AssessmentChat() {
   }
 
   return (
-    <div className="flex flex-col h-[600px] max-w-2xl mx-auto bg-white rounded-2xl shadow-[0_4px_40px_rgba(0,0,0,0.12)] overflow-hidden border border-slate-100">
-      <div className="bg-[#1B2F4E] px-6 py-4 flex items-center gap-3">
-        <div className="relative">
+    <div className="flex flex-col h-[600px] max-w-2xl mx-auto bg-white rounded-2xl shadow-[0_12px_48px_rgba(15,23,42,0.12)] overflow-hidden border border-slate-200">
+      <div className="bg-[#1B2F4E] px-5 sm:px-6 py-4 flex items-center gap-3">
+        <div className="relative shrink-0">
           <div className="w-10 h-10 rounded-full bg-[#29ABE2] flex items-center justify-center">
             <span className="text-white font-bold text-sm">R</span>
           </div>
-          <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-[#1B2F4E]" />
+          <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-[#1B2F4E]" aria-hidden />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-white font-semibold text-sm truncate">Ryan</p>
-          <p className="text-slate-400 text-xs truncate">FlowGuard Prevention Specialist · Online</p>
+          <div className="flex items-center gap-2">
+            <p className="text-white font-semibold text-sm truncate">Ryan</p>
+            <span className="inline-flex items-center gap-1 bg-[#29ABE2]/15 text-[#29ABE2] text-[9px] font-bold px-1.5 py-0.5 rounded tracking-[0.15em] uppercase shrink-0">
+              AI
+            </span>
+          </div>
+          <p className="text-slate-400 text-[11px] sm:text-xs truncate">
+            FlowGuard AI Assessment Assistant · Always on
+          </p>
         </div>
         <div className="ml-auto">
           <a href="/contact" className="bg-[#29ABE2] text-white text-xs px-3 py-2 rounded-lg font-semibold hover:bg-[#1A6FA8] transition whitespace-nowrap flex-shrink-0">

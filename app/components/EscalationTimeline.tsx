@@ -132,7 +132,7 @@ export default function EscalationTimeline() {
           }}
           className="text-sm text-[#29ABE2] hover:underline"
         >
-          ↺ Replay
+          Replay
         </button>
       </div>
     </div>

@@ -8,15 +8,15 @@ export default function ROICalculator() {
   const [claimsPerYear, setClaimsPerYear] = useState(2)
   const [tier, setTier] = useState('protect')
 
-  const capex = tier === 'monitor' ? 100 : tier === 'protect' ? 250 : 389
-  const monthly = tier === 'monitor' ? 4 : tier === 'protect' ? 6 : 10
+  const capex = tier === 'protect' ? 250 : 389
+  const monthly = tier === 'protect' ? 6 : 10
   const totalCapex = units * capex
   const annualMonthly = units * monthly * 12
   const year1Cost = totalCapex + annualMonthly
   const annualMonthlyOngoing = units * monthly * 12
   const section179Savings = Math.round(totalCapex * 0.25)
   const annualExposure = claimCost * claimsPerYear
-  const damageReduction = tier === 'monitor' ? 0.40 : tier === 'protect' ? 0.65 : 0.80
+  const damageReduction = tier === 'protect' ? 0.65 : 0.80
   const annualSavings = Math.round(annualExposure * damageReduction)
   const threeYearROI = Math.round((annualSavings * 3) - year1Cost - (annualMonthlyOngoing * 2) + section179Savings)
   const breakEvenMonths = Math.max(1, Math.ceil(year1Cost / (annualSavings / 12)))

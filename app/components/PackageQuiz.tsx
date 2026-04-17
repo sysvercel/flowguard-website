@@ -17,7 +17,7 @@ const questions = [
     id: 'concern',
     question: 'What is your biggest water damage concern?',
     options: [
-      { label: 'Just want basic visibility', value: 'basic' },
+      { label: 'Catching leaks before they become losses', value: 'basic' },
       { label: 'After-hours leaks going undetected', value: 'afterhours' },
       { label: 'Team not responding fast enough', value: 'response' },
       { label: 'Insurance documentation and reporting', value: 'insurance' },
@@ -55,7 +55,7 @@ const results: Record<string, { name: string; subtitle: string; color: string; d
     name: 'Protect',
     subtitle: 'Full Protection',
     color: '#29ABE2',
-    description: 'Based on your answers, Protect is the right fit. Real-time leak detection with SMS + voice alerts, 3-tier escalation, on-call scheduling, health monitoring, freeze alerts, and insurance-ready reports.',
+    description: 'Based on your answers, Protect is the right fit. Real-time leak detection with SMS + email + voice alerts, 3-tier escalation, on-call scheduling, health monitoring, freeze alerts, and insurance-ready reports.',
     features: ['Real-time leak detection', 'SMS + email + voice alerts', '3-tier escalation', 'On-call scheduling', 'Health monitoring + freeze alerts', 'Insurance-ready reports'],
   },
   respond: {

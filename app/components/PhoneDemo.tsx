@@ -2,15 +2,15 @@
 import { useEffect, useState, useRef } from 'react'
 
 const messages = [
-  { from: 'flowguard', text: '🚨 WATER LEAK DETECTED\n\nProperty: Riverside Apts\nLocation: Boiler Room\nSeverity: CRITICAL\nIncident: A3F2B1C8\n\nReply ACK to acknowledge', delay: 500 },
+  { from: 'flowguard', text: 'WATER LEAK DETECTED\n\nProperty: Riverside Apts\nLocation: Boiler Room\nSeverity: CRITICAL\nIncident: A3F2B1C8\n\nReply ACK to acknowledge', delay: 500 },
   { from: 'tech', text: 'ACK', delay: 2000 },
-  { from: 'flowguard', text: '✅ Acknowledged.\n\nReply ROUTE when en route.', delay: 3500 },
+  { from: 'flowguard', text: 'Acknowledged.\n\nReply ROUTE when en route.', delay: 3500 },
   { from: 'tech', text: 'ROUTE', delay: 5000 },
-  { from: 'flowguard', text: '🚗 En route confirmed.\n\nReply SITE when on site.', delay: 6500 },
+  { from: 'flowguard', text: 'En route confirmed.\n\nReply SITE when on site.', delay: 6500 },
   { from: 'tech', text: 'SITE', delay: 8000 },
-  { from: 'flowguard', text: '📍 On site confirmed.\n\nReply CONTAINED when addressed.', delay: 9500 },
+  { from: 'flowguard', text: 'On site confirmed.\n\nReply CONTAINED when addressed.', delay: 9500 },
   { from: 'tech', text: 'CONTAINED', delay: 11000 },
-  { from: 'flowguard', text: '✅ Leak contained.\n\nSystem monitoring until sensor dries.\nFull audit trail saved.', delay: 12500 },
+  { from: 'flowguard', text: 'Leak contained.\n\nSystem monitoring until sensor dries.\nFull audit trail saved.', delay: 12500 },
 ]
 
 export default function PhoneDemo() {
@@ -188,7 +188,7 @@ export default function PhoneDemo() {
         }}
         style={{ marginTop: '16px', fontSize: '13px', color: '#29ABE2', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
       >
-        ↺ Replay animation
+        Replay animation
       </button>
     </div>
   )

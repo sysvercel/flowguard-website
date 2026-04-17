@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+export const dynamic = 'force-dynamic'
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,6 +10,14 @@ export async function POST(req: NextRequest) {
     if (!your_name || !phone || !client_name || !client_company || !client_phone) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
+
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error('Referral submission error: RESEND_API_KEY not configured')
+      return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
+    }
+
+    const resend = new Resend(apiKey)
 
     await resend.emails.send({
       from: 'FlowGuard <mazen@flowguardprotection.com>',
