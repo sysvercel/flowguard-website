@@ -83,7 +83,7 @@ export default function Home() {
             <div className="hidden lg:block absolute top-10 left-[12%] right-[12%] border-t-2 border-dashed border-slate-200 z-0" />
             {[
               {
-                num: 1, title: 'Sensor Detects', desc: 'Spot and rope sensors trigger the moment moisture is detected in critical zones.',
+                num: 1, title: 'Sensor Detects', desc: 'Spot, rope, and low-profile sensors trigger the moment moisture is detected in critical zones.',
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
