@@ -19,8 +19,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 flex justify-center px-4">
-        <nav className="flex items-center gap-4 sm:gap-6 lg:gap-8 bg-white/85 backdrop-blur-xl border border-slate-200/60 shadow-[0_2px_12px_rgba(15,23,42,0.06)] rounded-full pl-5 pr-1.5 py-1.5">
+      <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 flex justify-center px-3 sm:px-4">
+        <nav className="flex items-center gap-2.5 sm:gap-6 lg:gap-8 bg-white/85 backdrop-blur-xl border border-slate-200/60 shadow-[0_2px_12px_rgba(15,23,42,0.06)] rounded-full pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5">
           <Link href="/" className="flex items-center shrink-0">
             <Image
               src="/flowguard-logo.png"
@@ -28,7 +28,7 @@ export default function Header() {
               width={160}
               height={40}
               priority
-              className="object-contain w-20 sm:w-24 lg:w-[104px]"
+              className="object-contain w-24 sm:w-24 lg:w-[104px]"
             />
           </Link>
 
@@ -42,15 +42,16 @@ export default function Header() {
 
           <Link
             href="/contact"
-            className="hidden sm:inline-flex items-center bg-[#1B2F4E] text-white px-4 lg:px-5 py-2 rounded-full text-[13px] font-semibold hover:bg-[#29ABE2] transition-colors"
+            className="inline-flex items-center bg-[#1B2F4E] text-white px-3 sm:px-4 lg:px-5 py-[7px] sm:py-2 rounded-full text-[12px] sm:text-[13px] font-semibold hover:bg-[#29ABE2] transition-colors whitespace-nowrap"
           >
-            Request a Demo
+            <span className="sm:hidden">Demo</span>
+            <span className="hidden sm:inline">Request a Demo</span>
           </Link>
 
           <button
             onClick={() => setDrawerOpen(true)}
             aria-label="Open menu"
-            className="p-2 shrink-0 text-slate-700 hover:text-[#1B2F4E] transition"
+            className="p-1.5 sm:p-2 shrink-0 text-slate-700 hover:text-[#1B2F4E] transition"
           >
             <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
               <path d="M1 1H17" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
