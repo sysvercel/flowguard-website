@@ -31,11 +31,20 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-slate-400 mb-4">Legal</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-slate-400 mb-4">Legal &amp; Trust</h4>
             <div className="flex flex-col gap-3">
+              <Link href="/security" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Security</Link>
               <Link href="/privacy" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Privacy Policy</Link>
               <Link href="/terms" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Terms of Service</Link>
+              <Link href="/dpa" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Data Processing Agreement</Link>
               <Link href="/sms" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">SMS Information</Link>
+              <a href="https://status.flowguardprotection.com" className="text-sm text-slate-300 hover:text-[#29ABE2] transition inline-flex items-center gap-1.5">
+                System Status
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60 animate-ping" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-400" />
+                </span>
+              </a>
             </div>
           </div>
         </div>

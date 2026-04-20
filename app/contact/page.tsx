@@ -200,6 +200,20 @@ export default function Contact() {
                     <p className="text-center text-xs text-slate-500">
                       We typically respond within one business day.
                     </p>
+
+                    {/* Privacy acknowledgment — required by most jurisdictions
+                        when collecting form data; also a trust signal. */}
+                    <p className="text-[11px] text-slate-400 text-center leading-relaxed pt-1">
+                      By submitting this form, you agree to FlowGuard&apos;s{' '}
+                      <Link href="/privacy" className="text-[#29ABE2] hover:underline">
+                        Privacy Policy
+                      </Link>{' '}
+                      and{' '}
+                      <Link href="/terms" className="text-[#29ABE2] hover:underline">
+                        Terms of Service
+                      </Link>
+                      . We&apos;ll only use your information to follow up about FlowGuard — never shared, never sold.
+                    </p>
                   </form>
                 </div>
               </div>
