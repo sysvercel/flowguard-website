@@ -28,16 +28,13 @@ export default function Home() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12">
           <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-4 sm:mb-5">
-            Built for Multifamily Operators
+            Built for Texas Multifamily Operators
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-5 sm:mb-6">
-            The Operating System for Multifamily Water Risk
+            Insurance-Ready Water Risk Control for Multifamily Properties
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-3 sm:mb-4 leading-snug font-medium">
-            From detection to resolution — in minutes, not days.
-          </p>
-          <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-            Real-time water detection, incident command, escalation, and insurance-ready reporting — one platform for the team that can&apos;t afford surprise losses.
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+            Detect leaks, escalate alerts, and document every incident — with broker-ready reports built for the renewal conversation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
