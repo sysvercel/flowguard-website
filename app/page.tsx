@@ -38,12 +38,15 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
-              Request a Demo
+              Run a Live Leak Simulation
             </Link>
             <Link href="/how-it-works" className="border border-white/20 text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
               See How It Works
             </Link>
           </div>
+          <p className="text-xs sm:text-sm text-slate-400 mt-5 max-w-xl mx-auto leading-relaxed">
+            See how FlowGuard alerts maintenance, escalates response, and generates an insurance-ready report.
+          </p>
         </div>
       </section>
 
