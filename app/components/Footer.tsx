@@ -20,6 +20,7 @@ export default function Footer() {
             <h4 className="font-semibold text-sm uppercase tracking-wider text-slate-400 mb-4">Navigation</h4>
             <div className="flex flex-col gap-3">
               <Link href="/how-it-works" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">How It Works</Link>
+              <Link href="/integration" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Integration</Link>
               <Link href="/solutions" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Solutions</Link>
               <Link href="/why-flowguard" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Why FlowGuard</Link>
               <Link href="/dashboard" className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Dashboard</Link>

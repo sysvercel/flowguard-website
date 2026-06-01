@@ -34,6 +34,7 @@ export default function Header() {
 
           <div className="hidden lg:flex items-center gap-7">
             <Link href="/how-it-works" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">How It Works</Link>
+            <Link href="/integration" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">Integration</Link>
             <Link href="/dashboard" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">Dashboard</Link>
             <Link href="/solutions" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">Solutions</Link>
             <Link href="/roi-calculator" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">ROI Calculator</Link>
@@ -96,6 +97,7 @@ export default function Header() {
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">Platform</p>
             <nav className="flex flex-col gap-3">
               <Link href="/how-it-works" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">How It Works</Link>
+              <Link href="/integration" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Integration</Link>
               <Link href="/dashboard" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Dashboard</Link>
               <Link href="/sample-report" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Sample Report</Link>
             </nav>

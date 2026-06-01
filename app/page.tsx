@@ -173,6 +173,9 @@ export default function Home() {
               We&rsquo;d rather tell you exactly what to expect than sell you a word you stopped believing years ago.
             </p>
           </div>
+          <Link href="/integration" className="inline-flex items-center mt-8 text-sm sm:text-base font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">
+            See exactly how integration works &rarr;
+          </Link>
         </div>
       </motion.section>
 

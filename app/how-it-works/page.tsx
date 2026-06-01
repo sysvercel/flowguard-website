@@ -374,6 +374,11 @@ export default function HowItWorks() {
           <Link href="/solutions" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
             View Solutions
           </Link>
+          <p className="mt-8">
+            <Link href="/integration" className="inline-flex items-center text-sm sm:text-base font-semibold text-slate-300 hover:text-[#29ABE2] transition">
+              Want the install details? See how FlowGuard integrates with your property &rarr;
+            </Link>
+          </p>
         </div>
       </motion.section>
     </main>
