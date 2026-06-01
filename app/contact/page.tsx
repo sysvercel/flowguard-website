@@ -14,7 +14,7 @@ const postSubmitSteps = [
   'We review your property details and current coverage.',
   'We identify likely risk areas for your building type.',
   'We recommend a starting deployment approach.',
-  'We schedule a walkthrough if it makes sense.',
+  'We book a free water-risk walk of your property when it makes sense.',
 ]
 
 export default function Contact() {
@@ -46,13 +46,13 @@ export default function Contact() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 text-center">
           <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
-            Request a Demo
+            Book a Water-Risk Walk
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
-            Request a Demo
+            Book My Free Water-Risk Walk
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-5">
-            Tell us about your property and we&apos;ll put together a recommended FlowGuard deployment approach based on your building, risk areas, and response needs.
+            Tell us about your property and we&apos;ll help identify the highest-risk water zones, response gaps, and where FlowGuard protection would go first.
           </p>
           <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
             Built for multifamily owners, operators, and property managers. Typically reviewed within one business day.
@@ -193,7 +193,7 @@ export default function Contact() {
                       disabled={submitting}
                       className="w-full bg-[#29ABE2] text-white py-4 rounded-xl font-semibold hover:bg-[#1A6FA8] transition text-base disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      {submitting ? 'Submitting…' : 'Submit Demo Request'}
+                      {submitting ? 'Submitting…' : 'Book My Free Water-Risk Walk'}
                     </button>
 
                     <p className="text-center text-xs text-slate-500">

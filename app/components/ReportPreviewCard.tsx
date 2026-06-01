@@ -19,7 +19,7 @@ export default function ReportPreviewCard({ className = '' }: { className?: stri
       <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-white/10">
         <div className="flex items-center gap-2.5">
           <span className="text-[#29ABE2] font-bold text-sm">FlowGuard</span>
-          <span className="text-[10px] uppercase tracking-[0.16em] text-slate-500">Incident Report</span>
+          <span className="text-[10px] uppercase tracking-[0.16em] text-slate-400">Incident Report</span>
         </div>
         <span className="font-mono text-xs text-slate-400">██F2██C8</span>
       </div>
@@ -28,13 +28,13 @@ export default function ReportPreviewCard({ className = '' }: { className?: stri
       <div className="px-5 sm:px-6 py-5 border-b border-white/10">
         <div className="flex items-center justify-between mb-5">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500 mb-1">Status</p>
+            <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400 mb-1">Status</p>
             <span className="fg-chip text-emerald-300 border-emerald-400/30 bg-emerald-400/10">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Incident closed
             </span>
           </div>
           <div className="text-right">
-            <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500 mb-1">Response time</p>
+            <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400 mb-1">Response time</p>
             <p className="font-mono font-bold text-white text-lg">33m 09s</p>
           </div>
         </div>
@@ -46,7 +46,7 @@ export default function ReportPreviewCard({ className = '' }: { className?: stri
           ].map(([label, value]) => (
             <div key={label} className="rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2.5">
               <p className="text-base font-bold text-[#29ABE2] leading-none mb-1">{value}</p>
-              <p className="text-[9px] uppercase tracking-[0.12em] text-slate-500 leading-tight">{label}</p>
+              <p className="text-[9px] uppercase tracking-[0.12em] text-slate-400 leading-tight">{label}</p>
             </div>
           ))}
         </div>
@@ -54,7 +54,7 @@ export default function ReportPreviewCard({ className = '' }: { className?: stri
 
       {/* Timeline */}
       <div className="px-5 sm:px-6 py-5 border-b border-white/10">
-        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500 mb-3">Incident timeline</p>
+        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400 mb-3">Incident timeline</p>
         <div className="space-y-1.5 font-mono text-xs">
           {timeline.map(([label, time]) => (
             <div key={label} className="flex justify-between">
@@ -67,7 +67,7 @@ export default function ReportPreviewCard({ className = '' }: { className?: stri
 
       {/* Maintenance recap */}
       <div className="px-5 sm:px-6 py-5 border-b border-white/10">
-        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500 mb-3">Maintenance recap</p>
+        <p className="text-[10px] uppercase tracking-[0.16em] text-slate-400 mb-3">Maintenance recap</p>
         <ul className="space-y-2">
           {recap.map((line) => (
             <li key={line} className="flex items-start gap-2.5 text-xs text-slate-300 leading-relaxed">

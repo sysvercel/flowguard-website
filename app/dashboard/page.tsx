@@ -76,13 +76,38 @@ const overviewCards: { eyebrow: string; title: string; desc: string; icon: React
   },
 ]
 
-const monitoredZones: { zone: string; tag: string; risk?: boolean }[] = [
-  { zone: 'Mechanical Room', tag: 'High sensitivity' },
-  { zone: 'Main Riser', tag: 'Standard' },
-  { zone: 'Unit 204 \u00b7 Kitchen', tag: 'Standard' },
-  { zone: 'Laundry', tag: 'Standard' },
-  { zone: 'Water Heater', tag: 'High-risk zone', risk: true },
-  { zone: 'Boiler Room', tag: 'High-risk zone', risk: true },
+type ZoneSensitivity = 'Standard' | 'High sensitivity' | 'High-risk zone'
+type ZoneRow = { zone: string; tag: ZoneSensitivity }
+type ZoneGroup = { category: string; zones: ZoneRow[] }
+
+const zoneInventory: ZoneGroup[] = [
+  {
+    category: 'Units',
+    zones: [
+      { zone: 'Unit 204 \u00b7 Kitchen', tag: 'Standard' },
+      { zone: 'Unit 302 \u00b7 Laundry', tag: 'Standard' },
+      { zone: 'Unit 211 \u00b7 Kitchen', tag: 'Standard' },
+    ],
+  },
+  {
+    category: 'Risers',
+    zones: [
+      { zone: 'Main Riser', tag: 'Standard' },
+      { zone: 'Riser Closet', tag: 'High sensitivity' },
+    ],
+  },
+  {
+    category: 'Mechanical',
+    zones: [
+      { zone: 'Mechanical Room', tag: 'High sensitivity' },
+      { zone: 'Boiler Room', tag: 'High-risk zone' },
+      { zone: 'Water Heater', tag: 'High-risk zone' },
+    ],
+  },
+  {
+    category: 'Laundry',
+    zones: [{ zone: 'Laundry Room', tag: 'Standard' }],
+  },
 ]
 
 const deviceStatus: [string, string, boolean?][] = [
@@ -369,30 +394,48 @@ export default function DashboardPage() {
                 </div>
                 <span className="fg-chip text-[#29ABE2] border-[#29ABE2]/30">Device status</span>
               </div>
-              <ul className="space-y-2">
-                {monitoredZones.map((z) => (
-                  <li
-                    key={z.zone}
-                    className="flex flex-wrap items-center gap-2 sm:gap-3 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2.5"
-                  >
-                    <span className={z.risk ? 'fg-node fg-node-amber' : 'fg-node'} />
-                    <span className="text-xs sm:text-sm font-medium text-white">{z.zone}</span>
-                    <span className="fg-chip text-emerald-300 border-emerald-400/30 bg-emerald-400/10 ml-auto">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Online
-                    </span>
-                    <span
-                      className={`fg-chip ${
-                        z.risk
-                          ? 'text-[#F59E0B] border-[#F59E0B]/30 bg-[#F59E0B]/10'
-                          : 'text-slate-400 border-white/15'
-                      }`}
-                    >
-                      {z.tag}
-                    </span>
-                  </li>
+              <div className="space-y-4">
+                {zoneInventory.map((group) => (
+                  <div key={group.category}>
+                    <div className="flex items-center gap-2.5 mb-2">
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#29ABE2]">
+                        {group.category}
+                      </span>
+                      <span className="h-px flex-1 bg-white/10" aria-hidden />
+                      <span className="text-[10px] font-mono text-slate-500">{group.zones.length}</span>
+                    </div>
+                    <ul className="space-y-2">
+                      {group.zones.map((z) => {
+                        const risk = z.tag === 'High-risk zone'
+                        return (
+                          <li
+                            key={z.zone}
+                            className="flex flex-wrap items-center gap-2 sm:gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2.5"
+                          >
+                            <span className={risk ? 'fg-node fg-node-amber' : 'fg-node'} />
+                            <span className="text-xs sm:text-sm font-medium text-white">{z.zone}</span>
+                            <span className="fg-chip text-emerald-300 border-emerald-400/30 bg-emerald-400/10 ml-auto">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Online
+                            </span>
+                            <span
+                              className={`fg-chip ${
+                                risk
+                                  ? 'text-[#F59E0B] border-[#F59E0B]/30 bg-[#F59E0B]/10'
+                                  : z.tag === 'High sensitivity'
+                                    ? 'text-[#29ABE2] border-[#29ABE2]/30 bg-[#29ABE2]/10'
+                                    : 'text-slate-300 border-white/15'
+                              }`}
+                            >
+                              {z.tag}
+                            </span>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-5 text-[10px] sm:text-xs text-slate-400">
+              </div>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-5 pt-4 border-t border-white/10 text-[10px] sm:text-xs text-slate-400">
                 <span className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" /> Online &amp; reporting
                 </span>

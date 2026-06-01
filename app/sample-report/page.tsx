@@ -14,7 +14,13 @@ function Redacted({ width = 'w-24' }: { width?: string }) {
   return (
     <span
       aria-label="redacted"
-      className={`inline-block align-middle ${width} h-[0.85em] bg-slate-800 rounded-[2px] translate-y-[-1px]`}
+      title="Redacted for confidentiality"
+      className={`inline-block align-middle ${width} h-[0.95em] rounded-[2px] translate-y-[-1px] ring-1 ring-slate-900/10`}
+      style={{
+        backgroundColor: '#1B2F4E',
+        backgroundImage:
+          'repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0, rgba(255,255,255,0.06) 2px, transparent 2px, transparent 5px)',
+      }}
     />
   )
 }
@@ -115,15 +121,17 @@ export default function SampleReportPage() {
       <section className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-10">
-            <p className="text-xs font-semibold text-slate-500 tracking-[0.22em] uppercase">
-              Actual Sample · Selected Fields Redacted for Confidentiality
+            <p className="inline-flex items-center gap-2.5 text-xs font-semibold text-slate-500 tracking-[0.22em] uppercase">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#29ABE2]" aria-hidden />
+              Sample Incident Report · Selected Fields Redacted for Confidentiality
             </p>
           </div>
 
-          <motion.div {...fadeUp} className="bg-white rounded-2xl shadow-[0_12px_48px_rgba(15,23,42,0.08)] border border-slate-100 overflow-hidden">
+          <motion.div {...fadeUp} className="relative bg-white rounded-2xl shadow-[0_24px_70px_-20px_rgba(15,23,42,0.28)] ring-1 ring-slate-900/5 border border-slate-100 overflow-hidden">
             {/* Report header */}
-            <div className="bg-[#0E1B30] px-6 sm:px-8 py-6">
-              <div className="flex items-start justify-between gap-4">
+            <div className="relative bg-[#0E1B30] px-6 sm:px-8 py-6 overflow-hidden">
+              <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade opacity-60" />
+              <div className="relative flex items-start justify-between gap-4">
                 <div>
                   <Image
                     src="/flowguard-logo.png"
@@ -135,7 +143,10 @@ export default function SampleReportPage() {
                   <p className="text-slate-400 text-xs">FlowGuard Asset Protection LLC · Dallas, TX</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-slate-400 text-[10px] uppercase tracking-wider">Incident Report</p>
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#29ABE2] border border-[#29ABE2]/40 bg-[#29ABE2]/10 rounded-full px-2.5 py-1 mb-2">
+                    Sample
+                  </span>
+                  <p className="text-slate-400 text-[10px] uppercase tracking-wider mt-1">Incident Report</p>
                   <p className="text-white font-mono font-bold text-sm mt-0.5">██F2██C8</p>
                 </div>
               </div>
@@ -279,8 +290,8 @@ export default function SampleReportPage() {
           </motion.div>
 
           {/* Anonymization note */}
-          <p className="text-center text-slate-500 text-xs mt-6 max-w-xl mx-auto leading-relaxed">
-            Sample report shown with selected identifying details redacted for confidentiality. Actual carrier-facing reports include the full unredacted record.
+          <p className="text-center text-slate-500 text-xs mt-6 max-w-2xl mx-auto leading-relaxed">
+            Sample report shown for demonstration. Reports support documentation and insurance conversations; they are not claim determinations and do not guarantee coverage, premium reductions, or claim outcomes. Actual carrier-facing reports include the full unredacted record.
           </p>
         </div>
       </section>
@@ -322,7 +333,7 @@ export default function SampleReportPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className="bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
-              Request a Demo
+              Book My Free Water-Risk Walk
             </Link>
             <Link href="/how-it-works" className="border border-white/20 text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
               See How It Works
