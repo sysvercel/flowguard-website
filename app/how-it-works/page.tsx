@@ -11,23 +11,74 @@ const fadeUp = {
   transition: { duration: 0.6 },
 }
 
-const layers = [
-  { n: '01', name: 'Detection' },
-  { n: '02', name: 'Alert Routing' },
-  { n: '03', name: 'Responder' },
-  { n: '04', name: 'Escalation' },
-  { n: '05', name: 'Audit Trail' },
+const flowStrip = [
+  'Water detected',
+  'Alert routed',
+  'Acknowledged',
+  'En route',
+  'On site',
+  'Contained',
+  'Resolved',
+  'Report generated',
 ]
 
-function StepEyebrow({ num, label }: { num: string; label: string }) {
-  return (
-    <p className="text-xs font-semibold tracking-[0.22em] uppercase mb-3">
-      <span className="text-[#29ABE2]">{num}</span>
-      <span className="text-slate-400 mx-2">/</span>
-      <span className="text-slate-500">{label}</span>
-    </p>
-  )
-}
+const operatorCares = [
+  {
+    q: 'Will my team actually see it?',
+    a: 'The alert has to reach the person who can act. FlowGuard routes the incident to the right maintenance contact and escalates if nobody responds.',
+  },
+  {
+    q: 'Will they know what to do?',
+    a: 'The action page gives the responder a simple sequence: acknowledge, en route, on site, contained, resolved.',
+  },
+  {
+    q: 'Can I prove what happened?',
+    a: 'Every step is timestamped. Notes, photos, responder actions, and resolution details become part of the incident record.',
+  },
+  {
+    q: 'Will ownership have a clean story?',
+    a: 'Instead of explaining a mess after the fact, you have a timeline that shows the team caught it, responded, and contained it.',
+  },
+  {
+    q: 'Will this make maintenance feel watched?',
+    a: 'No. FlowGuard is not built to embarrass your team. It backs them up and makes their response visible when they do the job right.',
+  },
+]
+
+const responseSteps = [
+  { step: 'Water detected', copy: 'Sensors catch water early in high-risk zones.' },
+  { step: 'Alert routed', copy: 'The right responder gets notified immediately.' },
+  { step: 'Acknowledged', copy: 'Ownership knows a human has seen it.' },
+  { step: 'En route', copy: 'The team is moving.' },
+  { step: 'On site', copy: 'The responder is physically checking the source.' },
+  { step: 'Contained', copy: 'The water source is isolated or controlled.' },
+  { step: 'Resolved', copy: 'The incident is closed only after the response is complete.' },
+  { step: 'Report generated', copy: 'The timeline becomes a clean record for ownership, maintenance review, and insurance conversations.' },
+]
+
+const reportCards = [
+  'Response timeline',
+  'Photo evidence',
+  'Maintenance notes',
+  'Estimated loss prevented',
+  'Escalation record',
+  'Maintenance recap',
+  'Insurance-style documentation',
+]
+
+const leadershipCards = [
+  { title: 'Less guessing', copy: 'You know whether the alert was acknowledged, who responded, and how long containment took.' },
+  { title: 'Cleaner accountability', copy: 'The record shows the process without turning maintenance into the villain.' },
+  { title: 'Better renewal conversations', copy: 'You can show a documented water-risk response program instead of hoping a carrier takes your word for it.' },
+  { title: 'Fewer ugly surprises', copy: 'Leaks still happen. The difference is how quickly they are caught, escalated, contained, and documented.' },
+  { title: 'A team that looks prepared', copy: 'The maintenance team gets a system that supports them, and leadership gets a record that proves the response.' },
+]
+
+const maintenanceHero = [
+  'When water hits at 2am, the person who saves the property is not a dashboard. It is the maintenance tech who gets the alert, gets moving, finds the source, and stops the damage.',
+  'FlowGuard is built around that person. The alert lands on their phone. The response page tells them exactly what step comes next. Their actions are timestamped automatically. When the incident is over, the record shows they acted fast and contained the issue.',
+  'We do not watch your team. We back them up — and we make sure the record shows the work they actually did.',
+]
 
 export default function HowItWorks() {
   return (
@@ -38,174 +89,61 @@ export default function HowItWorks() {
         <div aria-hidden className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#1A6FA8]/15 rounded-full blur-3xl" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-center">
           <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
-            The FlowGuard Workflow
+            How FlowGuard Works
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
-            How FlowGuard Detects, Routes, and Resolves Water Events
+            From first drop to handled incident.
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            FlowGuard combines real-time moisture detection, alert routing, maintenance-first response, escalation logic, and insurance-ready documentation in one operational workflow.
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-10">
+            When water hits the floor, most systems stop at the alert. FlowGuard keeps going. We route the alert to the right person, guide the maintenance response, escalate until someone acts, and document every second from detection to resolution.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">
+              Book My Free Water-Risk Walk
+            </Link>
+            <Link href="/sample-report" className="border border-white/20 text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
+              View Sample Report
+            </Link>
+          </div>
+          <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Built for multifamily teams that need fewer surprises, faster response, and a cleaner record when ownership asks what happened.
+          </p>
+        </div>
+      </section>
 
-          {/* Layer preview strip */}
-          <div className="mt-12 sm:mt-14 hidden sm:flex items-center justify-center gap-3 lg:gap-5 flex-wrap">
-            {layers.map((l, i) => (
-              <div key={l.n} className="flex items-center gap-3 lg:gap-5">
-                <div className="flex items-center gap-2 text-xs lg:text-sm">
-                  <span className="text-[#29ABE2] font-mono font-semibold tracking-wider">{l.n}</span>
-                  <span className="text-slate-300 font-medium">{l.name}</span>
-                </div>
-                {i < layers.length - 1 && <span className="w-6 lg:w-8 h-px bg-slate-600" aria-hidden />}
+      {/* Phase 2 — What operators care about */}
+      <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-14 sm:mb-16">
+            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">For Operators</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
+              What property operators actually care about.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {operatorCares.map(({ q, a }) => (
+              <div key={q} className="bg-[#F8FAFC] border border-slate-100 rounded-xl p-6 sm:p-7">
+                <h3 className="font-bold text-[#1B2F4E] mb-3 leading-snug">{`\u201C${q}\u201D`}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{a}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Step 1 — Detection Layer */}
-      <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
-              <StepEyebrow num="01" label="Detection Layer" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight mb-5 leading-tight">
-                Moisture-Sensing Formats Detect Water at the Point of Risk
-              </h2>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-4">
-                FlowGuard deploys <strong>spot</strong>, <strong>rope</strong>, and <strong>low-profile</strong> sensor formats, selected per zone based on the property&apos;s risk profile. Spot sensors sit at critical equipment and high-risk utility areas to catch pooled water. Rope sensors provide linear coverage along perimeter, wall, and pipe-adjacent risk zones. Low-profile sensors are used where discreet placement and surface-level detection are important.
-              </p>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg">
-                Response thresholds vary by zone — critical zones trigger immediate escalation, standard zones allow a short buffer. Every placement is scoped to the building during install.
-              </p>
-            </div>
-            <div className="bg-[#F8FAFC] rounded-2xl p-6 sm:p-8 space-y-4">
-              <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(15,23,42,0.05)] border border-slate-100 flex gap-4 items-start">
-                <div className="w-10 h-10 rounded-lg bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                    <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-semibold text-[#1B2F4E] mb-1">Spot Sensor</div>
-                  <div className="text-sm text-slate-500 leading-relaxed">Point-of-risk floor placement under mechanical equipment, risers, and water heaters.</div>
-                </div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(15,23,42,0.05)] border border-slate-100 flex gap-4 items-start">
-                <div className="w-10 h-10 rounded-lg bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                    <path d="M2 12c2.5-4 5-4 7.5 0S14.5 16 17 12s5-4 5-4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-semibold text-[#1B2F4E] mb-1">Rope Sensor</div>
-                  <div className="text-sm text-slate-500 leading-relaxed">Continuous linear coverage along walls, perimeters, and pipe-adjacent risk zones.</div>
-                </div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(15,23,42,0.05)] border border-slate-100 flex gap-4 items-start">
-                <div className="w-10 h-10 rounded-lg bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                    <rect x="3" y="9" width="18" height="6" rx="1.5" />
-                    <path d="M7.5 12h.01M12 12h.01M16.5 12h.01" strokeLinecap="round" strokeWidth="2.5" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-semibold text-[#1B2F4E] mb-1">Low-Profile Sensor</div>
-                  <div className="text-sm text-slate-500 leading-relaxed">Flat, low-profile format for discreet, surface-level moisture detection in tight or visible placements.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </motion.section>
 
-      {/* Step 2 — Alert Routing Layer */}
-      <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(15,23,42,0.06)] border border-slate-100 order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 bg-[#29ABE2] text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-6 tracking-wider uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" aria-hidden />
-                Under 60 Seconds
-              </div>
-              <div className="space-y-3">
-                {[
-                  {
-                    channel: 'Email',
-                    desc: 'One-tap action links for every incident — acknowledge without logging in.',
-                    icon: (
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                        <rect x="3" y="5" width="18" height="14" rx="2" />
-                        <path d="M3 7l9 6 9-6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    ),
-                  },
-                  {
-                    channel: 'SMS',
-                    desc: 'Instant text with incident ID and inline command options.',
-                    icon: (
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                        <path d="M21 12a8 8 0 01-11.4 7.3L3 21l1.7-6.6A8 8 0 1121 12z" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    ),
-                  },
-                  {
-                    channel: 'Voice',
-                    desc: 'Automated call for critical-zone events where immediate attention is required.',
-                    icon: (
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    ),
-                  },
-                ].map(({ channel, desc, icon }) => (
-                  <div key={channel} className="flex items-start gap-4 p-4 rounded-xl bg-[#F8FAFC] border border-slate-100">
-                    <div className="w-10 h-10 rounded-lg bg-white text-[#29ABE2] flex items-center justify-center shrink-0 border border-slate-200">
-                      {icon}
-                    </div>
-                    <div className="pt-0.5">
-                      <div className="font-semibold text-[#1B2F4E] text-sm mb-0.5">{channel}</div>
-                      <div className="text-xs text-slate-500 leading-relaxed">{desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="order-1 lg:order-2">
-              <StepEyebrow num="02" label="Alert Routing Layer" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight mb-5 leading-tight">
-                Alerts Route Across the Response Chain in Under 60 Seconds
-              </h2>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-4">
-                The moment a sensor triggers, FlowGuard dispatches email, SMS, and — for critical conditions — voice alerts across your maintenance-first response chain. Property-specific routing rules decide who gets notified, in what order, and on which channels.
-              </p>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg">
-                Responders can act immediately without logging into the platform. Maintenance can acknowledge, route, arrive on site, and contain the issue directly from their phone, while FlowGuard records every action in the dashboard automatically.
-              </p>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Step 3 — Responder Layer */}
-      <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Phase 3 — Maintenance hero */}
+      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 relative overflow-hidden">
+        <div aria-hidden className="absolute top-0 right-0 w-96 h-96 bg-[#29ABE2]/10 rounded-full blur-3xl" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <StepEyebrow num="03" label="Responder Layer" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight mb-5 leading-tight">
-                Respond by Text. No App Required.
+              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Hero</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
+                Your maintenance team is the hero. FlowGuard gives them the playbook.
               </h2>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-5">
-                Your team runs the full incident lifecycle over SMS — without logging into the platform. Reply <strong>ACK</strong> to acknowledge and take ownership, <strong>ROUTE</strong> when en route, <strong>SITE</strong> when on site, and <strong>CONTAINED</strong> when the source is controlled.
-              </p>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-6">
-                Every command is timestamped, attributed to a responder, and written to the incident record. Ownership transfers cleanly between tiers when escalation fires — the next responder sees every prior action.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {['ACK', 'ROUTE', 'SITE', 'CONTAINED'].map(cmd => (
-                  <div key={cmd} className="text-center font-mono text-xs font-semibold text-[#1B2F4E] bg-slate-100 border border-slate-200 rounded-lg py-2.5 tracking-wider">
-                    {cmd}
-                  </div>
+              <div className="space-y-5 text-base sm:text-lg text-slate-300 leading-relaxed">
+                {maintenanceHero.map((p, i) => (
+                  <p key={i}>{p}</p>
                 ))}
               </div>
             </div>
@@ -216,31 +154,71 @@ export default function HowItWorks() {
         </div>
       </motion.section>
 
-      {/* Step 4 — Escalation Layer */}
-      <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24 relative">
+      {/* Phase 4 — Response flow */}
+      <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-12 sm:mb-14">
+            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Flow</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
+              The response flow is simple on purpose.
+            </h2>
+          </div>
+
+          {/* Step strip */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-12 sm:mb-14">
+            {flowStrip.map((step, i) => (
+              <div key={step} className="flex items-center gap-2 sm:gap-3">
+                <span className="bg-[#F8FAFC] border border-slate-200 text-[#1B2F4E] text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-full">
+                  {step}
+                </span>
+                {i < flowStrip.length - 1 && <span aria-hidden className="text-[#29ABE2] font-bold">&rarr;</span>}
+              </div>
+            ))}
+          </div>
+
+          {/* Step detail cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {responseSteps.map(({ step, copy }, i) => (
+              <div key={step} className="bg-[#F8FAFC] border border-slate-100 rounded-xl p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="w-8 h-8 shrink-0 rounded-full bg-[#29ABE2] text-white flex items-center justify-center font-bold text-sm">{i + 1}</span>
+                  <h3 className="font-bold text-[#1B2F4E] text-sm">{step}</h3>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">{copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Phase 5 — Escalation */}
+      <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div className="lg:sticky lg:top-28">
-              <StepEyebrow num="04" label="Escalation Layer" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight mb-5 leading-tight">
-                Escalation Moves the Incident Forward Automatically
+              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">No Ignored Alerts</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
+                An alert that dies on one phone is not protection.
               </h2>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-4">
-                No one chases an unanswered alert. If Tier 1 doesn&apos;t respond inside the property&apos;s configured window, Tier 2 is paged automatically. If Tier 2 doesn&apos;t respond, the chain moves to Tier 3 — without delay, without a human in the loop.
-              </p>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-6">
-                Every tier receives the full incident context — detection time, location, severity, any responses already recorded — so handoffs are clean and responders aren&apos;t re-diagnosing a live event.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-white border border-slate-200 rounded-xl p-4">
-                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Manual chasing</div>
-                  <div className="text-lg font-bold text-[#1B2F4E]">Zero</div>
-                </div>
-                <div className="bg-white border border-slate-200 rounded-xl p-4">
-                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Escalation timers</div>
-                  <div className="text-lg font-bold text-[#1B2F4E]">Per property</div>
-                </div>
+              <div className="space-y-5 text-base sm:text-lg text-slate-600 leading-relaxed mb-6">
+                <p>
+                  People miss alerts. Phones die. A tech may be asleep, driving, or already handling another emergency. FlowGuard is built for that reality.
+                </p>
+                <p>
+                  If the first person does not act, the alert moves. Tier 1, Tier 2, Tier 3. The system keeps pushing until a human acknowledges and starts the response.
+                </p>
               </div>
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                {['Tier 1', 'Tier 2', 'Tier 3'].map((tier, i) => (
+                  <div key={tier} className="flex items-center gap-3">
+                    <span className="bg-[#1B2F4E] text-white text-sm font-semibold px-4 py-2 rounded-full">{tier}</span>
+                    {i < 2 && <span aria-hidden className="text-[#29ABE2] font-bold">&rarr;</span>}
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm sm:text-base text-slate-500 leading-relaxed border-l-2 border-[#29ABE2] pl-4">
+                Property managers do not need to wonder if anyone saw the alert. The system shows who acknowledged it and when.
+              </p>
             </div>
             <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(15,23,42,0.06)] border border-slate-100">
               <EscalationTimeline />
@@ -249,136 +227,95 @@ export default function HowItWorks() {
         </div>
       </motion.section>
 
-      {/* Step 5 — Audit Trail Layer */}
+      {/* Phase 6 — Documentation */}
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
-              <StepEyebrow num="05" label="Audit Trail Layer" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight mb-5 leading-tight">
-                Resolution and Audit Trail Are Logged Automatically
-              </h2>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-4">
-                When the sensor confirms dry for the configured resolution window, the incident auto-closes. Responders receive a confirmation. No manual close-out, no forgotten tickets.
+          <div className="max-w-3xl mb-12 sm:mb-14">
+            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Record</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
+              The report is not paperwork. It is protection.
+            </h2>
+            <div className="space-y-5 text-base sm:text-lg text-slate-600 leading-relaxed">
+              <p>
+                After the incident, FlowGuard turns the response into a clean record: detection time, acknowledgement time, containment time, responder actions, notes, photos, and resolution details.
               </p>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg">
-                Detection, acknowledgment, routing, on-site arrival, containment, and resolution are timestamped and preserved. Every incident produces a claims-ready record on demand — the timeline your carrier expects, without anyone rebuilding it from memory.
+              <p>
+                That record helps property managers answer the questions that always come later: Who saw it? How fast did they respond? Was it contained? Were photos captured? What did we learn?
               </p>
-            </div>
-            <div className="bg-[#F8FAFC] rounded-2xl p-6 sm:p-8">
-              <div className="bg-white rounded-xl p-6 shadow-[0_4px_24px_rgba(15,23,42,0.06)] border border-slate-100">
-                <div className="flex items-center justify-between mb-5 pb-4 border-b border-slate-100">
-                  <div>
-                    <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Incident</div>
-                    <div className="text-sm font-mono font-bold text-[#1B2F4E]">A3F2B1C8</div>
-                  </div>
-                  <div className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-100">
-                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden>
-                      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    Resolved
-                  </div>
-                </div>
-                <div className="space-y-2.5">
-                  {[
-                    { label: 'Detected', time: '09:41:02' },
-                    { label: 'Acknowledged', time: '09:42:15' },
-                    { label: 'En Route', time: '09:43:30' },
-                    { label: 'On Site', time: '09:48:55' },
-                    { label: 'Contained', time: '09:52:10' },
-                    { label: 'Auto-Resolved', time: '09:58:44' },
-                  ].map(({ label, time }) => (
-                    <div key={label} className="flex justify-between items-center text-sm">
-                      <span className="font-medium text-slate-700">{label}</span>
-                      <span className="font-mono text-xs text-slate-500">{time}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-5 pt-4 border-t border-slate-100 text-xs text-slate-500">
-                  Total incident duration <span className="font-mono text-[#1B2F4E] font-semibold">17m 42s</span>
-                </div>
-              </div>
             </div>
           </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-10">
+            {reportCards.map((item) => (
+              <div key={item} className="flex items-center gap-3 bg-[#F8FAFC] border border-slate-100 rounded-xl px-4 sm:px-5 py-4">
+                <svg className="w-5 h-5 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span className="text-sm font-medium text-slate-700 leading-snug">{item}</span>
+              </div>
+            ))}
+          </div>
+          <Link href="/sample-report" className="inline-flex items-center text-sm sm:text-base font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">
+            View Sample Report &rarr;
+          </Link>
+          <p className="text-sm text-slate-500 leading-relaxed mt-6 max-w-2xl">
+            Reports support ownership, maintenance review, and insurance conversations. They are not claim determinations and do not guarantee coverage.
+          </p>
         </div>
       </motion.section>
 
-      {/* Platform Safeguards (continuous system health) */}
-      <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
+      {/* Phase 7 — Leadership value */}
+      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Continuous System Health</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight mb-4">
-              Proactive monitoring, not just reactive alerts
+          <div className="max-w-2xl mb-14 sm:mb-16">
+            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">For Leadership</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+              What this gives leadership.
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              FlowGuard watches the sensors themselves — not just the conditions they track — so coverage stays real, not theoretical.
-            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {[
-              {
-                title: 'Offline Sensor Detection',
-                desc: 'If a sensor stops reporting, the platform flags it — coverage gaps are surfaced before they become incidents you missed.',
-                icon: (
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                    <path d="M5 12a7 7 0 0114 0M8.5 12a3.5 3.5 0 017 0" strokeLinecap="round" />
-                    <circle cx="12" cy="12" r="1" fill="currentColor" />
-                  </svg>
-                ),
-              },
-              {
-                title: 'Battery Health',
-                desc: 'Sensors report battery level continuously. Low-battery warnings fire well before any sensor loses coverage.',
-                icon: (
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                    <rect x="2" y="7" width="18" height="10" rx="2" />
-                    <line x1="22" y1="10" x2="22" y2="14" strokeLinecap="round" />
-                  </svg>
-                ),
-              },
-              {
-                title: 'Freeze Risk Monitoring',
-                desc: 'Temperature drops near exposed pipes trigger early freeze warnings so maintenance can act before a burst.',
-                icon: (
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                    <line x1="12" y1="3" x2="12" y2="21" strokeLinecap="round" />
-                    <line x1="3" y1="12" x2="21" y2="12" strokeLinecap="round" />
-                    <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" strokeLinecap="round" />
-                    <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" strokeLinecap="round" />
-                  </svg>
-                ),
-              },
-            ].map(({ title, desc, icon }) => (
-              <div key={title} className="bg-white rounded-xl shadow-[0_2px_12px_rgba(15,23,42,0.05)] border border-slate-100 p-8">
-                <div className="w-11 h-11 rounded-lg bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-5">
-                  {icon}
-                </div>
-                <h3 className="font-bold text-[#1B2F4E] mb-2">{title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {leadershipCards.map(({ title, copy }) => (
+              <div key={title} className="bg-[#162844] border border-white/10 rounded-xl p-6 sm:p-7">
+                <h3 className="font-bold text-white mb-3">{title}</h3>
+                <p className="text-sm text-slate-300 leading-relaxed">{copy}</p>
               </div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* CTA */}
+      {/* Phase 8 — What FlowGuard is not */}
+      <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Honest Version</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
+            What FlowGuard is not.
+          </h2>
+          <div className="space-y-5 text-base sm:text-lg text-slate-600 leading-relaxed">
+            <p>
+              FlowGuard is not a camera pointed at your maintenance team. It is not a magic sensor that solves water damage by itself. It is not a vague &lsquo;smart building&rsquo; dashboard nobody checks.
+            </p>
+            <p>
+              It is a response system. It detects water, routes the alert, guides the responder, escalates if nobody acts, and documents the result.
+            </p>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Phase 9 — Site walk CTA */}
       <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            See which package fits your property
+            Want to see how this would work on your property?
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mb-10 leading-relaxed">
-            Protect or Respond — both tiers run on the same operating workflow.
+            Book a free water-risk walk. We&rsquo;ll walk your building, identify the highest-risk water zones, and show how the response path would work for your actual maintenance team.
           </p>
-          <Link href="/solutions" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
-            View Solutions
-          </Link>
-          <p className="mt-8">
-            <Link href="/integration" className="inline-flex items-center text-sm sm:text-base font-semibold text-slate-300 hover:text-[#29ABE2] transition">
-              See how FlowGuard connects with your ticketing and response systems &rarr;
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">
+              Book My Free Water-Risk Walk
             </Link>
-          </p>
+            <Link href="/integration" className="inline-block border border-white/20 text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
+              See API, webhook, and ticketing handoff options
+            </Link>
+          </div>
         </div>
       </motion.section>
     </main>
