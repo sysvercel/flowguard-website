@@ -69,13 +69,12 @@ export default function WhyPage() {
   return (
     <main>
       {/* ── Section 1 — Hero: Dual audience split ── */}
-      <section className="relative bg-[#0D2E4E] overflow-hidden">
-        <div aria-hidden className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#29ABE2]/15 rounded-full blur-3xl" />
-        <div aria-hidden className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#1A6FA8]/15 rounded-full blur-3xl" />
+      <section className="relative bg-[#0E1B30] overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5">
               Built for Multifamily Operators
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.08] tracking-tight mb-5">
@@ -152,7 +151,7 @@ export default function WhyPage() {
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               Market Context
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -197,7 +196,7 @@ export default function WhyPage() {
       <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               Two Decision Makers
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -236,8 +235,8 @@ export default function WhyPage() {
             {/* Asset Manager panel */}
             <div className="bg-white rounded-2xl border border-slate-100 shadow-[0_4px_24px_rgba(15,23,42,0.06)] p-7 sm:p-8">
               <div className="flex items-center justify-between mb-6 pb-5 border-b border-slate-100">
-                <div className="inline-flex items-center gap-2 bg-[#1B2F4E]/10 text-[#1B2F4E] text-[10px] font-bold px-3 py-1.5 rounded-full tracking-[0.2em] uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#1B2F4E]" aria-hidden />
+                <div className="inline-flex items-center gap-2 bg-[#0E1B30]/10 text-[#1B2F4E] text-[10px] font-bold px-3 py-1.5 rounded-full tracking-[0.2em] uppercase">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0E1B30]" aria-hidden />
                   Asset Manager
                 </div>
                 <span className="text-xs font-medium text-slate-400">NOI risk</span>
@@ -247,7 +246,7 @@ export default function WhyPage() {
                   <li key={item.title} className="flex items-start gap-4">
                     <span
                       aria-hidden
-                      className="mt-[7px] w-1.5 h-1.5 rounded-full bg-[#1B2F4E] shrink-0"
+                      className="mt-[7px] w-1.5 h-1.5 rounded-full bg-[#0E1B30] shrink-0"
                     />
                     <div>
                       <p className="text-[#1B2F4E] font-semibold text-sm sm:text-base mb-1">{item.title}</p>
@@ -265,7 +264,7 @@ export default function WhyPage() {
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               How It Works
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -280,7 +279,7 @@ export default function WhyPage() {
             {howItWorks.map(item => (
               <div key={item.step} className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-full bg-[#1B2F4E] text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#0E1B30] text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">
                     {item.step}
                   </div>
                   <span className="h-px flex-1 bg-slate-200" aria-hidden />
@@ -296,9 +295,9 @@ export default function WhyPage() {
       </motion.section>
 
       {/* ── Section 5 — Real incident proof ── */}
-      <motion.section {...fadeUp} className="bg-[#0D2E4E] py-20 sm:py-24">
+      <motion.section {...fadeUp} className="bg-[#0E1B30] py-20 sm:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#1B2F4E] rounded-2xl border border-white/10 shadow-[0_12px_48px_rgba(0,0,0,0.3)] overflow-hidden">
+          <div className="bg-[#0E1B30] rounded-2xl border border-white/10 shadow-[0_12px_48px_rgba(0,0,0,0.3)] overflow-hidden">
             <div className="px-8 sm:px-10 lg:px-14 pt-10 sm:pt-12 pb-8">
               <div className="inline-flex items-center gap-2 bg-[#29ABE2]/15 text-[#29ABE2] text-[10px] font-bold px-3 py-1.5 rounded-full mb-6 tracking-[0.2em] uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2]" aria-hidden />
@@ -333,7 +332,7 @@ export default function WhyPage() {
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               Packages
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -351,7 +350,7 @@ export default function WhyPage() {
               </div>
               <div className="flex items-baseline justify-between mb-1 mt-2">
                 <h3 className="text-xl sm:text-2xl font-bold text-[#1B2F4E] tracking-tight">Protect</h3>
-                <span className="text-[10px] font-semibold text-[#29ABE2] tracking-[0.18em] uppercase">Tier 1</span>
+                <span className="text-[10px] font-mono font-semibold text-[#29ABE2] tracking-[0.18em] uppercase">Tier 1</span>
               </div>
               <p className="text-slate-500 text-sm mb-6">Detection, response, and documentation.</p>
               <ul className="space-y-3 text-sm text-slate-600 mb-8">
@@ -432,10 +431,10 @@ export default function WhyPage() {
       </motion.section>
 
       {/* ── Section 7 — Final CTA ── */}
-      <motion.section {...fadeUp} className="relative bg-[#1B2F4E] py-20 sm:py-24 overflow-hidden">
-        <div aria-hidden className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[48rem] h-[48rem] bg-[#29ABE2]/10 rounded-full blur-3xl" />
+      <motion.section {...fadeUp} className="relative bg-[#0E1B30] py-20 sm:py-24 overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5">
+          <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5">
             Next Step
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-5">

@@ -96,11 +96,10 @@ export default function SampleReportPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative bg-[#0D2E4E] overflow-hidden">
-        <div aria-hidden className="absolute top-1/3 left-1/4 w-80 h-80 bg-[#29ABE2]/15 rounded-full blur-3xl" />
-        <div aria-hidden className="absolute bottom-0 right-1/4 w-72 h-72 bg-[#1A6FA8]/15 rounded-full blur-3xl" />
+      <section className="relative bg-[#0E1B30] overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5">
+          <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5">
             Claims-Ready Documentation
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.08] mb-6">
@@ -123,7 +122,7 @@ export default function SampleReportPage() {
 
           <motion.div {...fadeUp} className="bg-white rounded-2xl shadow-[0_12px_48px_rgba(15,23,42,0.08)] border border-slate-100 overflow-hidden">
             {/* Report header */}
-            <div className="bg-[#1B2F4E] px-6 sm:px-8 py-6">
+            <div className="bg-[#0E1B30] px-6 sm:px-8 py-6">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <Image
@@ -290,7 +289,7 @@ export default function SampleReportPage() {
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Every Report Includes</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Every Report Includes</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight mb-4">
               A complete, defensible record of every incident
             </h2>
@@ -313,7 +312,7 @@ export default function SampleReportPage() {
       </motion.section>
 
       {/* CTA */}
-      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 text-center">
+      <motion.section {...fadeUp} className="bg-[#0E1B30] py-20 sm:py-24 text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
             Stop chasing paperwork after every incident.

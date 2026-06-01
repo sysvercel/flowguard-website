@@ -93,10 +93,10 @@ export default function Integration() {
   return (
     <main>
       {/* Phase 1 — Hero */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden">
+      <section className="relative bg-[#0E1B30] overflow-hidden">
         <WaterRiskGlowBackground />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-center">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
+          <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
             REST API &middot; Webhooks &middot; Ticketing Handoff
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
@@ -123,7 +123,7 @@ export default function Integration() {
       <section className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Payload</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Payload</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
               What FlowGuard can hand off.
             </h2>
@@ -147,17 +147,17 @@ export default function Integration() {
       </section>
 
       {/* Phase 3 — Integration methods */}
-      <section className="bg-[#1B2F4E] py-20 sm:py-24">
+      <section className="bg-[#0E1B30] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Methods</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Methods</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
               Three ways to integrate.
             </h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {methods.map(({ tag, name, body, note }) => (
-              <div key={name} className="bg-[#162844] border border-white/10 rounded-xl p-6 sm:p-7 flex flex-col">
+              <div key={name} className="bg-[#0E1B30] border border-white/10 rounded-xl p-6 sm:p-7 flex flex-col">
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#29ABE2] mb-3">{tag}</span>
                 <h3 className="text-xl font-bold text-white mb-4">{name}</h3>
                 <p className="text-sm text-slate-300 leading-relaxed mb-5">{body}</p>
@@ -173,7 +173,7 @@ export default function Integration() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Honest Version</p>
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Honest Version</p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
                 What we will not pretend.
               </h2>
@@ -205,7 +205,7 @@ export default function Integration() {
       <section className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">An Example</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">An Example</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
               How a ticket handoff can work.
             </h2>
@@ -224,11 +224,11 @@ export default function Integration() {
       </section>
 
       {/* Phase 6 — Sample payload / technical trust */}
-      <section className="bg-[#1B2F4E] py-20 sm:py-24">
+      <section className="bg-[#0E1B30] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Technical Trust</p>
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Technical Trust</p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
                 Structured enough for software. Clear enough for operations.
               </h2>
@@ -271,7 +271,7 @@ export default function Integration() {
                 </p>
               </div>
             </div>
-            <div className="bg-[#0F1F38] border border-white/10 rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+            <div className="bg-[#0E1B30] border border-white/10 rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
               <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10">
                 <span className="w-3 h-3 rounded-full bg-[#EF4444]/70" aria-hidden />
                 <span className="w-3 h-3 rounded-full bg-[#F59E0B]/70" aria-hidden />
@@ -289,7 +289,7 @@ export default function Integration() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Access</p>
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Access</p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
                 Controlled access, not an open firehose.
               </h2>
@@ -310,7 +310,7 @@ export default function Integration() {
       </section>
 
       {/* Phase 8 — Final CTA */}
-      <section className="bg-[#1B2F4E] py-20 sm:py-24 text-center">
+      <section className="bg-[#0E1B30] py-20 sm:py-24 text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
             Want to know what your systems can actually support?

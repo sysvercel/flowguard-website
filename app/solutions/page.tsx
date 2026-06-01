@@ -24,11 +24,11 @@ export default function Solutions() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative bg-[#1B2F4E] py-28 sm:py-32 overflow-hidden">
+      <section className="relative bg-[#0E1B30] py-28 sm:py-32 overflow-hidden">
         <WaterRiskGlowBackground />
         <div className="relative z-10 max-w-5xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="text-center lg:text-left">
-            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-4">
+            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-4">
               <span className="fg-node" /> Coverage Tiers
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
@@ -48,7 +48,7 @@ export default function Solutions() {
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               Platform Capabilities
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -144,7 +144,7 @@ export default function Solutions() {
       <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               At a Glance
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -272,7 +272,7 @@ export default function Solutions() {
       </motion.section>
 
       {/* Infrastructure Note */}
-      <motion.section {...fadeUp} className="relative bg-[#1B2F4E] py-16 text-center overflow-hidden">
+      <motion.section {...fadeUp} className="relative bg-[#0E1B30] py-16 text-center overflow-hidden">
         <WaterRiskGlowBackground />
         <div className="relative z-10 max-w-3xl mx-auto px-6">
           <p className="text-white text-lg leading-relaxed mb-2">

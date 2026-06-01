@@ -76,10 +76,10 @@ export default function HowItWorks() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden">
+      <section className="relative bg-[#0E1B30] overflow-hidden">
         <WaterRiskGlowBackground radar />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-center">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
+          <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
             How FlowGuard Works
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
@@ -106,7 +106,7 @@ export default function HowItWorks() {
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">For Operators</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">For Operators</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
               What property operators actually care about.
             </h2>
@@ -123,12 +123,12 @@ export default function HowItWorks() {
       </motion.section>
 
       {/* Phase 3 — Maintenance hero */}
-      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 relative overflow-hidden">
-        <div aria-hidden className="absolute top-0 right-0 w-96 h-96 bg-[#29ABE2]/10 rounded-full blur-3xl" />
+      <motion.section {...fadeUp} className="bg-[#0E1B30] py-20 sm:py-24 relative overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Hero</p>
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Hero</p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
                 Your maintenance team is the hero. FlowGuard gives them the playbook.
               </h2>
@@ -149,7 +149,7 @@ export default function HowItWorks() {
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Flow</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Flow</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
               The response flow is simple on purpose.
             </h2>
@@ -178,7 +178,7 @@ export default function HowItWorks() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div className="lg:sticky lg:top-28">
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">No Ignored Alerts</p>
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">No Ignored Alerts</p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
                 An alert that dies on one phone is not protection.
               </h2>
@@ -193,7 +193,7 @@ export default function HowItWorks() {
               <div className="flex flex-wrap items-center gap-3 mb-6">
                 {['Tier 1', 'Tier 2', 'Tier 3'].map((tier, i) => (
                   <div key={tier} className="flex items-center gap-3">
-                    <span className="bg-[#1B2F4E] text-white text-sm font-semibold px-4 py-2 rounded-full">{tier}</span>
+                    <span className="bg-[#0E1B30] text-white text-sm font-semibold px-4 py-2 rounded-full">{tier}</span>
                     {i < 2 && <span aria-hidden className="text-[#29ABE2] font-bold">&rarr;</span>}
                   </div>
                 ))}
@@ -213,7 +213,7 @@ export default function HowItWorks() {
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Record</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Record</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
               The report is not paperwork. It is protection.
             </h2>
@@ -249,17 +249,17 @@ export default function HowItWorks() {
       </motion.section>
 
       {/* Phase 7 — Leadership value */}
-      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24">
+      <motion.section {...fadeUp} className="bg-[#0E1B30] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">For Leadership</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">For Leadership</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
               What this gives leadership.
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {leadershipCards.map(({ title, copy }) => (
-              <div key={title} className="bg-[#162844] border border-white/10 rounded-xl p-6 sm:p-7">
+              <div key={title} className="bg-[#0E1B30] border border-white/10 rounded-xl p-6 sm:p-7">
                 <h3 className="font-bold text-white mb-3">{title}</h3>
                 <p className="text-sm text-slate-300 leading-relaxed">{copy}</p>
               </div>
@@ -271,7 +271,7 @@ export default function HowItWorks() {
       {/* Phase 8 — What FlowGuard is not */}
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Honest Version</p>
+          <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Honest Version</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
             What FlowGuard is not.
           </h2>
@@ -287,7 +287,7 @@ export default function HowItWorks() {
       </motion.section>
 
       {/* Phase 9 — Site walk CTA */}
-      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 text-center">
+      <motion.section {...fadeUp} className="bg-[#0E1B30] py-20 sm:py-24 text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
             Want to see how this would work on your property?

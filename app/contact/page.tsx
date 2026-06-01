@@ -41,12 +41,11 @@ export default function Contact() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden">
-        <div aria-hidden className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#29ABE2]/15 rounded-full blur-3xl" />
-        <div aria-hidden className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#1A6FA8]/15 rounded-full blur-3xl" />
+      <section className="relative bg-[#0E1B30] overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 text-center">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
+          <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
             Request a Demo
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
@@ -95,7 +94,7 @@ export default function Contact() {
               <div className="lg:col-span-3">
                 <div className="bg-white rounded-2xl border border-slate-100 shadow-[0_4px_24px_rgba(15,23,42,0.06)] p-6 sm:p-8 lg:p-10">
                   <div className="mb-8">
-                    <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+                    <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
                       Step 1
                     </p>
                     <h2 className="text-2xl sm:text-3xl font-bold text-[#1B2F4E] tracking-tight mb-3">
@@ -222,7 +221,7 @@ export default function Contact() {
               <aside className="lg:col-span-2 space-y-5">
                 {/* Card 1 — Process */}
                 <div className="bg-white rounded-2xl border border-slate-100 shadow-[0_4px_24px_rgba(15,23,42,0.06)] p-6 sm:p-7">
-                  <p className="text-xs font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+                  <p className="text-xs font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
                     Our Process
                   </p>
                   <h3 className="text-lg sm:text-xl font-bold text-[#1B2F4E] tracking-tight mb-5">
@@ -241,8 +240,8 @@ export default function Contact() {
                 </div>
 
                 {/* Card 2 — Direct contact */}
-                <div className="bg-[#1B2F4E] rounded-2xl border border-white/10 p-6 sm:p-7">
-                  <p className="text-xs font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+                <div className="bg-[#0E1B30] rounded-2xl border border-white/10 p-6 sm:p-7">
+                  <p className="text-xs font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
                     Direct Contact
                   </p>
                   <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight mb-5">

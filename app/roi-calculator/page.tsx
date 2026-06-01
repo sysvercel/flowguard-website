@@ -44,7 +44,7 @@ export default function ROICalculatorPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#1B2F4E] py-28 sm:py-32 text-center">
+      <section className="bg-[#0E1B30] py-28 sm:py-32 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <div className="inline-block bg-[#29ABE2]/20 text-[#29ABE2] text-xs font-semibold px-4 py-2 rounded-full mb-6 tracking-wider uppercase">
             Water Risk &amp; ROI
@@ -64,7 +64,7 @@ export default function ROICalculatorPage() {
       <section className="bg-white py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               What Actually Drives Cost
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -115,7 +115,7 @@ export default function ROICalculatorPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#1B2F4E] py-20 sm:py-24 text-center">
+      <section className="bg-[#0E1B30] py-20 sm:py-24 text-center">
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
             Want a real number? Let us walk your property.

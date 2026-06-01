@@ -9,7 +9,7 @@ export default function FAQPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#1B2F4E] py-24 text-center">
+      <section className="bg-[#0E1B30] py-24 text-center">
         <div className="max-w-3xl mx-auto px-6">
           <div className="inline-block bg-[#29ABE2]/20 text-[#29ABE2] text-xs font-semibold px-4 py-2 rounded-full mb-6 tracking-wider uppercase">
             FAQ

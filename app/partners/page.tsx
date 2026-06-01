@@ -71,12 +71,11 @@ export default function PartnersPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden">
-        <div aria-hidden className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#29ABE2]/15 rounded-full blur-3xl" />
-        <div aria-hidden className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#1A6FA8]/15 rounded-full blur-3xl" />
+      <section className="relative bg-[#0E1B30] overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-center">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
+          <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
             Partner Program
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
@@ -95,7 +94,7 @@ export default function PartnersPage() {
       <section className="bg-white py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               Program Payouts
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -136,7 +135,7 @@ export default function PartnersPage() {
       <section className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               How It Works
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -151,7 +150,7 @@ export default function PartnersPage() {
             {steps.map(step => (
               <div key={step.number} className="relative z-10">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-full bg-[#1B2F4E] text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#0E1B30] text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">
                     {step.number}
                   </div>
                   <span className="h-px flex-1 bg-slate-200" aria-hidden />
@@ -172,7 +171,7 @@ export default function PartnersPage() {
       <section className="bg-white py-20 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               Submit a Referral
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
@@ -313,11 +312,11 @@ export default function PartnersPage() {
       </section>
 
       {/* Bottom contact / support */}
-      <section className="relative bg-[#1B2F4E] py-20 sm:py-24 overflow-hidden">
-        <div aria-hidden className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-[#29ABE2]/10 rounded-full blur-3xl" />
+      <section className="relative bg-[#0E1B30] py-20 sm:py-24 overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5">
               Partner Support
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-4">

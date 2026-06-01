@@ -58,7 +58,7 @@ export default function AssessmentChat() {
 
   return (
     <div className="flex flex-col h-[600px] max-w-2xl mx-auto bg-white rounded-2xl shadow-[0_12px_48px_rgba(15,23,42,0.12)] overflow-hidden border border-slate-200">
-      <div className="bg-[#1B2F4E] px-5 sm:px-6 py-4 flex items-center gap-3">
+      <div className="bg-[#0E1B30] px-5 sm:px-6 py-4 flex items-center gap-3">
         <div className="relative shrink-0">
           <div className="w-10 h-10 rounded-full bg-[#29ABE2] flex items-center justify-center">
             <span className="text-white font-bold text-sm">R</span>

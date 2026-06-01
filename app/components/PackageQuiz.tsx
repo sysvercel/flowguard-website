@@ -93,7 +93,7 @@ export default function PackageQuiz() {
   const result = recommendation ? results[recommendation as keyof typeof results] : null
 
   return (
-    <section className="bg-[#1B2F4E] py-20">
+    <section className="bg-[#0E1B30] py-20">
       <div className="max-w-2xl mx-auto px-6">
         <div className="text-center mb-10">
           <div className="inline-block bg-[#29ABE2]/20 text-[#29ABE2] text-xs font-semibold px-4 py-2 rounded-full mb-4 tracking-wider uppercase">

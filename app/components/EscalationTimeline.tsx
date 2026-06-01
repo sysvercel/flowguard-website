@@ -73,7 +73,7 @@ export default function EscalationTimeline() {
     <div ref={ref} className="max-w-2xl mx-auto">
       {/* Clock display */}
       <div className="text-center mb-12">
-        <div className="inline-flex items-center justify-center w-28 h-28 rounded-full border-4 border-[#29ABE2] bg-[#1B2F4E] mb-4">
+        <div className="inline-flex items-center justify-center w-28 h-28 rounded-full border-4 border-[#29ABE2] bg-[#0E1B30] mb-4">
           <span className="text-3xl font-bold text-white font-mono">{clock}</span>
         </div>
         <p className="text-slate-500 text-sm">Time elapsed since detection</p>

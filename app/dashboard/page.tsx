@@ -173,16 +173,16 @@ function CheckRow({ label, state }: { label: string; state: 'ok' | 'pending' }) 
 
 export default function DashboardPage() {
   return (
-    <main className="bg-[#0F1F38]">
+    <main className="bg-[#0E1B30]">
       {/* Hero */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden">
+      <section className="relative bg-[#0E1B30] overflow-hidden">
         <WaterRiskGlowBackground radar />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2.5 mb-5 sm:mb-6">
                 <span className="fg-node" />
-                <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase">
+                <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase">
                   FlowGuard Client Portal
                 </p>
               </div>
@@ -296,11 +296,11 @@ export default function DashboardPage() {
       </section>
 
       {/* Portal overview cards */}
-      <section className="relative bg-[#0F1F38] overflow-hidden py-20 sm:py-24">
+      <section className="relative bg-[#0E1B30] overflow-hidden py-20 sm:py-24">
         <WaterRiskGlowBackground />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               Inside the portal
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
@@ -329,12 +329,12 @@ export default function DashboardPage() {
       </section>
 
       {/* Property overview + zone inventory */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden py-20 sm:py-24">
+      <section className="relative bg-[#0E1B30] overflow-hidden py-20 sm:py-24">
         <WaterRiskGlowBackground />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
                 Property view
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight mb-5">
@@ -409,7 +409,7 @@ export default function DashboardPage() {
       </section>
 
       {/* Device health */}
-      <section className="relative bg-[#0F1F38] overflow-hidden py-20 sm:py-24">
+      <section className="relative bg-[#0E1B30] overflow-hidden py-20 sm:py-24">
         <WaterRiskGlowBackground fine />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -426,7 +426,7 @@ export default function DashboardPage() {
               </div>
               <div className="grid grid-cols-2 gap-px bg-white/10">
                 {deviceStatus.map(([label, value]) => (
-                  <div key={label} className="bg-[#162844] px-5 sm:px-6 py-4">
+                  <div key={label} className="bg-[#0E1B30] px-5 sm:px-6 py-4">
                     <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500 mb-1">{label}</p>
                     <StatusValue value={value} />
                   </div>
@@ -450,7 +450,7 @@ export default function DashboardPage() {
               </div>
             </div>
             <div className="order-1 lg:order-2">
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
                 Device health
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight mb-5">
@@ -471,12 +471,12 @@ export default function DashboardPage() {
       </section>
 
       {/* Scorecard / readiness */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden py-20 sm:py-24">
+      <section className="relative bg-[#0E1B30] overflow-hidden py-20 sm:py-24">
         <WaterRiskGlowBackground />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
                 Readiness scorecard
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight mb-5">
@@ -515,11 +515,11 @@ export default function DashboardPage() {
       </section>
 
       {/* Incident + audit trail */}
-      <section className="relative bg-[#0F1F38] overflow-hidden py-20 sm:py-24">
+      <section className="relative bg-[#0E1B30] overflow-hidden py-20 sm:py-24">
         <WaterRiskGlowBackground radar />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
               Incidents & audit trail
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
@@ -560,12 +560,12 @@ export default function DashboardPage() {
       </section>
 
       {/* Reports */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden py-20 sm:py-24">
+      <section className="relative bg-[#0E1B30] overflow-hidden py-20 sm:py-24">
         <WaterRiskGlowBackground />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
                 Reports & documents
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight mb-5">
@@ -601,10 +601,10 @@ export default function DashboardPage() {
       </section>
 
       {/* Maintenance / SMS-first */}
-      <section className="relative bg-[#0F1F38] overflow-hidden py-20 sm:py-24">
+      <section className="relative bg-[#0E1B30] overflow-hidden py-20 sm:py-24">
         <WaterRiskGlowBackground fine />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
+          <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
             For the maintenance team
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-5">
@@ -626,7 +626,7 @@ export default function DashboardPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden py-20 sm:py-24 text-center">
+      <section className="relative bg-[#0E1B30] overflow-hidden py-20 sm:py-24 text-center">
         <WaterRiskGlowBackground radar />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">

@@ -42,7 +42,7 @@ export default function Header() {
 
           <Link
             href="/contact"
-            className="inline-flex items-center bg-[#1B2F4E] text-white px-3 sm:px-4 lg:px-5 py-[7px] sm:py-2 rounded-full text-[12px] sm:text-[13px] font-semibold hover:bg-[#29ABE2] transition-colors whitespace-nowrap"
+            className="inline-flex items-center bg-[#0E1B30] text-white px-3 sm:px-4 lg:px-5 py-[7px] sm:py-2 rounded-full text-[12px] sm:text-[13px] font-semibold hover:bg-[#29ABE2] transition-colors whitespace-nowrap"
           >
             <span className="sm:hidden">Book Walk</span>
             <span className="hidden sm:inline">Book My Free Water-Risk Walk</span>
@@ -70,7 +70,7 @@ export default function Header() {
 
       {/* Sidebar Drawer */}
       <aside
-        className={`fixed top-0 right-0 z-[70] h-full w-80 max-w-[85vw] bg-[#0D2E4E] transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 z-[70] h-full w-80 max-w-[85vw] bg-[#0E1B30] transform transition-transform duration-300 ease-in-out ${
           drawerOpen ? 'translate-x-0' : 'translate-x-full'
         } overflow-y-auto`}
       >

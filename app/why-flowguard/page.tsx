@@ -98,10 +98,10 @@ export default function WhyFlowGuard() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative bg-[#1B2F4E] overflow-hidden">
+      <section className="relative bg-[#0E1B30] overflow-hidden">
         <WaterRiskGlowBackground radar />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-center">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
+          <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
             Built for Response, Not Just Detection
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
@@ -129,7 +129,7 @@ export default function WhyFlowGuard() {
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Positioning</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Positioning</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
               Detection alone doesn&apos;t end the event
             </h2>
@@ -168,7 +168,7 @@ export default function WhyFlowGuard() {
       <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Why FlowGuard</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Why FlowGuard</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
               Four pillars that separate us from notification-only sensors
             </h2>
@@ -192,7 +192,7 @@ export default function WhyFlowGuard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Documentation Layer</p>
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Documentation Layer</p>
               <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-5">
                 When carriers review an incident, they ask three questions.
               </h2>
@@ -215,7 +215,7 @@ export default function WhyFlowGuard() {
 
             {/* Document-style mock */}
             <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(15,23,42,0.08)] border border-slate-100 overflow-hidden">
-              <div className="bg-[#1B2F4E] px-6 py-5 flex items-center justify-between">
+              <div className="bg-[#0E1B30] px-6 py-5 flex items-center justify-between">
                 <div>
                   <p className="text-[#29ABE2] font-bold text-base">FlowGuard</p>
                   <p className="text-slate-400 text-[10px] mt-0.5">Asset Protection LLC · Dallas, TX</p>
@@ -271,7 +271,7 @@ export default function WhyFlowGuard() {
       <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Decision Tool</p>
+            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Decision Tool</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
               How FlowGuard compares
             </h2>
@@ -281,7 +281,7 @@ export default function WhyFlowGuard() {
           </div>
 
           <div className="bg-white rounded-2xl border border-slate-100 shadow-[0_8px_32px_rgba(15,23,42,0.06)] overflow-hidden">
-            <div className="grid grid-cols-[1fr_160px_160px] sm:grid-cols-[1fr_200px_200px] bg-[#1B2F4E]">
+            <div className="grid grid-cols-[1fr_160px_160px] sm:grid-cols-[1fr_200px_200px] bg-[#0E1B30]">
               <div className="px-5 sm:px-6 py-4 text-slate-300 font-semibold text-xs sm:text-sm uppercase tracking-wider">
                 Capability
               </div>
@@ -319,7 +319,7 @@ export default function WhyFlowGuard() {
       </motion.section>
 
       {/* Ownership model — own the hardware vs. rent it forever */}
-      <section className="bg-[#1B2F4E] py-20 sm:py-24">
+      <section className="bg-[#0E1B30] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
@@ -328,7 +328,7 @@ export default function WhyFlowGuard() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-4">
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-4">
                 Ownership Model
               </p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-5">
@@ -414,7 +414,7 @@ export default function WhyFlowGuard() {
       </section>
 
       {/* CTA */}
-      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 text-center border-t border-white/5">
+      <motion.section {...fadeUp} className="bg-[#0E1B30] py-20 sm:py-24 text-center border-t border-white/5">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
             See the system running on your property.
