@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import WaterRiskGlowBackground from '../components/WaterRiskGlowBackground'
-import ProtectedPropertyMap from '../components/ProtectedPropertyMap'
 import IncidentCommandTimeline from '../components/IncidentCommandTimeline'
 import ReportPreviewCard from '../components/ReportPreviewCard'
 
@@ -75,6 +74,15 @@ const overviewCards: { eyebrow: string; title: string; desc: string; icon: React
       </svg>
     ),
   },
+]
+
+const monitoredZones: { zone: string; tag: string; risk?: boolean }[] = [
+  { zone: 'Mechanical Room', tag: 'High sensitivity' },
+  { zone: 'Main Riser', tag: 'Standard' },
+  { zone: 'Unit 204 \u00b7 Kitchen', tag: 'Standard' },
+  { zone: 'Laundry', tag: 'Standard' },
+  { zone: 'Water Heater', tag: 'High-risk zone', risk: true },
+  { zone: 'Boiler Room', tag: 'High-risk zone', risk: true },
 ]
 
 const deviceStatus: [string, string, boolean?][] = [
@@ -320,7 +328,7 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      {/* Property overview + map */}
+      {/* Property overview + zone inventory */}
       <section className="relative bg-[#1B2F4E] overflow-hidden py-20 sm:py-24">
         <WaterRiskGlowBackground />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -330,14 +338,15 @@ export default function DashboardPage() {
                 Property view
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight mb-5">
-                Open a property and see exactly what is protected.
+                Open a property and see which zones are monitored.
               </h2>
               <p className="text-slate-300 leading-relaxed text-base sm:text-lg mb-4">
-                Each property opens into a live map of its protected zones &mdash; mechanical rooms, water
-                heaters, risers, laundry, and high-risk areas &mdash; with the status of every sensor watching them.
+                Each property opens into a clear inventory of monitored zones &mdash; mechanical rooms, water
+                heaters, risers, laundry areas, and high-risk unit locations &mdash; with the device status
+                attached to each zone.
               </p>
               <ul className="space-y-3 mt-6">
-                {['Oakridge Apartments', 'Westside Apartments'].map((name) => (
+                {['Oakridge Apartments'].map((name) => (
                   <li key={name} className="flex items-center gap-3 fg-command-card rounded-xl px-4 py-3">
                     <span className="fg-node" />
                     <span className="text-sm sm:text-base font-semibold text-white">{name}</span>
@@ -348,7 +357,53 @@ export default function DashboardPage() {
                 ))}
               </ul>
             </div>
-            <ProtectedPropertyMap />
+
+            {/* Monitored Zone Inventory */}
+            <div className="fg-command-card rounded-2xl p-5 sm:p-6 w-full">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-2.5">
+                  <span className="fg-node" />
+                  <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">
+                    Monitored Zone Inventory
+                  </span>
+                </div>
+                <span className="fg-chip text-[#29ABE2] border-[#29ABE2]/30">Device status</span>
+              </div>
+              <ul className="space-y-2">
+                {monitoredZones.map((z) => (
+                  <li
+                    key={z.zone}
+                    className="flex flex-wrap items-center gap-2 sm:gap-3 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2.5"
+                  >
+                    <span className={z.risk ? 'fg-node fg-node-amber' : 'fg-node'} />
+                    <span className="text-xs sm:text-sm font-medium text-white">{z.zone}</span>
+                    <span className="fg-chip text-emerald-300 border-emerald-400/30 bg-emerald-400/10 ml-auto">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Online
+                    </span>
+                    <span
+                      className={`fg-chip ${
+                        z.risk
+                          ? 'text-[#F59E0B] border-[#F59E0B]/30 bg-[#F59E0B]/10'
+                          : 'text-slate-400 border-white/15'
+                      }`}
+                    >
+                      {z.tag}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-5 text-[10px] sm:text-xs text-slate-400">
+                <span className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" /> Online &amp; reporting
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="fg-node" /> Armed
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]" /> High-risk zone
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
