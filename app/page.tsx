@@ -1,14 +1,13 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import WaterRiskGlowBackground from './components/WaterRiskGlowBackground'
-import ProtectedPropertyMap from './components/ProtectedPropertyMap'
 
-const heroFeed = [
-  'Leak detected',
-  'Alert routed',
-  'Human acknowledged',
-  'Report generated',
+const incidentTape: { t: string; event: string; meta: string; done?: boolean }[] = [
+  { t: '02:14:03', event: 'Detected', meta: 'Riser \u00b7 Mechanical Room' },
+  { t: '02:14:24', event: 'Acknowledged', meta: 'On-call \u00b7 Tier 1' },
+  { t: '02:22:18', event: 'On site', meta: 'Source isolated' },
+  { t: '02:28:33', event: 'Contained', meta: 'Wet-vac \u00b7 area drying' },
+  { t: '02:47:12', event: 'Resolved', meta: 'Auto-confirmed dry', done: true },
 ]
 
 const fadeUp = {
@@ -45,15 +44,23 @@ export default function Home() {
   return (
     <main>
       {/* Section 1 — Hero */}
-      <section className="relative min-h-screen bg-[#1B2F4E] flex items-center overflow-hidden">
-        <WaterRiskGlowBackground radar />
+      <section className="relative min-h-screen bg-[#0E1B30] flex items-center overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
+        {/* Signature waterline */}
+        <div aria-hidden className="absolute left-0 right-0 top-[60%] hidden lg:block">
+          <div className="fg-waterline" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between mt-2.5">
+            <span className="font-mono text-[10px] tracking-[0.24em] text-[#29ABE2]/70">02:14:03 / WATER DETECTED</span>
+            <span className="font-mono text-[10px] tracking-[0.24em] text-slate-600">CONTAINMENT THRESHOLD</span>
+          </div>
+        </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-16 lg:pb-12">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left — copy */}
             <div className="text-center lg:text-left">
-              <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-4 sm:mb-5">
-                <span className="fg-node" /> Water-Risk Command Center
+              <p className="inline-flex items-center gap-2.5 font-mono text-[11px] sm:text-xs tracking-[0.28em] uppercase text-[#29ABE2] mb-5 sm:mb-6">
+                <span className="fg-mark" /> Water-Risk Response System
               </p>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-5 sm:mb-6">
                 Anyone can detect a leak. We own what happens next.
@@ -62,7 +69,7 @@ export default function Home() {
                 FlowGuard runs the entire response — the alert goes straight to your maintenance team, the system guides them through containment, escalates relentlessly until a human acts, and documents every second. You don&rsquo;t get an alarm. You get a handled incident.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">
+                <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
                   Book My Free Water-Risk Walk
                 </Link>
                 <Link href="/how-it-works" className="border border-white/20 text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
@@ -74,43 +81,58 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Right — protection visual */}
+            {/* Right — incident record (black-box readout) */}
             <div className="relative">
-              <ProtectedPropertyMap />
-              {/* Live response feed */}
-              <div className="mt-4 fg-command-card rounded-2xl px-5 py-4">
-                <div className="flex items-center gap-2.5 mb-3">
-                  <span className="fg-node" />
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">Live response feed</span>
+              <div className="fg-panel rounded-xl overflow-hidden">
+                <div className="flex items-center justify-between px-5 py-3.5 border-b fg-rule">
+                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-slate-400">Incident Record</span>
+                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#29ABE2]">Response owned</span>
                 </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  {heroFeed.map((item, i) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <span className="fg-chip text-[#29ABE2] border-[#29ABE2]/30">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24" aria-hidden><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                        {item}
-                      </span>
-                      {i < heroFeed.length - 1 && <span aria-hidden className="text-[#29ABE2]/60 text-xs">&rarr;</span>}
+
+                <div className="px-5 sm:px-6 py-5">
+                  {incidentTape.map((r) => (
+                    <div key={r.event} className="grid grid-cols-[58px_1fr] sm:grid-cols-[64px_1fr] gap-4">
+                      <div className="relative text-right pr-4 border-r fg-rule py-2">
+                        <span className="font-mono text-[11px] text-slate-500 tabular-nums">{r.t}</span>
+                        <span
+                          className={`absolute -right-[4px] top-1/2 -translate-y-1/2 w-[7px] h-[7px] ${
+                            r.done ? 'bg-emerald-400' : 'bg-[#29ABE2]'
+                          }`}
+                        />
+                      </div>
+                      <div className="py-2">
+                        <p className="text-sm font-semibold text-white leading-tight">{r.event}</p>
+                        <p className="font-mono text-[11px] text-slate-500 leading-tight mt-0.5">{r.meta}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
+
+                <div className="flex items-center justify-between px-5 py-3.5 border-t fg-rule">
+                  <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-slate-500">Time to resolved</span>
+                  <span className="font-mono text-sm font-semibold text-white tabular-nums">33m 09s</span>
+                </div>
               </div>
+              <p className="font-mono text-[10px] text-slate-600 leading-relaxed mt-3 text-center lg:text-left">
+                Illustrative incident record. Times vary by property, staffing, and severity.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Section 2 — Operational Proof Bar */}
-      <section className="bg-[#162844] py-14 sm:py-16 border-y border-white/5">
+      <section className="bg-[#0E1B30] py-14 sm:py-16 border-y fg-rule">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-xs sm:text-sm font-semibold text-slate-400 tracking-[0.2em] uppercase mb-8 sm:mb-10">
+          <p className="text-center font-mono text-[11px] sm:text-xs font-medium text-slate-500 tracking-[0.22em] uppercase mb-8 sm:mb-10">
             Catch it first. Route it fast. Document every step.
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-xl overflow-hidden">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06] rounded-xl overflow-hidden">
             {operationalProof.map(({ big, label }) => (
-              <div key={label} className="bg-[#1B2F4E] text-center px-6 py-8 sm:py-10">
-                <div className="text-4xl sm:text-5xl font-bold text-[#29ABE2] tracking-tight mb-2">{big}</div>
-                <div className="text-sm text-slate-300 font-medium">{label}</div>
+              <div key={label} className="bg-[#0E1B30] text-center px-6 py-8 sm:py-10">
+                <span className="fg-mark mx-auto mb-4 block" />
+                <div className="font-mono text-3xl sm:text-4xl font-bold text-white tracking-tight tabular-nums mb-2">{big}</div>
+                <div className="text-xs sm:text-sm text-slate-400 font-medium tracking-wide">{label}</div>
               </div>
             ))}
           </div>
@@ -120,7 +142,7 @@ export default function Home() {
       {/* Section 3 — Built for the people on the ground */}
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">On The Ground</p>
+          <p className="font-mono text-[11px] sm:text-xs font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">On The Ground</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
             Built for the people on the ground.
           </h2>
@@ -136,11 +158,11 @@ export default function Home() {
       </motion.section>
 
       {/* Section 4 — An alert nobody acts on is just noise */}
-      <motion.section {...fadeUp} className="relative bg-[#1B2F4E] py-20 sm:py-24 overflow-hidden">
-        <WaterRiskGlowBackground />
+      <motion.section {...fadeUp} className="relative bg-[#0E1B30] py-20 sm:py-24 overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Relentless Escalation</p>
+            <p className="font-mono text-[11px] sm:text-xs font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">Relentless Escalation</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
               An alert nobody acts on is just noise.
             </h2>
@@ -154,16 +176,16 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Escalation timeline visual */}
+          {/* Escalation chain — instrument cards */}
           <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            <div aria-hidden className="hidden lg:block absolute top-5 left-[12%] right-[12%] border-t-2 border-dashed border-white/15 z-0" />
+            <div aria-hidden className="hidden lg:block absolute top-6 left-[12%] right-[12%] fg-waterline z-0" />
             {escalationChain.map(({ tier, who, detail }, i) => (
-              <div key={tier} className="relative z-10 bg-[#162844] border border-white/10 rounded-xl p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 shrink-0 rounded-full bg-[#29ABE2] text-white flex items-center justify-center font-bold text-sm">
-                    {i + 1}
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#29ABE2]">{tier}</span>
+              <div key={tier} className="relative z-10 fg-panel rounded-xl p-6">
+                <div className="flex items-baseline gap-3 mb-4">
+                  <span className="font-mono text-3xl font-bold text-[#29ABE2] tabular-nums leading-none">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400">{tier}</span>
                 </div>
                 <h3 className="font-bold text-white mb-2">{who}</h3>
                 <p className="text-sm text-slate-400 leading-relaxed">{detail}</p>
@@ -176,7 +198,7 @@ export default function Home() {
       {/* Section 5 — The product isn't the sensor */}
       <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Real Product</p>
+          <p className="font-mono text-[11px] sm:text-xs font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">The Real Product</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
             The product isn&rsquo;t the sensor. It&rsquo;s what happens when the sensor sees water.
           </h2>
@@ -194,7 +216,7 @@ export default function Home() {
       {/* Section 6 — We're not going to tell you it's 'seamless.' */}
       <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Honest Version</p>
+          <p className="font-mono text-[11px] sm:text-xs font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">The Honest Version</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
             We&rsquo;re not going to tell you it&rsquo;s &lsquo;seamless.&rsquo;
           </h2>
@@ -220,7 +242,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Record</p>
+              <p className="font-mono text-[11px] sm:text-xs font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">The Record</p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-5 leading-tight">
                 Not just an alert. A defensible record.
               </h2>
@@ -233,8 +255,8 @@ export default function Home() {
             </div>
             <ul className="grid grid-cols-1 gap-3">
               {recordItems.map((item) => (
-                <li key={item} className="flex items-start gap-3 bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] px-5 py-4">
-                  <svg className="w-5 h-5 mt-0.5 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <li key={item} className="flex items-start gap-3 bg-white rounded-xl border border-slate-200/80 shadow-[0_2px_12px_rgba(15,23,42,0.04)] px-5 py-4">
+                  <span className="fg-mark mt-1.5 shrink-0" />
                   <span className="text-sm sm:text-base text-slate-700 leading-relaxed">{item}</span>
                 </li>
               ))}
@@ -244,15 +266,17 @@ export default function Home() {
       </motion.section>
 
       {/* Section 8 — Final CTA */}
-      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.section {...fadeUp} className="relative bg-[#0E1B30] py-20 sm:py-24 text-center overflow-hidden">
+        <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
+        <div aria-hidden className="absolute left-0 right-0 top-10 fg-waterline" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
             Book My Free Water-Risk Walk
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mb-10 leading-relaxed">
             20 minutes. No cost. We&rsquo;ll identify your highest-risk water zones and show where protection would go first.
           </p>
-          <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">
+          <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
             Book My Free Water-Risk Walk
           </Link>
         </div>
