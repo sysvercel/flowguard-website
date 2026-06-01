@@ -174,7 +174,7 @@ export default function Home() {
             </p>
           </div>
           <Link href="/integration" className="inline-flex items-center mt-8 text-sm sm:text-base font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">
-            See exactly how integration works &rarr;
+            See API, webhook, and ticketing handoff options &rarr;
           </Link>
         </div>
       </motion.section>

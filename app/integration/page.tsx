@@ -1,89 +1,91 @@
 import Link from 'next/link'
-import EscalationTimeline from '../components/EscalationTimeline'
 
 export const metadata = {
-  title: 'FlowGuard Integration — How Installation and Alert Routing Work',
-  description: 'See how FlowGuard installs on multifamily properties, connects sensors and gateways, routes alerts, guides maintenance teams, and documents every response.',
+  title: 'FlowGuard Integrations — REST API, Webhooks, and Ticketing Handoff',
+  description: 'How FlowGuard hands off structured leak-incident data to your existing systems through REST API, webhooks, or ticketing/work-order workflows — with honest expectations about what each stack can support.',
 }
 
-const processSteps = [
+const handoffGroups = [
   {
-    n: '01',
-    title: 'Walk the property',
-    desc: 'We start by walking the property with your team and identifying the highest-risk water zones: water heaters, riser rooms, laundry areas, kitchens, mechanical rooms, boiler rooms, and past-damage areas.',
+    title: 'Incident events',
+    items: ['Leak detected', 'Alert sent', 'Acknowledged', 'En route', 'On site', 'Contained', 'Resolved'],
   },
   {
-    n: '02',
-    title: 'Place the sensors',
-    desc: 'Sensors are placed where water is most likely to hit first. FlowGuard is hardware-agnostic, so the value is not the logo on the device — it is the response engine behind it.',
+    title: 'Responder activity',
+    items: ['Who acknowledged', 'Who contained', 'Response timestamps', 'Ownership changes', 'Action notes'],
   },
   {
-    n: '03',
-    title: 'Connect the gateway',
-    desc: 'The gateway brings the sensors online and gives the property a live connection into the FlowGuard response system.',
+    title: 'Evidence',
+    items: ['Photos', 'Notes', 'Location / zone', 'Severity', 'Estimated loss prevented when applicable'],
   },
   {
-    n: '04',
-    title: 'Configure the alert chain',
-    desc: 'We set the exact response path: maintenance tech, supervisor, property manager, owner, or anyone else who needs to know. Alerts escalate until someone acknowledges and acts.',
+    title: 'Reports',
+    items: ['Maintenance recap', 'Insurance-style documentation', 'Monthly summaries', 'Delivery logs'],
   },
   {
-    n: '05',
-    title: 'Train the maintenance team',
-    desc: 'Your team learns the simple action flow: acknowledge, en route, on site, contained, resolved. We build around the people on the ground, not around a spreadsheet.',
-  },
-  {
-    n: '06',
-    title: 'Run a live test',
-    desc: 'Before we call it ready, we run a live test so your team can see the alert, response page, timestamps, photo evidence, and report generation.',
-  },
-  {
-    n: '07',
-    title: 'Document every incident',
-    desc: 'When water hits, FlowGuard captures the timeline, response actions, photos, containment, resolution, and reporting package.',
+    title: 'Status and closeout',
+    items: ['False positive', 'Known issue', 'Resolved', 'Pending dry confirmation', 'Source / category when available'],
   },
 ]
 
-const integrationMeaning = [
-  'Alerts route to the right people',
-  'Mobile response page guides the action',
-  'Escalation prevents ignored alerts',
-  'Photos and notes can be captured',
-  'Reports are generated from the response timeline',
-  'Property leadership gets visibility without micromanaging the team',
+const methods = [
+  {
+    tag: 'Method 01',
+    name: 'REST API',
+    body: 'For teams with internal tools or a system that can pull data, FlowGuard can expose structured incident records through scoped API endpoints. This is best when your team wants controlled access to incident history, reports, and response status.',
+    note: 'Access is provisioned per implementation as a scoped path — not an open, public-by-default endpoint.',
+  },
+  {
+    tag: 'Method 02',
+    name: 'Webhooks',
+    body: 'For systems that can receive events, FlowGuard can send structured webhook payloads when incidents are created, acknowledged, contained, resolved, or closed out. This is the cleanest way to trigger downstream workflows without asking maintenance to enter the same event twice.',
+    note: 'Delivery depends on the receiving system and the field mapping it expects.',
+  },
+  {
+    tag: 'Method 03',
+    name: 'Ticketing / Work-Order Handoff',
+    body: 'For ticketing or work-order systems, FlowGuard can hand off the incident summary, location, severity, responder actions, and report link. If the receiving system supports an API, we can map directly. If not, we use webhook, email, or report-based handoff.',
+    note: 'The goal is not to pretend every platform works the same. The goal is to make sure the water incident does not die inside one dashboard.',
+  },
 ]
 
-const setupExpectations = [
-  { label: 'Time', desc: 'Most pilot setups can be completed in a day depending on property size and access.' },
-  { label: 'Access', desc: 'We need access to high-risk mechanical and water areas.' },
-  { label: 'Team', desc: 'A maintenance lead or property manager should be available for routing and testing.' },
-  { label: 'Test', desc: 'We run a live alert test before calling it ready.' },
+const willNotPretend = [
+  'We do not promise magic one-click integration.',
+  'We do not force your team to abandon existing systems.',
+  'We do not hide manual setup behind the word \u2018seamless.\u2019',
+  'We do not claim a ticket was created unless the receiving system confirms it.',
+  'We do not make your maintenance team enter the same incident twice if a cleaner handoff is available.',
 ]
 
-const responseFlow = [
-  'Water detected',
-  'Alert sent',
-  'Acknowledged',
-  'En route',
-  'On site',
-  'Contained',
-  'Resolved',
-  'Report generated',
+const ticketFlow = [
+  'Sensor detects water in Unit 204 Kitchen.',
+  'FlowGuard opens the response path and alerts the right responder.',
+  'Maintenance acknowledges, goes en route, arrives, contains, and resolves.',
+  'FlowGuard creates a structured incident record.',
+  'Depending on the system, FlowGuard can send a webhook event, create or update a ticket through API, send a structured email to the work-order inbox, or attach or link the incident report.',
+  'The property keeps its normal system of record, but the water response gets documented correctly.',
 ]
 
-const documentedItems = [
-  'Detection time',
-  'Acknowledgement time',
-  'En route time',
-  'On-site time',
-  'Containment time',
-  'Resolution time',
-  'Responder name',
-  'Photo evidence',
-  'Response notes',
-  'Escalation path',
-  'Estimated loss prevented when applicable',
-  'Sample report',
+const samplePayload = `{
+  "event": "incident.resolved",
+  "property": "Sunset Apartments",
+  "zone": "Unit 204 Kitchen",
+  "severity": "standard",
+  "detected_at": "...",
+  "acknowledged_at": "...",
+  "contained_at": "...",
+  "resolved_at": "...",
+  "responder": "Maintenance Lead",
+  "photos_attached": true,
+  "report_url": "..."
+}`
+
+const accessBullets = [
+  'Scoped API keys or approved endpoints',
+  'Event-specific webhooks',
+  'Property-level access boundaries',
+  'Delivery logs where supported',
+  'No unnecessary PII',
 ]
 
 export default function Integration() {
@@ -95,15 +97,15 @@ export default function Integration() {
         <div aria-hidden className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#1A6FA8]/15 rounded-full blur-3xl" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-center">
           <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
-            Integration Without the Fairy Dust
+            REST API &middot; Webhooks &middot; Ticketing Handoff
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
-            No magic. No vague &lsquo;seamless integration.&rsquo; Just a clear response system your team can actually use.
+            FlowGuard does not need to replace your systems. It gives them better incident data.
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-9 sm:mb-10">
-            FlowGuard fits into the way multifamily maintenance already works. We walk the property, identify the highest-risk water zones, install sensors, connect the gateway, configure escalation, and train your team on the response flow. It is a real install, not a magic wand — and that is exactly why it works.
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+            FlowGuard captures the leak response as structured data — detection time, acknowledgement, responder actions, escalation path, photos, notes, containment, resolution, and reports. That record can be handed off through API, webhook, or ticketing workflows depending on what your existing systems support.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">
               Book My Free Water-Risk Walk
             </Link>
@@ -111,55 +113,87 @@ export default function Integration() {
               View Sample Report
             </Link>
           </div>
+          <p className="text-sm sm:text-base text-slate-400 max-w-3xl mx-auto leading-relaxed border-t border-white/10 pt-6">
+            We will not tell you every system is plug-and-play. Some platforms have clean APIs. Some need webhook handoff. Some need a lighter email/report workflow. We tell you which one you are actually getting before anything is installed.
+          </p>
         </div>
       </section>
 
-      {/* Phase 2 — Integration process */}
+      {/* Phase 2 — What FlowGuard can hand off */}
       <section className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Install</p>
+            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Payload</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
-              From site walk to handled incident.
+              What FlowGuard can hand off.
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {processSteps.map(({ n, title, desc }) => (
-              <div key={n} className="bg-[#F8FAFC] border border-slate-100 rounded-xl p-6 sm:p-7">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-2xl font-bold font-mono text-[#29ABE2]">{n}</span>
-                  <h3 className="font-bold text-[#1B2F4E]">{title}</h3>
-                </div>
-                <p className="text-sm text-slate-600 leading-relaxed">{desc}</p>
+            {handoffGroups.map(({ title, items }) => (
+              <div key={title} className="bg-[#F8FAFC] border border-slate-100 rounded-xl p-6 sm:p-7">
+                <h3 className="font-bold text-[#1B2F4E] mb-4">{title}</h3>
+                <ul className="space-y-2.5">
+                  {items.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-slate-600 leading-relaxed">
+                      <svg className="w-4 h-4 mt-0.5 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Phase 3 — What integration really means */}
+      {/* Phase 3 — Integration methods */}
       <section className="bg-[#1B2F4E] py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-14 sm:mb-16">
+            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Methods</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+              Three ways to integrate.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            {methods.map(({ tag, name, body, note }) => (
+              <div key={name} className="bg-[#162844] border border-white/10 rounded-xl p-6 sm:p-7 flex flex-col">
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#29ABE2] mb-3">{tag}</span>
+                <h3 className="text-xl font-bold text-white mb-4">{name}</h3>
+                <p className="text-sm text-slate-300 leading-relaxed mb-5">{body}</p>
+                <p className="text-xs text-slate-400 leading-relaxed mt-auto border-t border-white/10 pt-4">{note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Phase 4 — What we will not pretend */}
+      <section className="bg-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Definitions</p>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
-                What we mean by integration.
+              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Honest Version</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
+                What we will not pretend.
               </h2>
-              <div className="space-y-5 text-base sm:text-lg text-slate-300 leading-relaxed">
+              <div className="space-y-5 text-base sm:text-lg text-slate-600 leading-relaxed">
                 <p>
-                  We do not mean a vague software promise. We mean FlowGuard becomes part of your real response process.
+                  We will not claim every PMS, CMMS, or work-order platform integrates the same way. They do not.
                 </p>
                 <p>
-                  Your team gets alerts through the channels they already use. The response page works on a phone. Escalation follows the chain you approve. Reports are generated from the actual response record. The system is not trying to replace your maintenance team — it is there to back them up.
+                  Some systems have modern APIs. Some have limited webhooks. Some only accept email-based intake. Some require custom mapping.
+                </p>
+                <p>
+                  FlowGuard&rsquo;s job is to capture the incident cleanly and hand it off in the safest format your stack can actually support.
                 </p>
               </div>
             </div>
             <ul className="grid grid-cols-1 gap-3">
-              {integrationMeaning.map((item) => (
-                <li key={item} className="flex items-start gap-3 bg-[#162844] border border-white/10 rounded-xl px-5 py-4">
-                  <svg className="w-5 h-5 mt-0.5 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  <span className="text-sm sm:text-base text-slate-200 leading-relaxed">{item}</span>
+              {willNotPretend.map((item) => (
+                <li key={item} className="flex items-start gap-3 bg-[#F8FAFC] border border-slate-100 rounded-xl px-5 py-4">
+                  <svg className="w-5 h-5 mt-0.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                  <span className="text-sm sm:text-base text-slate-700 leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>
@@ -167,109 +201,87 @@ export default function Integration() {
         </div>
       </section>
 
-      {/* Phase 4 — Install expectations */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Setup</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
-              What to expect during setup.
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Setup is not complicated, but it is real. We need access to the right areas, a quick walkthrough with someone who knows the property, and time to test alert routing before the system goes live.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {setupExpectations.map(({ label, desc }) => (
-              <div key={label} className="bg-[#F8FAFC] border border-slate-100 rounded-xl p-6 sm:p-7">
-                <div className="text-xs font-bold uppercase tracking-[0.18em] text-[#29ABE2] mb-3">{label}</div>
-                <p className="text-sm text-slate-600 leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Phase 5 — Response flow visual */}
+      {/* Phase 5 — Ticketing / work-order example */}
       <section className="bg-[#F8FAFC] py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Response Path</p>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 sm:mb-14">
+            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">An Example</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
-              One path, start to finish.
+              How a ticket handoff can work.
             </h2>
           </div>
-
-          {/* Linear flow */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-14 sm:mb-16">
-            {responseFlow.map((step, i) => (
-              <div key={step} className="flex items-center gap-2 sm:gap-3">
-                <span className="bg-white border border-slate-200 text-[#1B2F4E] text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-full shadow-[0_2px_12px_rgba(15,23,42,0.05)]">
-                  {step}
+          <ol className="space-y-4">
+            {ticketFlow.map((step, i) => (
+              <li key={i} className="flex items-start gap-4 bg-white border border-slate-100 rounded-xl px-5 sm:px-6 py-4 sm:py-5 shadow-[0_2px_12px_rgba(15,23,42,0.05)]">
+                <span className="w-8 h-8 shrink-0 rounded-full bg-[#29ABE2] text-white flex items-center justify-center font-bold text-sm">
+                  {i + 1}
                 </span>
-                {i < responseFlow.length - 1 && (
-                  <span aria-hidden className="text-[#29ABE2] font-bold">&rarr;</span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Escalation mini-chain */}
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-            <div>
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                {['Tier 1', 'Tier 2', 'Tier 3'].map((tier, i) => (
-                  <div key={tier} className="flex items-center gap-3">
-                    <span className="bg-[#1B2F4E] text-white text-sm font-semibold px-4 py-2 rounded-full">{tier}</span>
-                    {i < 2 && <span aria-hidden className="text-[#29ABE2] font-bold">&rarr;</span>}
-                  </div>
-                ))}
-              </div>
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-                If the first person does not act, the system keeps moving. The response does not depend on one phone being picked up.
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(15,23,42,0.06)] border border-slate-100">
-              <EscalationTimeline />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Phase 6 — Reporting / documentation */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Record</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight leading-tight">
-              What gets documented.
-            </h2>
-          </div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-10">
-            {documentedItems.map((item) => (
-              <li key={item} className="flex items-start gap-3 bg-[#F8FAFC] border border-slate-100 rounded-xl px-5 py-4">
-                <svg className="w-5 h-5 mt-0.5 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                <span className="text-sm sm:text-base text-slate-700 leading-relaxed">{item}</span>
+                <span className="text-sm sm:text-base text-slate-700 leading-relaxed pt-1">{step}</span>
               </li>
             ))}
-          </ul>
-          <Link href="/sample-report" className="inline-flex items-center text-sm sm:text-base font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">
-            View Sample Report &rarr;
-          </Link>
-          <p className="text-sm text-slate-500 leading-relaxed mt-6 max-w-2xl">
-            Reports support ownership, maintenance review, and insurance conversations. They are not claim determinations and do not guarantee coverage.
-          </p>
+          </ol>
         </div>
       </section>
 
-      {/* Phase 7 — Final CTA */}
+      {/* Phase 6 — Sample payload / technical trust */}
+      <section className="bg-[#1B2F4E] py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Technical Trust</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
+                Structured enough for software. Clear enough for operations.
+              </h2>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+                Every incident becomes a clean, structured record your systems can consume — and your team can read. Exact fields vary by implementation and access level.
+              </p>
+            </div>
+            <div className="bg-[#0F1F38] border border-white/10 rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+              <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10">
+                <span className="w-3 h-3 rounded-full bg-[#EF4444]/70" aria-hidden />
+                <span className="w-3 h-3 rounded-full bg-[#F59E0B]/70" aria-hidden />
+                <span className="w-3 h-3 rounded-full bg-[#29ABE2]/70" aria-hidden />
+                <span className="ml-2 text-xs font-mono text-slate-400">webhook payload</span>
+              </div>
+              <pre className="px-5 py-5 text-xs sm:text-sm font-mono text-slate-200 overflow-x-auto leading-relaxed"><code>{samplePayload}</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Phase 7 — Security / access expectations */}
+      <section className="bg-white py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div>
+              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Access</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
+                Controlled access, not an open firehose.
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+                Integrations should be scoped. FlowGuard should only send the data a downstream system needs: incident status, location, timestamps, responder actions, and report links. We do not treat integration as permission to spray sensitive property data everywhere.
+              </p>
+            </div>
+            <ul className="grid grid-cols-1 gap-3">
+              {accessBullets.map((item) => (
+                <li key={item} className="flex items-start gap-3 bg-[#F8FAFC] border border-slate-100 rounded-xl px-5 py-4">
+                  <svg className="w-5 h-5 mt-0.5 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={1.9} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                  <span className="text-sm sm:text-base text-slate-700 leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Phase 8 — Final CTA */}
       <section className="bg-[#1B2F4E] py-20 sm:py-24 text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            Want to see where FlowGuard would go on your property?
+            Want to know what your systems can actually support?
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mb-10 leading-relaxed">
-            Book a free water-risk walk. We&rsquo;ll identify your highest-risk leak zones, show where protection would go first, and explain what the response path would look like for your team.
+            Book a free water-risk walk. We&rsquo;ll look at your property, your maintenance workflow, and the systems your team already uses — then tell you honestly whether API, webhook, ticket handoff, or report-based workflow makes the most sense.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">

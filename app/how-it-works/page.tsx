@@ -376,7 +376,7 @@ export default function HowItWorks() {
           </Link>
           <p className="mt-8">
             <Link href="/integration" className="inline-flex items-center text-sm sm:text-base font-semibold text-slate-300 hover:text-[#29ABE2] transition">
-              Want the install details? See how FlowGuard integrates with your property &rarr;
+              See how FlowGuard connects with your ticketing and response systems &rarr;
             </Link>
           </p>
         </div>
