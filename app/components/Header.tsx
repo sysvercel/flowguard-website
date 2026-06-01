@@ -44,8 +44,8 @@ export default function Header() {
             href="/contact"
             className="inline-flex items-center bg-[#1B2F4E] text-white px-3 sm:px-4 lg:px-5 py-[7px] sm:py-2 rounded-full text-[12px] sm:text-[13px] font-semibold hover:bg-[#29ABE2] transition-colors whitespace-nowrap"
           >
-            <span className="sm:hidden">Demo</span>
-            <span className="hidden sm:inline">Request a Demo</span>
+            <span className="sm:hidden">Book Walk</span>
+            <span className="hidden sm:inline">Book My Free Water-Risk Walk</span>
           </Link>
 
           <button
@@ -115,7 +115,7 @@ export default function Header() {
             <nav className="flex flex-col gap-3">
               <Link href="/why" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Protect Your Property</Link>
               <Link href="/assessment" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Free Assessment</Link>
-              <Link href="/contact" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Request a Demo</Link>
+              <Link href="/contact" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Book My Free Water-Risk Walk</Link>
               <Link href="/contact" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Contact</Link>
               <Link href="/partners" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Partners</Link>
             </nav>
@@ -126,7 +126,7 @@ export default function Header() {
             onClick={closeDrawer}
             className="block w-full text-center bg-[#29ABE2] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#1A6FA8] transition"
           >
-            Request a Demo
+            Book My Free Water-Risk Walk
           </Link>
         </div>
       </aside>
