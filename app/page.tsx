@@ -1,6 +1,15 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import WaterRiskGlowBackground from './components/WaterRiskGlowBackground'
+import ProtectedPropertyMap from './components/ProtectedPropertyMap'
+
+const heroFeed = [
+  'Leak detected',
+  'Alert routed',
+  'Human acknowledged',
+  'Report generated',
+]
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -36,32 +45,58 @@ export default function Home() {
   return (
     <main>
       {/* Section 1 — Hero */}
-      <section className="relative min-h-screen bg-[#1B2F4E] flex items-center justify-center overflow-hidden">
-        {/* Ambient background glow */}
-        <div aria-hidden className="absolute top-1/4 left-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#29ABE2]/20 rounded-full blur-3xl" />
-        <div aria-hidden className="absolute bottom-1/4 right-1/4 w-72 sm:w-80 h-72 sm:h-80 bg-[#1A6FA8]/20 rounded-full blur-3xl" />
+      <section className="relative min-h-screen bg-[#1B2F4E] flex items-center overflow-hidden">
+        <WaterRiskGlowBackground radar />
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12">
-          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-4 sm:mb-5">
-            Built for Multifamily Operators
-          </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-5 sm:mb-6">
-            Anyone can detect a leak. We own what happens next.
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-            FlowGuard runs the entire response — the alert goes straight to your maintenance team, the system guides them through containment, escalates relentlessly until a human acts, and documents every second. You don&rsquo;t get an alarm. You get a handled incident.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">
-              Book My Free Water-Risk Walk
-            </Link>
-            <Link href="/how-it-works" className="border border-white/20 text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
-              See How FlowGuard Handles a Leak
-            </Link>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-16 lg:pb-12">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left — copy */}
+            <div className="text-center lg:text-left">
+              <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-4 sm:mb-5">
+                <span className="fg-node" /> Water-Risk Command Center
+              </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-5 sm:mb-6">
+                Anyone can detect a leak. We own what happens next.
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 mb-8 sm:mb-10 leading-relaxed">
+                FlowGuard runs the entire response — the alert goes straight to your maintenance team, the system guides them through containment, escalates relentlessly until a human acts, and documents every second. You don&rsquo;t get an alarm. You get a handled incident.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">
+                  Book My Free Water-Risk Walk
+                </Link>
+                <Link href="/how-it-works" className="border border-white/20 text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
+                  See How FlowGuard Handles a Leak
+                </Link>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-400 mt-5 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                20 minutes. No cost. We&rsquo;ll identify your highest-risk water zones and show where protection would go first.
+              </p>
+            </div>
+
+            {/* Right — protection visual */}
+            <div className="relative">
+              <ProtectedPropertyMap />
+              {/* Live response feed */}
+              <div className="mt-4 fg-command-card rounded-2xl px-5 py-4">
+                <div className="flex items-center gap-2.5 mb-3">
+                  <span className="fg-node" />
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">Live response feed</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  {heroFeed.map((item, i) => (
+                    <div key={item} className="flex items-center gap-2">
+                      <span className="fg-chip text-[#29ABE2] border-[#29ABE2]/30">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24" aria-hidden><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        {item}
+                      </span>
+                      {i < heroFeed.length - 1 && <span aria-hidden className="text-[#29ABE2]/60 text-xs">&rarr;</span>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="text-xs sm:text-sm text-slate-400 mt-5 max-w-xl mx-auto leading-relaxed">
-            20 minutes. No cost. We&rsquo;ll identify your highest-risk water zones and show where protection would go first.
-          </p>
         </div>
       </section>
 
@@ -101,8 +136,9 @@ export default function Home() {
       </motion.section>
 
       {/* Section 4 — An alert nobody acts on is just noise */}
-      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.section {...fadeUp} className="relative bg-[#1B2F4E] py-20 sm:py-24 overflow-hidden">
+        <WaterRiskGlowBackground />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 sm:mb-16">
             <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Relentless Escalation</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">

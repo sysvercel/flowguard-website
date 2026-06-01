@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import PackageQuiz from '../components/PackageQuiz'
+import WaterRiskGlowBackground from '../components/WaterRiskGlowBackground'
+import ProtectedPropertyMap from '../components/ProtectedPropertyMap'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -22,14 +24,23 @@ export default function Solutions() {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-[#1B2F4E] py-32 text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Protection for Every Property
-          </h1>
-          <p className="text-lg text-slate-400 leading-relaxed">
-            Two tiers of coverage. Both running on the same cloud-based monitoring platform.
-          </p>
+      <section className="relative bg-[#1B2F4E] py-28 sm:py-32 overflow-hidden">
+        <WaterRiskGlowBackground />
+        <div className="relative z-10 max-w-5xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="text-center lg:text-left">
+            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-4">
+              <span className="fg-node" /> Coverage Tiers
+            </p>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              Protection for Every Property
+            </h1>
+            <p className="text-lg text-slate-400 leading-relaxed">
+              Two tiers of coverage. Both running on the same cloud-based monitoring platform — watching the water zones most likely to fail.
+            </p>
+          </div>
+          <div className="max-w-md w-full mx-auto lg:ml-auto">
+            <ProtectedPropertyMap />
+          </div>
         </div>
       </section>
 
@@ -261,8 +272,9 @@ export default function Solutions() {
       </motion.section>
 
       {/* Infrastructure Note */}
-      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-16 text-center">
-        <div className="max-w-3xl mx-auto px-6">
+      <motion.section {...fadeUp} className="relative bg-[#1B2F4E] py-16 text-center overflow-hidden">
+        <WaterRiskGlowBackground />
+        <div className="relative z-10 max-w-3xl mx-auto px-6">
           <p className="text-white text-lg leading-relaxed mb-2">
             Every deployment is custom scoped.
           </p>

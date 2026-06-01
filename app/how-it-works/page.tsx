@@ -3,6 +3,9 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import PhoneDemo from '../components/PhoneDemo'
 import EscalationTimeline from '../components/EscalationTimeline'
+import IncidentCommandTimeline from '../components/IncidentCommandTimeline'
+import ReportPreviewCard from '../components/ReportPreviewCard'
+import WaterRiskGlowBackground from '../components/WaterRiskGlowBackground'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -10,17 +13,6 @@ const fadeUp = {
   viewport: { once: true },
   transition: { duration: 0.6 },
 }
-
-const flowStrip = [
-  'Water detected',
-  'Alert routed',
-  'Acknowledged',
-  'En route',
-  'On site',
-  'Contained',
-  'Resolved',
-  'Report generated',
-]
 
 const operatorCares = [
   {
@@ -85,8 +77,7 @@ export default function HowItWorks() {
     <main>
       {/* Hero */}
       <section className="relative bg-[#1B2F4E] overflow-hidden">
-        <div aria-hidden className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#29ABE2]/15 rounded-full blur-3xl" />
-        <div aria-hidden className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#1A6FA8]/15 rounded-full blur-3xl" />
+        <WaterRiskGlowBackground radar />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-center">
           <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
             How FlowGuard Works
@@ -164,17 +155,8 @@ export default function HowItWorks() {
             </h2>
           </div>
 
-          {/* Step strip */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-12 sm:mb-14">
-            {flowStrip.map((step, i) => (
-              <div key={step} className="flex items-center gap-2 sm:gap-3">
-                <span className="bg-[#F8FAFC] border border-slate-200 text-[#1B2F4E] text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-full">
-                  {step}
-                </span>
-                {i < flowStrip.length - 1 && <span aria-hidden className="text-[#29ABE2] font-bold">&rarr;</span>}
-              </div>
-            ))}
-          </div>
+          {/* Incident command timeline */}
+          <IncidentCommandTimeline className="mb-12 sm:mb-14" />
 
           {/* Step detail cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
@@ -244,20 +226,25 @@ export default function HowItWorks() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-10">
-            {reportCards.map((item) => (
-              <div key={item} className="flex items-center gap-3 bg-[#F8FAFC] border border-slate-100 rounded-xl px-4 sm:px-5 py-4">
-                <svg className="w-5 h-5 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                <span className="text-sm font-medium text-slate-700 leading-snug">{item}</span>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            <div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8">
+                {reportCards.map((item) => (
+                  <div key={item} className="flex items-center gap-3 bg-[#F8FAFC] border border-slate-100 rounded-xl px-4 sm:px-5 py-4">
+                    <svg className="w-5 h-5 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    <span className="text-sm font-medium text-slate-700 leading-snug">{item}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+              <Link href="/sample-report" className="inline-flex items-center text-sm sm:text-base font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">
+                View Sample Report &rarr;
+              </Link>
+              <p className="text-sm text-slate-500 leading-relaxed mt-6 max-w-2xl">
+                Reports support ownership, maintenance review, and insurance conversations. They are not claim determinations and do not guarantee coverage.
+              </p>
+            </div>
+            <ReportPreviewCard />
           </div>
-          <Link href="/sample-report" className="inline-flex items-center text-sm sm:text-base font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">
-            View Sample Report &rarr;
-          </Link>
-          <p className="text-sm text-slate-500 leading-relaxed mt-6 max-w-2xl">
-            Reports support ownership, maintenance review, and insurance conversations. They are not claim determinations and do not guarantee coverage.
-          </p>
         </div>
       </motion.section>
 

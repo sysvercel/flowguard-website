@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import WaterRiskGlowBackground from '../components/WaterRiskGlowBackground'
 
 export const metadata = {
   title: 'FlowGuard Integrations — REST API, Webhooks, and Ticketing Handoff',
@@ -93,8 +94,7 @@ export default function Integration() {
     <main>
       {/* Phase 1 — Hero */}
       <section className="relative bg-[#1B2F4E] overflow-hidden">
-        <div aria-hidden className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#29ABE2]/15 rounded-full blur-3xl" />
-        <div aria-hidden className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#1A6FA8]/15 rounded-full blur-3xl" />
+        <WaterRiskGlowBackground />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-center">
           <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
             REST API &middot; Webhooks &middot; Ticketing Handoff
@@ -232,9 +232,44 @@ export default function Integration() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
                 Structured enough for software. Clear enough for operations.
               </h2>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8">
                 Every incident becomes a clean, structured record your systems can consume — and your team can read. Exact fields vary by implementation and access level.
               </p>
+
+              {/* Event delivery flow */}
+              <div className="fg-command-card rounded-2xl p-5 sm:p-6">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <span className="fg-node" />
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">Event delivery</span>
+                </div>
+                <div className="grid sm:grid-cols-[1fr_auto_1fr] items-center gap-4">
+                  {/* Emitted events */}
+                  <div className="space-y-2">
+                    {['incident.detected', 'incident.acknowledged', 'incident.contained', 'incident.resolved'].map((e) => (
+                      <div key={e} className="font-mono text-[11px] text-slate-300 bg-white/[0.03] border border-white/10 rounded-md px-2.5 py-1.5">
+                        {e}
+                      </div>
+                    ))}
+                  </div>
+                  {/* Connector */}
+                  <div className="flex sm:flex-col items-center justify-center gap-1 text-[#29ABE2]">
+                    <span aria-hidden className="hidden sm:block text-lg">&rarr;</span>
+                    <span aria-hidden className="sm:hidden text-lg">&darr;</span>
+                  </div>
+                  {/* Destinations */}
+                  <div className="space-y-2">
+                    {['Webhook endpoint', 'REST API pull', 'Ticket / work order'].map((d) => (
+                      <div key={d} className="flex items-center gap-2 text-[11px] text-slate-200 bg-[#29ABE2]/[0.06] border border-[#29ABE2]/20 rounded-md px-2.5 py-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] shrink-0" />
+                        {d}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-[11px] text-slate-500 leading-relaxed mt-4">
+                  Which path you get depends on the receiving system. We confirm it before anything is installed.
+                </p>
+              </div>
             </div>
             <div className="bg-[#0F1F38] border border-white/10 rounded-xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
               <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10">

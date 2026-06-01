@@ -27,3 +27,135 @@ html {
     transform: translateY(0);
   }
 }
+
+/* ───────────────────────────────────────────────
+   FlowGuard "water-risk command center" visual kit
+   ─────────────────────────────────────────────── */
+
+/* Blueprint / water grid — faint cyan lattice */
+.fg-grid {
+  background-image:
+    linear-gradient(to right, rgba(41, 171, 226, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(41, 171, 226, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.fg-grid-fine {
+  background-image:
+    linear-gradient(to right, rgba(41, 171, 226, 0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(41, 171, 226, 0.10) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* Fade the grid out toward the edges so it never looks like a hard table */
+.fg-grid-mask {
+  -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
+}
+
+/* Soft cyan radial glow */
+.fg-glow {
+  background: radial-gradient(circle at center, rgba(41, 171, 226, 0.22), transparent 70%);
+}
+
+/* Command-center card surface */
+.fg-command-card {
+  background:
+    linear-gradient(180deg, rgba(22, 40, 68, 0.92), rgba(15, 31, 56, 0.92));
+  border: 1px solid rgba(41, 171, 226, 0.18);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Subtle border glow on hover / accent */
+.fg-border-glow {
+  box-shadow: 0 0 0 1px rgba(41, 171, 226, 0.25), 0 0 24px rgba(41, 171, 226, 0.12);
+}
+
+/* Status chip */
+.fg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgb(226, 232, 240);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Sensor node — pulsing dot */
+@keyframes fg-node-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(41, 171, 226, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(41, 171, 226, 0); }
+}
+
+.fg-node {
+  position: relative;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #29ABE2;
+  animation: fg-node-pulse 2.4s ease-out infinite;
+}
+
+.fg-node-amber {
+  background: #F59E0B;
+  animation-name: fg-node-pulse;
+  box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.55);
+}
+
+@keyframes fg-node-pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+}
+.fg-node-amber { animation-name: fg-node-pulse-amber; }
+
+/* Radar rings — expanding concentric circles */
+@keyframes fg-radar {
+  0% { transform: scale(0.4); opacity: 0.45; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.fg-radar-ring {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  border: 1px solid rgba(41, 171, 226, 0.35);
+  animation: fg-radar 4.5s ease-out infinite;
+}
+
+/* Slow scan line for timelines */
+@keyframes fg-scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+.fg-scan::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(41, 171, 226, 0.5), transparent);
+  width: 33%;
+  animation: fg-scan 3.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fg-node,
+  .fg-node-amber,
+  .fg-radar-ring,
+  .fg-scan::after,
+  .animate-float,
+  .animate-float-slow {
+    animation: none !important;
+  }
+}

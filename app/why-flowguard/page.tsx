@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import WaterRiskGlowBackground from '../components/WaterRiskGlowBackground'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -98,8 +99,7 @@ export default function WhyFlowGuard() {
     <main>
       {/* Hero */}
       <section className="relative bg-[#1B2F4E] overflow-hidden">
-        <div aria-hidden className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#29ABE2]/15 rounded-full blur-3xl" />
-        <div aria-hidden className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#1A6FA8]/15 rounded-full blur-3xl" />
+        <WaterRiskGlowBackground radar />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 text-center">
           <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-5 sm:mb-6">
             Built for Response, Not Just Detection
