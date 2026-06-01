@@ -195,7 +195,7 @@ export default function Solutions() {
                   '3-tier escalation chain',
                   'Health monitoring',
                   'Freeze risk alerts',
-                  'Insurance-ready incident reports',
+                  'Claims-ready incident documentation',
                   'Executive summary reporting',
                   'Device visibility',
                 ].map(f => (
@@ -213,7 +213,7 @@ export default function Solutions() {
                 Protect is built for property managers who need full detection, escalation, reporting, and health monitoring that catches problems before they become incidents. This is the package most of our multifamily clients run on.
               </p>
               <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#1A6FA8] transition text-sm">
-                Request a Quote
+                Book My Free Water-Risk Walk
               </Link>
             </div>
           </div>
@@ -253,7 +253,7 @@ export default function Solutions() {
                 Respond adds human coordination to the platform. When critical incidents happen after hours, FlowGuard coordinates with your team and backup vendors so your property manager doesn&apos;t have to. Built for operators who want a hands-off incident response layer.
               </p>
               <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#1A6FA8] transition text-sm">
-                Request a Quote
+                Book My Free Water-Risk Walk
               </Link>
             </div>
           </div>
@@ -270,8 +270,11 @@ export default function Solutions() {
             Gateway installation, boiler room protection, and riser monitoring included based on property needs.
           </p>
           <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-[#1A6FA8] transition">
-            Request a Quote
+            Book My Free Water-Risk Walk
           </Link>
+          <p className="text-slate-500 text-xs leading-relaxed mt-10 max-w-xl mx-auto">
+            FlowGuard reports support documentation and risk conversations. They are not insurance determinations and do not guarantee coverage, discounts, or claim outcomes.
+          </p>
         </div>
       </motion.section>
     </main>

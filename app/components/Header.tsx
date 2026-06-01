@@ -37,7 +37,6 @@ export default function Header() {
             <Link href="/integration" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">Integration</Link>
             <Link href="/dashboard" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">Dashboard</Link>
             <Link href="/solutions" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">Solutions</Link>
-            <Link href="/roi-calculator" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">ROI Calculator</Link>
             <Link href="/contact" className="text-[13px] font-medium text-slate-700 hover:text-[#29ABE2] transition">Contact</Link>
           </div>
 
@@ -108,7 +107,6 @@ export default function Header() {
             <nav className="flex flex-col gap-3">
               <Link href="/solutions" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Solutions</Link>
               <Link href="/why-flowguard" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">Why FlowGuard</Link>
-              <Link href="/roi-calculator" onClick={closeDrawer} className="text-sm text-slate-300 hover:text-[#29ABE2] transition">ROI Calculator</Link>
             </nav>
           </div>
 

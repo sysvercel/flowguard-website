@@ -27,7 +27,7 @@ Key FlowGuard facts:
 - 8–10 year battery life on sensors
 - FlowGuard deploys and configures the hardware; the property owns it once installed
 - Installation takes 1-3 days depending on property size
-- Section 179 tax deduction often applies — the hardware is a capital asset on the property's balance sheet
+- The hardware is owned by the property once installed — a capital asset, not a forever subscription. Do not give tax advice, quote tax benefits, or mention Section 179; how owned hardware fits their accounting is a question for their accountant
 - Phased rollout available — start with boiler rooms and risers, expand to units later
 - 3-tier escalation: Tier 1 (5 min) → Tier 2 (5 min) → Tier 3 (immediate)
 - Freeze risk monitoring built in — critical for Texas properties

@@ -199,8 +199,11 @@ export default function WhyFlowGuard() {
               <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-5">
                 When was it detected, what was done about it, and how long did it take to contain? FlowGuard produces a record that answers all three — automatically, on every event, without anyone rebuilding the timeline after the fact.
               </p>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-8">
+              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-5">
                 The same record your team uses during the event is the record your carrier sees afterward. One source of truth, from first signal to closeout.
+              </p>
+              <p className="text-slate-500 leading-relaxed text-sm mb-8">
+                FlowGuard reports support documentation and risk conversations. They are not insurance determinations and do not guarantee coverage, discounts, or claim outcomes.
               </p>
               <Link href="/sample-report" className="inline-flex items-center gap-2 text-sm font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">
                 View a sample incident report
@@ -315,7 +318,7 @@ export default function WhyFlowGuard() {
         </div>
       </motion.section>
 
-      {/* Investment — kept, polished */}
+      {/* Ownership model — own the hardware vs. rent it forever */}
       <section className="bg-[#1B2F4E] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -326,22 +329,19 @@ export default function WhyFlowGuard() {
               transition={{ duration: 0.6 }}
             >
               <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-4">
-                Financial Strategy
+                Ownership Model
               </p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-5">
-                An investment, not just an expense
+                You own the hardware. You don&apos;t rent it forever.
               </h2>
               <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-5">
-                The deployed hardware is a capital asset on your balance sheet — not a subscription you pay forever. When FlowGuard is installed at your property, you purchase and own the commercial-grade devices. They book as a depreciable building improvement.
-              </p>
-              <p className="text-slate-300 text-base leading-relaxed mb-5">
-                Most property owners qualify for <strong className="text-white">Section 179 immediate expensing</strong> — meaning the full hardware cost can be deducted in year one. On a 200-unit property that represents a roughly $50,000 capital asset with potential first-year tax savings of $10,000–$15,000.
+                When FlowGuard is installed at your property, you purchase and own the commercial-grade devices outright. The hardware is a capital asset that stays on your property — not a subscription you pay indefinitely with nothing to show for it.
               </p>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Compare that to HaaS competitors that charge monthly indefinitely — you own nothing, depreciate nothing, and costs never taper. With FlowGuard, your monthly fee shrinks as a share of total investment every year you stay protected.
+                Compare that to per-sensor Hardware-as-a-Service models that charge monthly forever — you own nothing, and the cost never tapers. With FlowGuard, the one-time hardware cost is behind you and the ongoing fee covers monitoring and response.
               </p>
               <p className="text-[#29ABE2] text-xs font-medium">
-                Confirm with your accountant how FlowGuard fits your capital improvement strategy.
+                How owned hardware fits your capital and accounting strategy is a question for your accountant. We don&apos;t give tax advice.
               </p>
             </motion.div>
 
@@ -353,7 +353,7 @@ export default function WhyFlowGuard() {
               className="bg-white rounded-2xl overflow-hidden shadow-[0_12px_48px_rgba(15,23,42,0.18)]"
             >
               <div className="bg-[#29ABE2] px-6 py-4">
-                <p className="text-white font-bold text-xs sm:text-sm uppercase tracking-wider">5-Year Cost Comparison — 200 Units</p>
+                <p className="text-white font-bold text-xs sm:text-sm uppercase tracking-wider">Illustrative 5-Year Cost — 200 Units</p>
               </div>
               <div className="p-6 border-b border-slate-100">
                 <div className="flex items-center gap-2 mb-4">
@@ -362,24 +362,20 @@ export default function WhyFlowGuard() {
                 </div>
                 <div className="space-y-2 text-sm text-slate-600">
                   <div className="flex justify-between">
-                    <span>Hardware capex</span>
+                    <span>Hardware (one-time, owned)</span>
                     <span className="font-medium text-[#1B2F4E]">$50,000</span>
                   </div>
-                  <div className="flex justify-between text-green-600">
-                    <span>Section 179 tax savings</span>
-                    <span className="font-medium">− $12,500</span>
-                  </div>
                   <div className="flex justify-between">
-                    <span>Monthly fees (5 years)</span>
+                    <span>Monitoring fees (5 years)</span>
                     <span className="font-medium text-[#1B2F4E]">$72,000</span>
                   </div>
                   <div className="border-t border-slate-200 pt-2 flex justify-between font-bold text-[#1B2F4E]">
-                    <span>Real 5-year cost</span>
-                    <span className="text-[#29ABE2]">$109,500</span>
+                    <span>5-year spend</span>
+                    <span className="text-[#29ABE2]">$122,000</span>
                   </div>
                   <div className="flex justify-between text-green-600 text-xs">
-                    <span>Asset value retained</span>
-                    <span>+ $50,000 on balance sheet</span>
+                    <span>What you still own</span>
+                    <span>$50,000 in hardware</span>
                   </div>
                 </div>
               </div>
@@ -390,30 +386,26 @@ export default function WhyFlowGuard() {
                 </div>
                 <div className="space-y-2 text-sm text-slate-600">
                   <div className="flex justify-between">
-                    <span>Hardware capex</span>
-                    <span className="font-medium">$0</span>
-                  </div>
-                  <div className="flex justify-between text-slate-500">
-                    <span>Tax savings</span>
-                    <span className="font-medium">$0</span>
+                    <span>Hardware (rented)</span>
+                    <span className="font-medium">$0 owned</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Monthly fees (5 years)</span>
                     <span className="font-medium text-slate-700">$120,000</span>
                   </div>
                   <div className="border-t border-slate-200 pt-2 flex justify-between font-bold text-slate-700">
-                    <span>Real 5-year cost</span>
-                    <span className="text-red-500">$120,000</span>
+                    <span>5-year spend</span>
+                    <span className="text-slate-700">$120,000</span>
                   </div>
                   <div className="flex justify-between text-slate-500 text-xs">
-                    <span>Asset value retained</span>
-                    <span>$0 — you own nothing</span>
+                    <span>What you still own</span>
+                    <span>Nothing</span>
                   </div>
                 </div>
               </div>
-              <div className="px-6 py-4 bg-emerald-50 border-t border-emerald-100">
-                <p className="text-emerald-700 font-semibold text-center text-sm">
-                  FlowGuard saves $10,500+ over 5 years — and $50,000 in retained assets
+              <div className="px-6 py-4 bg-slate-100 border-t border-slate-200">
+                <p className="text-slate-600 text-center text-xs leading-relaxed">
+                  Illustrative example at list pricing for a 200-unit property. Actual cost is scoped per property. Not a quote, a savings promise, or a financial projection.
                 </p>
               </div>
             </motion.div>
@@ -432,7 +424,7 @@ export default function WhyFlowGuard() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className="bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
-              Request a Demo
+              Book My Free Water-Risk Walk
             </Link>
             <Link href="/how-it-works" className="border border-white/20 text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
               See How It Works

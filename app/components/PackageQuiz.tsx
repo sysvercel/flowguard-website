@@ -182,7 +182,7 @@ export default function PackageQuiz() {
                   className="block w-full text-center py-4 rounded-xl font-semibold text-white transition mb-3"
                   style={{ backgroundColor: result!.color }}
                 >
-                  Request a Quote for {result!.name} →
+                  Book My Free Water-Risk Walk →
                 </a>
 
                 <button
