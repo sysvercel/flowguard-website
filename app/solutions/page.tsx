@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import PackageQuiz from '../components/PackageQuiz'
 import WaterRiskGlowBackground from '../components/WaterRiskGlowBackground'
 import ProtectedPropertyMap from '../components/ProtectedPropertyMap'
+import SpecBlueprint from '../components/SpecBlueprint'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -140,86 +141,8 @@ export default function Solutions() {
         </div>
       </motion.section>
 
-      {/* Platform Specs */}
-      <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-mono font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
-              Platform Specifications
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
-              Platform specifications, built for real properties.
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              FlowGuard is designed around wireless deployment, high-risk zone coverage, human response, and defensible documentation — not a generic smart-home sensor stack.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-            {[
-              {
-                label: 'Alerting layer',
-                desc: 'SMS, email, and phone escalation paths designed to reach the humans who can act.',
-              },
-              {
-                label: 'Connectivity layer',
-                desc: 'LoRaWAN wireless coverage for low-disruption deployment across common areas, risers, mechanical rooms, and selected unit zones.',
-              },
-              {
-                label: 'Deployment model',
-                desc: 'Wireless, low-disruption installation scoped during the property walk — gateway placement, sensor placement, and coverage checks happen property by property.',
-              },
-              {
-                label: 'Coverage strategy',
-                desc: 'High-risk water zones first: mechanical rooms, water heaters, risers, laundry areas, kitchens, and other failure-prone locations.',
-              },
-              {
-                label: 'Property visibility',
-                desc: 'Single-property and portfolio views for incidents, device health, reports, and readiness gaps.',
-              },
-              {
-                label: 'Hardware ecosystem',
-                desc: 'Commercial-grade LoRaWAN devices selected for the environment, not locked around a proprietary box.',
-              },
-              {
-                label: 'Integration path',
-                desc: 'Expandable API, webhook, and ticketing handoff options depending on the receiving system.',
-              },
-            ].map((row, i) => (
-              <div
-                key={row.label}
-                className="group relative bg-white rounded-2xl border border-slate-200 shadow-[0_4px_24px_rgba(15,23,42,0.05)] p-6 sm:p-7 overflow-hidden"
-              >
-                <span aria-hidden className="absolute left-0 top-0 h-full w-1 bg-[#29ABE2]/70" />
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-[11px] font-semibold text-[#29ABE2] tracking-[0.18em]">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                    Spec
-                  </span>
-                </div>
-                <h3 className="text-base sm:text-lg font-bold text-[#1B2F4E] tracking-tight mb-2 leading-snug">
-                  {row.label}
-                </h3>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{row.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 sm:mt-12 text-center">
-            <Link
-              href="/contact"
-              className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.2)]"
-            >
-              Book My Free Water-Risk Walk
-            </Link>
-            <p className="text-xs text-slate-500 mt-6 max-w-2xl mx-auto leading-relaxed">
-              Device selection, gateway placement, and coverage scope are finalized during the site walk. FlowGuard does not claim every property or software stack is identical.
-            </p>
-          </div>
-        </div>
-      </motion.section>
+      {/* Platform Specs — interactive blueprint */}
+      <SpecBlueprint />
 
       <PackageQuiz />
 
