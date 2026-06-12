@@ -1,8 +1,8 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import PhoneDemo from '../components/PhoneDemo'
-import EscalationTimeline from '../components/EscalationTimeline'
+import SmsResponder from '../components/SmsResponder'
+import EscalationGauntlet from '../components/EscalationGauntlet'
 import IncidentCommandTimeline from '../components/IncidentCommandTimeline'
 import ReportPreviewCard from '../components/ReportPreviewCard'
 import WaterRiskGlowBackground from '../components/WaterRiskGlowBackground'
@@ -139,7 +139,7 @@ export default function HowItWorks() {
               </div>
             </div>
             <div className="flex justify-center">
-              <PhoneDemo />
+              <SmsResponder />
             </div>
           </div>
         </div>
@@ -190,21 +190,14 @@ export default function HowItWorks() {
                   If the first person does not act, the alert moves. Tier 1, Tier 2, Tier 3. The system keeps pushing until a human acknowledges and starts the response.
                 </p>
               </div>
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                {['Tier 1', 'Tier 2', 'Tier 3'].map((tier, i) => (
-                  <div key={tier} className="flex items-center gap-3">
-                    <span className="bg-[#0E1B30] text-white text-sm font-semibold px-4 py-2 rounded-full">{tier}</span>
-                    {i < 2 && <span aria-hidden className="text-[#29ABE2] font-bold">&rarr;</span>}
-                  </div>
-                ))}
-              </div>
-              <p className="text-sm sm:text-base text-slate-500 leading-relaxed border-l-2 border-[#29ABE2] pl-4">
+              <p className="text-sm sm:text-base text-slate-500 leading-relaxed border-l-2 border-[#29ABE2] pl-4 mb-6">
                 Property managers do not need to wonder if anyone saw the alert. The system shows who acknowledged it and when.
               </p>
+              <p className="text-base sm:text-lg font-semibold text-[#1B2F4E]">
+                Don&rsquo;t take our word for it. Trigger the leak yourself — then try to ignore it.
+              </p>
             </div>
-            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(15,23,42,0.06)] border border-slate-100">
-              <EscalationTimeline />
-            </div>
+            <EscalationGauntlet />
           </div>
         </div>
       </motion.section>
