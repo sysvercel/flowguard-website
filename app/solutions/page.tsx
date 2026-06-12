@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import PackageQuiz from '../components/PackageQuiz'
+import SpecBlueprint from '../components/SpecBlueprint'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -129,50 +130,8 @@ export default function Solutions() {
         </div>
       </motion.section>
 
-      {/* Platform Specs */}
-      <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">
-              At a Glance
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B2F4E] tracking-tight leading-tight mb-4">
-              Platform specifications
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Deployment hardware and platform characteristics at a glance. Configurations are scoped per property.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-[0_4px_24px_rgba(15,23,42,0.06)] overflow-hidden">
-            <dl className="divide-y divide-slate-100">
-              {[
-                { label: 'Monitoring Platform', value: 'Cloud-based' },
-                { label: 'Alerting', value: 'SMS, email, and phone call' },
-                { label: 'Connectivity', value: 'LoRaWAN wireless' },
-                { label: 'Deployment Model', value: 'Wireless, low-disruption installation' },
-                { label: 'Coverage Strategy', value: 'High-risk zones and critical areas' },
-                { label: 'Property Visibility', value: 'Single-site and portfolio-level monitoring' },
-                { label: 'Hardware Ecosystem', value: 'Commercial-grade LoRaWAN devices' },
-                { label: 'Integration', value: 'Expandable platform for future integrations' },
-              ].map(row => (
-                <div key={row.label} className="grid grid-cols-1 sm:grid-cols-[220px_1fr] px-6 sm:px-8 py-4 sm:py-5">
-                  <dt className="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-[0.18em] mb-1 sm:mb-0 sm:pt-0.5">
-                    {row.label}
-                  </dt>
-                  <dd className="text-sm sm:text-base font-medium text-[#1B2F4E]">
-                    {row.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <p className="text-center text-xs text-slate-500 mt-6 max-w-xl mx-auto leading-relaxed">
-            FlowGuard uses field-proven commercial hardware. Device selection, gateway placement, and coverage are scoped to the property during install.
-          </p>
-        </div>
-      </motion.section>
+      {/* Platform Specs — interactive blueprint */}
+      <SpecBlueprint />
 
       <PackageQuiz />
 
