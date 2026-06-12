@@ -2,6 +2,7 @@ import Link from 'next/link'
 import WaterRiskGlowBackground from '../components/WaterRiskGlowBackground'
 import IncidentCommandTimeline from '../components/IncidentCommandTimeline'
 import ReportPreviewCard from '../components/ReportPreviewCard'
+import PortalDemo from '../components/PortalDemo'
 
 export const metadata = {
   title: 'FlowGuard Client Portal — Properties, Devices, Incidents, Reports',
@@ -203,7 +204,7 @@ export default function DashboardPage() {
       <section className="relative bg-[#0E1B30] overflow-hidden">
         <WaterRiskGlowBackground radar />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="max-w-3xl mx-auto text-center">
             <div>
               <div className="inline-flex items-center gap-2.5 mb-5 sm:mb-6">
                 <span className="fg-node" />
@@ -214,12 +215,12 @@ export default function DashboardPage() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.08] tracking-tight mb-6">
                 See every property, device, incident, and report in one place.
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-xl leading-relaxed mb-10">
+              <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-xl mx-auto leading-relaxed mb-10">
                 The client portal is where property managers, owners, and maintenance teams watch coverage in
-                real time. Every sensor, every incident, every report &mdash; scoped to exactly what each role
-                should see.
+                real time. This isn&rsquo;t a screenshot &mdash; below is a working replica on simulated data.
+                Click through it, then run the 2 AM leak.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/contact"
                   className="inline-flex justify-center bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]"
@@ -235,87 +236,11 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Portal frame mock */}
-            <div className="fg-command-card rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
-                <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-                <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-                <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-                <span className="ml-3 text-[10px] uppercase tracking-[0.18em] text-slate-500">
-                  FlowGuard Portal
-                </span>
-                <span className="fg-chip text-[#29ABE2] border-[#29ABE2]/30 ml-auto">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2]" /> Live
-                </span>
-              </div>
-              <div className="grid grid-cols-3">
-                {/* sidebar */}
-                <div className="col-span-1 border-r border-white/10 p-3 space-y-3">
-                  {[
-                    ['Overview', ['Home', 'Incidents', 'Properties']],
-                    ['Health', ['Scorecard', 'Devices']],
-                    ['Records', ['Reports', 'Activity']],
-                  ].map(([group, items]) => (
-                    <div key={group as string}>
-                      <p className="text-[8px] uppercase tracking-[0.2em] text-slate-600 mb-1.5">{group}</p>
-                      <ul className="space-y-1">
-                        {(items as string[]).map((item, idx) => (
-                          <li
-                            key={item}
-                            className={`text-[10px] sm:text-xs rounded-md px-2 py-1 ${
-                              group === 'Overview' && idx === 0
-                                ? 'bg-[#29ABE2]/15 text-[#29ABE2] font-semibold'
-                                : 'text-slate-400'
-                            }`}
-                          >
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-                {/* content */}
-                <div className="col-span-2 p-4">
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500 mb-3">Portfolio overview</p>
-                  <div className="grid grid-cols-3 gap-2 mb-4">
-                    {[
-                      ['4', 'Properties'],
-                      ['38', 'Protected zones'],
-                      ['0', 'Open incidents'],
-                    ].map(([value, label]) => (
-                      <div key={label} className="rounded-lg border border-white/10 bg-white/[0.02] px-2.5 py-2">
-                        <p className="text-lg font-bold text-[#29ABE2] leading-none">{value}</p>
-                        <p className="text-[8px] uppercase tracking-[0.1em] text-slate-500 mt-1 leading-tight">{label}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-slate-500 mb-2">What needs attention</p>
-                  <ul className="space-y-1.5">
-                    {[
-                      ['Install photo pending', 'Unit 117'],
-                      ['Repeat-risk zone flagged', 'Mechanical Room'],
-                    ].map(([msg, where]) => (
-                      <li key={msg} className="flex items-center gap-2 text-[10px] sm:text-xs">
-                        <span className="fg-node fg-node-amber" />
-                        <span className="text-slate-300">{msg}</span>
-                        <span className="ml-auto text-slate-600 font-mono">{where}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* Nav strip */}
-          <div className="hidden sm:flex items-center gap-3 lg:gap-5 flex-wrap mt-14">
-            {['Home', 'Incidents', 'Properties', 'Scorecard', 'Devices', 'Reports', 'Activity'].map((p, i, arr) => (
-              <div key={p} className="flex items-center gap-3 lg:gap-5">
-                <span className="text-xs lg:text-sm font-semibold text-slate-400 tracking-wider uppercase">{p}</span>
-                {i < arr.length - 1 && <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2]/40" aria-hidden />}
-              </div>
-            ))}
+          {/* Live portal demo — a working replica on simulated data */}
+          <div className="mt-14 sm:mt-16">
+            <PortalDemo />
           </div>
         </div>
       </section>
