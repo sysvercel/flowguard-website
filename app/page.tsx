@@ -1,14 +1,9 @@
 'use client'
+import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-
-const incidentTape: { t: string; event: string; meta: string; done?: boolean }[] = [
-  { t: '02:14:03', event: 'Detected', meta: 'Riser \u00b7 Mechanical Room' },
-  { t: '02:14:24', event: 'Acknowledged', meta: 'On-call \u00b7 Tier 1' },
-  { t: '02:22:18', event: 'On site', meta: 'Source isolated' },
-  { t: '02:28:33', event: 'Contained', meta: 'Wet-vac \u00b7 area drying' },
-  { t: '02:47:12', event: 'Resolved', meta: 'Auto-confirmed dry', done: true },
-]
+import ColdOpen from './components/ColdOpen'
+import IncidentTape from './components/IncidentTape'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -41,8 +36,13 @@ const recordItems = [
 ]
 
 export default function Home() {
+  const [coldOpenRun, setColdOpenRun] = useState(0)
+
   return (
     <main>
+      {/* The 2 AM cold open — plays once per session, skippable */}
+      <ColdOpen run={coldOpenRun} />
+
       {/* Section 1 — Hero */}
       <section className="relative min-h-screen bg-[#0E1B30] flex items-center overflow-hidden">
         <div aria-hidden className="absolute inset-0 fg-blueprint fg-blueprint-fade" />
@@ -81,41 +81,20 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Right — incident record (black-box readout) */}
+            {/* Right — incident record, replaying itself on a loop */}
             <div className="relative">
-              <div className="fg-panel rounded-xl overflow-hidden">
-                <div className="flex items-center justify-between px-5 py-3.5 border-b fg-rule">
-                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-slate-400">Incident Record</span>
-                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#29ABE2]">Response owned</span>
-                </div>
-
-                <div className="px-5 sm:px-6 py-5">
-                  {incidentTape.map((r) => (
-                    <div key={r.event} className="grid grid-cols-[58px_1fr] sm:grid-cols-[64px_1fr] gap-4">
-                      <div className="relative text-right pr-4 border-r fg-rule py-2">
-                        <span className="font-mono text-[11px] text-slate-500 tabular-nums">{r.t}</span>
-                        <span
-                          className={`absolute -right-[4px] top-1/2 -translate-y-1/2 w-[7px] h-[7px] ${
-                            r.done ? 'bg-emerald-400' : 'bg-[#29ABE2]'
-                          }`}
-                        />
-                      </div>
-                      <div className="py-2">
-                        <p className="text-sm font-semibold text-white leading-tight">{r.event}</p>
-                        <p className="font-mono text-[11px] text-slate-500 leading-tight mt-0.5">{r.meta}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between px-5 py-3.5 border-t fg-rule">
-                  <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-slate-500">Time to resolved</span>
-                  <span className="font-mono text-sm font-semibold text-white tabular-nums">33m 09s</span>
-                </div>
+              <IncidentTape />
+              <div className="flex flex-col sm:flex-row items-center lg:items-start sm:items-center justify-between gap-2 mt-3">
+                <p className="font-mono text-[10px] text-slate-600 leading-relaxed text-center lg:text-left">
+                  Illustrative incident record. Times vary by property, staffing, and severity.
+                </p>
+                <button
+                  onClick={() => setColdOpenRun((n) => n + 1)}
+                  className="shrink-0 font-mono text-[10px] tracking-[0.18em] uppercase text-slate-500 hover:text-[#29ABE2] transition"
+                >
+                  &#9656; Replay the 2 AM cold open
+                </button>
               </div>
-              <p className="font-mono text-[10px] text-slate-600 leading-relaxed mt-3 text-center lg:text-left">
-                Illustrative incident record. Times vary by property, staffing, and severity.
-              </p>
             </div>
           </div>
         </div>
