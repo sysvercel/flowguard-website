@@ -1,7 +1,19 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import StatCounter from './components/StatCounter'
+import PhoneDemo from './components/PhoneDemo'
+import EscalationTimeline from './components/EscalationTimeline'
+import {
+  HERO,
+  PROOF,
+  PROCESS,
+  BUILT_FOR_MAINTENANCE,
+  OWN_THE_RESPONSE,
+  HARDWARE_AGNOSTIC,
+  NO_SEAMLESS,
+  DEFENSIBLE_RECORD,
+  WATER_RISK_WALK,
+} from '@/lib/marketing-copy'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -10,54 +22,51 @@ const fadeUp = {
   transition: { duration: 0.6 },
 }
 
-const operationalProof = [
-  { big: '< 60s', label: 'Alert response time' },
-  { big: '3-Tier', label: 'Escalation routing' },
-  { big: '24/7', label: 'Monitored coverage' },
-  { big: '100%', label: 'Incidents logged automatically' },
-]
+function Eyebrow({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
+  return (
+    <p className={`text-xs sm:text-sm font-semibold tracking-[0.22em] uppercase mb-3 ${light ? 'text-[#29ABE2]' : 'text-[#29ABE2]'}`}>
+      {children}
+    </p>
+  )
+}
 
 export default function Home() {
   return (
     <main>
-      {/* Section 1 — Hero */}
+      {/* Section 1 — Hero: "Anyone can detect a leak. We own what happens next." */}
       <section className="relative min-h-screen bg-[#1B2F4E] flex items-center justify-center overflow-hidden">
-        {/* Ambient background glow */}
         <div aria-hidden className="absolute top-1/4 left-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#29ABE2]/20 rounded-full blur-3xl" />
         <div aria-hidden className="absolute bottom-1/4 right-1/4 w-72 sm:w-80 h-72 sm:h-80 bg-[#1A6FA8]/20 rounded-full blur-3xl" />
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-12">
           <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.25em] uppercase mb-4 sm:mb-5">
-            Built for Multifamily Operators
+            {HERO.eyebrow}
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-5 sm:mb-6">
-            The Operating System for Multifamily Water Risk
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold text-white leading-[1.07] tracking-tight mb-6">
+            {HERO.headline}
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-3 sm:mb-4 leading-snug font-medium">
-            From detection to resolution — in minutes, not days.
-          </p>
-          <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-            Real-time water detection, incident command, escalation, and insurance-ready reporting — one platform for the team that can&apos;t afford surprise losses.
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-9 sm:mb-10 leading-relaxed">
+            {HERO.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
-              Request a Demo
+            <Link href="/contact" className="bg-[#29ABE2] text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">
+              {HERO.primaryCta}
             </Link>
             <Link href="/how-it-works" className="border border-white/20 text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
-              See How It Works
+              {HERO.secondaryCta}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Section 2 — Operational Proof Bar */}
+      {/* Section 2 — Operational proof bar */}
       <section className="bg-white py-14 sm:py-16 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-xs sm:text-sm font-semibold text-slate-500 tracking-[0.2em] uppercase mb-8 sm:mb-10">
-            Built to catch it first, route it fast, and document every step
+            Catch it first, route it fast, document every step
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-slate-100 rounded-xl overflow-hidden">
-            {operationalProof.map(({ big, label }) => (
+            {PROOF.map(({ big, label }) => (
               <div key={big} className="bg-white text-center px-6 py-8 sm:py-10">
                 <div className="text-4xl sm:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-2">{big}</div>
                 <div className="text-sm text-slate-600 font-medium">{label}</div>
@@ -67,210 +76,232 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 3 — How It Works (proof-of-system) */}
-      <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
+      {/* Section 3 — What happens next: the Detect → … → Document chain */}
+      <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">How It Works</p>
+            <Eyebrow>{PROCESS.eyebrow}</Eyebrow>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-4">
-              From detection to resolution in minutes
+              {PROCESS.heading}
             </h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              One workflow, from the first drop of moisture to a fully documented incident — without anyone dropping the ball.
+              {PROCESS.body}
             </p>
           </div>
-          <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-            <div className="hidden lg:block absolute top-10 left-[12%] right-[12%] border-t-2 border-dashed border-slate-200 z-0" />
-            {[
-              {
-                num: 1, title: 'Sensor Detects', desc: 'Spot, rope, and low-profile sensors trigger the moment moisture is detected in critical zones.',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
-                  </svg>
-                ),
-              },
-              {
-                num: 2, title: 'Alerts Fire', desc: 'Email, SMS, and voice reach the right on-call staff in under 60 seconds.',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                  </svg>
-                ),
-              },
-              {
-                num: 3, title: 'Team Responds', desc: 'SMS incident command lets the team acknowledge, route, and resolve without logging in.',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-3 3-3-3z" />
-                  </svg>
-                ),
-              },
-              {
-                num: 4, title: 'Resolved & Logged', desc: 'Auto-closes when the sensor dries. Every step is timestamped for a claims-ready record.',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ),
-              },
-            ].map(({ num, title, desc, icon }) => (
-              <div key={num} className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-10 h-10 rounded-full bg-[#29ABE2] text-white flex items-center justify-center font-bold text-sm mb-4">
-                  {num}
+          <div className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-5">
+            <div className="hidden lg:block absolute top-5 left-[8%] right-[8%] border-t-2 border-dashed border-slate-200 z-0" />
+            {PROCESS.chain.map(({ step, desc }, i) => (
+              <div key={step} className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-10 h-10 rounded-full bg-[#29ABE2] text-white flex items-center justify-center font-bold text-sm mb-4 ring-4 ring-[#F8FAFC]">
+                  {i + 1}
                 </div>
-                <div className="w-12 h-12 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-4">
-                  {icon}
-                </div>
-                <h3 className="font-bold text-[#1B2F4E] mb-2">{title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed max-w-[240px]">{desc}</p>
+                <h3 className="font-bold text-[#1B2F4E] text-sm mb-1.5">{step}</h3>
+                <p className="text-xs text-slate-500 leading-relaxed max-w-[180px]">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Section 4 — Problem / Market context */}
+      {/* Section 4 — Built for the people on the ground (maintenance + phone visual) */}
+      <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <Eyebrow>{BUILT_FOR_MAINTENANCE.eyebrow}</Eyebrow>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
+                {BUILT_FOR_MAINTENANCE.heading}
+              </h2>
+              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-4">
+                {BUILT_FOR_MAINTENANCE.body1}
+              </p>
+              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-7">
+                {BUILT_FOR_MAINTENANCE.body2}
+              </p>
+              <div className="flex flex-wrap gap-2.5">
+                {['One-tap actions', 'No app required', 'Reply by text', 'Logged automatically'].map(tag => (
+                  <span key={tag} className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1B2F4E] bg-[#29ABE2]/10 border border-[#29ABE2]/20 rounded-full px-3 py-1.5">
+                    <svg className="w-3 h-3 text-[#29ABE2]" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <PhoneDemo />
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Section 5 — An alert nobody acts on is just noise (enforced escalation) */}
+      <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div className="lg:sticky lg:top-28">
+              <Eyebrow>{OWN_THE_RESPONSE.eyebrow}</Eyebrow>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
+                {OWN_THE_RESPONSE.heading}
+              </h2>
+              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-4">
+                {OWN_THE_RESPONSE.body1}
+              </p>
+              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-8">
+                {OWN_THE_RESPONSE.body2}
+              </p>
+              <div className="space-y-3">
+                {OWN_THE_RESPONSE.tiers.map(({ tier, who, detail }) => (
+                  <div key={tier} className="flex items-start gap-4 bg-white border border-slate-200 rounded-xl p-4">
+                    <span className="shrink-0 text-[11px] font-bold text-white bg-[#1B2F4E] rounded-full px-3 py-1 tracking-wider uppercase mt-0.5">
+                      {tier}
+                    </span>
+                    <div>
+                      <div className="font-semibold text-[#1B2F4E] text-sm mb-0.5">{who}</div>
+                      <div className="text-xs text-slate-500 leading-relaxed">{detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(15,23,42,0.06)] border border-slate-100">
+              <EscalationTimeline />
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Section 6 — Hardware-agnostic positioning */}
+      <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-14 sm:mb-16">
+            <Eyebrow>{HARDWARE_AGNOSTIC.eyebrow}</Eyebrow>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-6 leading-tight">
+              {HARDWARE_AGNOSTIC.heading}
+            </h2>
+            <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-4">
+              {HARDWARE_AGNOSTIC.body1}
+            </p>
+            <p className="text-slate-600 leading-relaxed text-base sm:text-lg">
+              {HARDWARE_AGNOSTIC.body2}
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {HARDWARE_AGNOSTIC.points.map(({ title, desc }) => (
+              <div key={title} className="bg-[#F8FAFC] rounded-xl border border-slate-100 p-7">
+                <div className="w-11 h-11 rounded-lg bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-5">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </div>
+                <h3 className="font-bold text-[#1B2F4E] mb-2">{title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Section 7 — Honest install: "We’re not going to tell you it’s ‘seamless.’" */}
+      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 relative overflow-hidden">
+        <div aria-hidden className="absolute -top-10 right-1/4 w-96 h-96 bg-[#29ABE2]/10 rounded-full blur-3xl" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.22em] uppercase mb-3">{NO_SEAMLESS.eyebrow}</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-8 leading-tight">
+            {NO_SEAMLESS.heading}
+          </h2>
+          <div className="space-y-5 text-slate-300 text-base sm:text-lg leading-relaxed">
+            <p>{NO_SEAMLESS.body1}</p>
+            <p>{NO_SEAMLESS.body2}</p>
+            <p className="text-white font-medium border-l-2 border-[#29ABE2] pl-5">
+              {NO_SEAMLESS.body3}
+            </p>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Section 8 — Not just an alert. A defensible record. */}
       <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">The Problem</p>
+              <Eyebrow>{DEFENSIBLE_RECORD.eyebrow}</Eyebrow>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-5 leading-tight">
-                Water damage is the #1 driver of property insurance claims
+                {DEFENSIBLE_RECORD.heading}
               </h2>
-              <p className="text-slate-600 leading-relaxed text-base sm:text-lg">
-                Most water losses aren&apos;t dramatic floods. They&apos;re slow drips in mechanical rooms, hidden pipe failures, and undetected moisture that compounds for days before anyone notices. By the time your team finds it, the claim is already being written. FlowGuard surfaces it in seconds — and gives your team the tools to close it out before it becomes a loss.
+              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-7">
+                {DEFENSIBLE_RECORD.body}
               </p>
-            </div>
-            <div className="grid grid-cols-1 gap-4">
-              <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-6">
-                <StatCounter target={13} prefix="$" suffix="B+" label="Annual water damage insurance claims" />
-              </div>
-              <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-6">
-                <StatCounter target={93} suffix="%" label="Of water damage is preventable with early detection" />
-              </div>
-              <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-6">
-                <StatCounter target={8} suffix="+ Days" label="Average leak goes undetected without monitoring" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Section 5 — Packages */}
-      <motion.section {...fadeUp} className="bg-white py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Packages</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight mb-4">
-              Two tiers. One platform. Built for how your team actually operates.
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Start with full detection, escalation, and reporting — or layer on premium after-hours response for end-to-end coverage.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
-            {/* Protect — Most Popular */}
-            <div className="bg-white rounded-xl shadow-[0_12px_32px_rgba(41,171,226,0.18)] border-t-4 border-[#29ABE2] p-8 relative">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#29ABE2] text-white text-xs font-bold px-4 py-1 rounded-full tracking-wider uppercase">
-                Most Popular
-              </div>
-              <h3 className="text-xl font-bold text-[#1B2F4E] mb-1 mt-2">Protect</h3>
-              <p className="text-sm text-slate-500 mb-6">Full protection — detect, escalate, document</p>
-              <ul className="space-y-3 mb-8">
-                {['Real-time leak detection', 'Email, SMS, and voice alerts', '3-tier escalation chain', 'Health monitoring', 'Freeze risk alerts', 'Insurance-ready incident reports', 'Executive summary reporting', 'Device visibility'].map(f => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-slate-700">
-                    <svg className="w-4 h-4 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                    {f}
+              <ul className="grid sm:grid-cols-2 gap-3 mb-7">
+                {DEFENSIBLE_RECORD.points.map(point => (
+                  <li key={point} className="flex items-start gap-2.5 text-sm text-slate-700">
+                    <svg className="w-4 h-4 text-[#29ABE2] shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    {point}
                   </li>
                 ))}
               </ul>
-              <Link href="/solutions" className="text-sm font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">Learn More →</Link>
+              <p className="text-xs text-slate-500 leading-relaxed border-t border-slate-200 pt-5 max-w-lg">
+                {DEFENSIBLE_RECORD.footnote}
+              </p>
+              <Link href="/sample-report" className="inline-flex items-center gap-2 text-sm font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition mt-5">
+                View Sample Report
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </Link>
             </div>
-
-            {/* Respond */}
-            <div className="bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-slate-100 p-8">
-              <h3 className="text-xl font-bold text-[#1B2F4E] mb-1">Respond</h3>
-              <p className="text-sm text-slate-500 mb-6">Premium support — after-hours response, end to end</p>
-              <ul className="space-y-3 mb-8">
-                {['Everything in Protect', 'After-hours coordination', 'Maintenance-first response support', 'Priority incident handling', 'Backup vendor coordination', 'Premium incident closeout support'].map(f => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-slate-700">
-                    <svg className="w-4 h-4 text-[#29ABE2] shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/solutions" className="text-sm font-semibold text-[#29ABE2] hover:text-[#1A6FA8] transition">Learn More →</Link>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Section 6 — Built for Multifamily */}
-      <motion.section {...fadeUp} className="bg-[#F8FAFC] py-20 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold text-[#29ABE2] tracking-[0.2em] uppercase mb-3">Built for Multifamily</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B2F4E] tracking-tight">
-              An operational system, not just another sensor
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-10 lg:gap-12">
-            {[
-              {
-                title: 'Maintenance-First Incident Routing',
-                desc: 'Every incident routes to your maintenance team first — no third-party call center in the middle. Your staff stays in control, and nothing slips through the cracks.',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                ),
-              },
-              {
-                title: 'Claims-Ready Documentation',
-                desc: 'Every incident is timestamped, categorized, and logged automatically. Generate claim-ready reports in seconds instead of rebuilding a timeline from memory.',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                ),
-              },
-              {
-                title: 'Low-Disruption Deployment',
-                desc: 'Wireless sensors drop into place without construction. Our team handles install day end-to-end — no downtime, no renovation, no surprises for residents.',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                ),
-              },
-            ].map(({ title, desc, icon }) => (
-              <div key={title} className="flex flex-col items-center text-center">
-                <div className="w-14 h-14 rounded-full bg-[#29ABE2]/10 text-[#29ABE2] flex items-center justify-center mb-6">
-                  {icon}
+            {/* Incident record card */}
+            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(15,23,42,0.08)] border border-slate-100">
+              <div className="flex items-center justify-between mb-5 pb-4 border-b border-slate-100">
+                <div>
+                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Incident</div>
+                  <div className="text-sm font-mono font-bold text-[#1B2F4E]">A3F2B1C8</div>
                 </div>
-                <h3 className="text-lg font-bold text-[#1B2F4E] mb-3">{title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
+                <div className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-100">
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  Resolved
+                </div>
               </div>
-            ))}
+              <div className="space-y-2.5">
+                {[
+                  { label: 'Detected', time: '02:14:03' },
+                  { label: 'Alert sent to escalation chain', time: '02:14:05' },
+                  { label: 'Acknowledged', time: '02:14:26' },
+                  { label: 'On site', time: '02:22:18' },
+                  { label: 'Photo evidence uploaded', time: '02:23:05' },
+                  { label: 'Contained', time: '02:28:33' },
+                  { label: 'Auto-resolved — sensor dry', time: '02:47:12' },
+                ].map(({ label, time }) => (
+                  <div key={label} className="flex justify-between items-center gap-4 text-sm">
+                    <span className="font-medium text-slate-700">{label}</span>
+                    <span className="font-mono text-xs text-slate-500 shrink-0">{time}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-xs">
+                <span className="text-slate-500">Total incident duration</span>
+                <span className="font-mono text-[#1B2F4E] font-semibold">33m 09s</span>
+              </div>
+            </div>
           </div>
         </div>
       </motion.section>
 
-      {/* Section 7 — CTA Band */}
-      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Section 9 — Water-Risk Walk CTA */}
+      <motion.section {...fadeUp} className="bg-[#1B2F4E] py-20 sm:py-24 text-center relative overflow-hidden">
+        <div aria-hidden className="absolute top-1/3 left-1/4 w-80 h-80 bg-[#29ABE2]/15 rounded-full blur-3xl" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            Ready to see it running in your portfolio?
+            {WATER_RISK_WALK.heading}
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg mb-10 leading-relaxed">
-            We&apos;ll scope a deployment for your buildings — no guesswork, no generic pricing.
+          <p className="text-slate-300 text-base sm:text-lg mb-10 leading-relaxed max-w-xl mx-auto">
+            {WATER_RISK_WALK.supporting}
           </p>
-          <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition">
-            Request a Demo
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="inline-block bg-[#29ABE2] text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-[#1A6FA8] transition shadow-[0_8px_30px_rgba(41,171,226,0.35)]">
+              {WATER_RISK_WALK.primaryCta}
+            </Link>
+            <Link href="/sample-report" className="inline-block border border-white/20 text-white px-10 py-4 rounded-xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
+              {WATER_RISK_WALK.secondaryCta}
+            </Link>
+          </div>
         </div>
       </motion.section>
     </main>

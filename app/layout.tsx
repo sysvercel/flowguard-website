@@ -6,8 +6,8 @@ import Footer from './components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'FlowGuard Asset Protection — Real-Time Leak Detection',
-  description: 'Real-time water leak detection and incident command for multifamily properties. Alerts in seconds, not hours.',
+  title: 'FlowGuard — Water Leak Response for Multifamily Properties',
+  description: 'FlowGuard detects water leaks, escalates response, guides maintenance teams, and documents every second for multifamily property owners.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
